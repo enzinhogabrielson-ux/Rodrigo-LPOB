@@ -271,6 +271,7 @@ function AboutPhoto({ src, onOpen }: { src: string; onOpen: () => void }) {
   const [hovered, setHovered] = useState(false);
   return (
     <div
+      className="about-photo"
       onClick={onOpen}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -364,6 +365,21 @@ export default function VitaoIBLP() {
         @media(max-width:900px){
           .hero-right{display:none!important;}
         }
+
+        @media(max-width:640px){
+          .hero-main{padding:64px 20px 44px!important;flex-direction:column!important;}
+          .hero-left{max-width:100%!important;}
+          .hero-badge{font-size:11px!important;}
+          .hero-desc{max-width:100%!important;font-size:13px!important;}
+          .hero-section{min-height:auto!important;padding-bottom:32px!important;}
+          .about-section{padding:56px 20px!important;}
+          .about-photo{width:100%!important;max-width:300px!important;margin:0 auto!important;aspect-ratio:3/4!important;}
+          .social-proof-section{padding:56px 20px!important;}
+          .carousel-row{padding:0 8px 20px!important;}
+          .cta-section{padding:44px 16px 64px!important;}
+          .cta-card{padding:36px 20px!important;}
+          .footer-main{padding:24px 20px!important;flex-direction:column!important;text-align:center!important;gap:10px!important;}
+        }
       `}</style>
 
       {/* ──── NAVBAR ──── */}
@@ -378,7 +394,7 @@ export default function VitaoIBLP() {
       </nav>
 
       {/* ──── HERO ──── */}
-      <section style={{ minHeight: "100vh", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column" }}>
+      <section className="hero-section" style={{ minHeight: "100vh", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column" }}>
 
         {/* Background: deep dark gradient */}
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, #050510 0%, #0A0720 45%, #060614 100%)" }} />
@@ -429,7 +445,7 @@ export default function VitaoIBLP() {
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, rgba(5,5,16,1) 0%, rgba(5,5,16,.88) 35%, rgba(5,5,16,.2) 65%, rgba(5,5,16,.65) 100%)" }} />
 
         {/* ── MAIN HERO CONTENT ── */}
-        <div style={{
+        <div className="hero-main" style={{
           position: "relative", zIndex: 10, flex: 1,
           display: "flex", alignItems: "center", justifyContent: "space-between",
           maxWidth: 1320, width: "100%", margin: "0 auto",
@@ -437,7 +453,7 @@ export default function VitaoIBLP() {
         }}>
 
           {/* LEFT COPY */}
-          <div style={{ flex: "0 0 auto", maxWidth: 480 }}>
+          <div className="hero-left" style={{ flex: "0 0 auto", maxWidth: 480 }}>
             <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,.07)", border: "1px solid rgba(255,255,255,.13)", borderRadius: 20, padding: "7px 18px", marginBottom: 24 }}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={SAND} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
               <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 600, fontSize: 13, color: "rgba(255,255,255,.9)" }}>Maior comunidade trader no Brasil!</span>
@@ -447,7 +463,7 @@ export default function VitaoIBLP() {
               Forex com<br />análise técnica<br />de <span style={{ color: SAND }}>alto nível</span>
             </h1>
 
-            <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 400, fontSize: "clamp(13px,1.2vw,15px)", color: TEXT_M, lineHeight: 1.85, marginBottom: 28, maxWidth: 420 }}>
+            <p className="hero-desc" style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 400, fontSize: "clamp(13px,1.2vw,15px)", color: TEXT_M, lineHeight: 1.85, marginBottom: 28, maxWidth: 420 }}>
               8+ anos no mercado. Price action, gestão de risco e psicologia de mercado. Nada de promessas irreais — aqui é estudo, método e execução.
             </p>
 
@@ -540,7 +556,7 @@ export default function VitaoIBLP() {
       </section>
 
       {/* ──── ABOUT ──── */}
-      <section style={{ background: BG_DARK, padding: "100px 52px" }}>
+      <section className="about-section" style={{ background: BG_DARK, padding: "100px 52px" }}>
         <div style={{
           maxWidth: 1060, margin: "0 auto",
           display: "flex", alignItems: "flex-start",
@@ -578,7 +594,7 @@ export default function VitaoIBLP() {
       </section>
 
       {/* ──── SOCIAL PROOF ──── */}
-      <section style={{ background: BG_MAIN, padding: "100px 52px" }}>
+      <section className="social-proof-section" style={{ background: BG_MAIN, padding: "100px 52px" }}>
         <div style={{ maxWidth: 920, margin: "0 auto", textAlign: "center" }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 5, marginBottom: 16 }}>
             <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 15, color: TEXT_M, marginRight: 4 }}>5.0</span>
@@ -597,7 +613,7 @@ export default function VitaoIBLP() {
 
           {/* Carousel */}
           <div style={{ position: "relative", minHeight: 380 }}>
-            <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 16, padding: "0 52px 20px" }}>
+            <div className="carousel-row" style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 16, padding: "0 52px 20px" }}>
               {names.map((name, i) => {
                 if (Math.abs(i - slide) > 1) return null;
                 return <VideoCard key={i} active={i === slide} name={name} idx={i} />;
@@ -625,9 +641,9 @@ export default function VitaoIBLP() {
       </section>
 
       {/* ──── LIVE CTA ──── */}
-      <section style={{ background: BG_DARK, padding: "70px 52px 110px" }}>
+      <section className="cta-section" style={{ background: BG_DARK, padding: "70px 52px 110px" }}>
         <div style={{ maxWidth: 580, margin: "0 auto" }}>
-          <div style={{
+          <div className="cta-card" style={{
             background: "linear-gradient(140deg,#2A2420 0%,#3A3128 42%,#2A2420 100%)",
             border: "1px solid rgba(214,184,138,.4)", borderRadius: 22,
             padding: "56px 44px", textAlign: "center", position: "relative", overflow: "hidden"
@@ -651,7 +667,7 @@ export default function VitaoIBLP() {
       </section>
 
       {/* ──── FOOTER ──── */}
-      <footer style={{ background: BG_DARK, borderTop: "1px solid rgba(255,255,255,.04)", padding: "28px 52px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
+      <footer className="footer-main" style={{ background: BG_DARK, borderTop: "1px solid rgba(255,255,255,.04)", padding: "28px 52px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 3 }}>
           <div style={{ width: 34, height: 34, borderRadius: 9, background: "rgba(214,184,138,.15)", border: "1.5px solid rgba(214,184,138,.5)", display: "flex", alignItems: "center", justifyContent: "center" }}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
