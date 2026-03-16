@@ -396,53 +396,22 @@ export default function VitaoIBLP() {
       {/* ──── HERO ──── */}
       <section className="hero-section" style={{ minHeight: "100vh", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column" }}>
 
-        {/* Background: deep dark gradient */}
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, #050510 0%, #0A0720 45%, #060614 100%)" }} />
+        {/* Background image */}
+        <div style={{
+          position: "absolute", inset: 0,
+          backgroundImage: "url('/hero-bg.png')",
+          backgroundSize: "cover", backgroundPosition: "center right",
+          backgroundRepeat: "no-repeat"
+        }} />
 
-        {/* Background chart SVG (right half) */}
-        <div style={{ position: "absolute", right: 0, top: 0, width: "65%", height: "100%", opacity: 0.45 }}>
-          <svg width="100%" height="100%" viewBox="0 0 860 800" preserveAspectRatio="xMaxYMid slice">
-            <defs>
-              <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stopColor="#D6B88A" stopOpacity="0" />
-                <stop offset="30%" stopColor="#D6B88A" stopOpacity=".85" />
-                <stop offset="100%" stopColor="#D6B88A" stopOpacity=".4" />
-              </linearGradient>
-              <linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#D6B88A" stopOpacity=".22" />
-                <stop offset="100%" stopColor="#D6B88A" stopOpacity="0" />
-              </linearGradient>
-            </defs>
-            {/* Candles */}
-            {[...Array(24)].map((_, i) => {
-              const x = 40 + i * 34;
-              const base = 290 + Math.sin(i * .7) * 52 + Math.cos(i * .38) * 26;
-              const h = 26 + Math.abs(Math.sin(i * .95)) * 46;
-              const bull = i % 3 !== 0;
-              return (
-                <g key={i}>
-                  <line x1={x + 7} y1={base - 16} x2={x + 7} y2={base + h + 16} stroke={bull ? "rgba(214,184,138,.32)" : "rgba(255,80,80,.32)"} strokeWidth="1.2" />
-                  <rect x={x} y={base} width={14} height={h} fill={bull ? "rgba(214,184,138,.62)" : "rgba(255,80,80,.52)"} rx="2" />
-                </g>
-              );
-            })}
-            {/* Trend line */}
-            <polyline points="40,530 120,488 210,504 310,418 410,382 510,342 610,298 710,260 810,218 860,195"
-              fill="none" stroke="url(#lineGrad)" strokeWidth="2.8" />
-            <polygon points="40,530 120,488 210,504 310,418 410,382 510,342 610,298 710,260 810,218 860,195 860,700 40,700"
-              fill="url(#areaFill)" />
-            {/* Grid lines */}
-            {[200, 300, 400, 500].map(y => (
-              <line key={y} x1="0" y1={y} x2="860" y2={y} stroke="rgba(255,255,255,.035)" strokeWidth="1" strokeDasharray="6,14" />
-            ))}
-          </svg>
-        </div>
+        {/* Dark overlay to keep text readable */}
+        <div style={{ position: "absolute", inset: 0, background: "rgba(4,4,12,0.62)" }} />
 
         {/* Sand ambient glow */}
-        <div style={{ position: "absolute", top: "10%", right: "25%", width: 500, height: 500, background: "radial-gradient(circle, rgba(214,184,138,.09) 0%, transparent 70%)", pointerEvents: "none" }} />
+        <div style={{ position: "absolute", top: "10%", right: "25%", width: 500, height: 500, background: "radial-gradient(circle, rgba(214,184,138,.07) 0%, transparent 70%)", pointerEvents: "none" }} />
 
-        {/* Left fog */}
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, rgba(5,5,16,1) 0%, rgba(5,5,16,.88) 35%, rgba(5,5,16,.2) 65%, rgba(5,5,16,.65) 100%)" }} />
+        {/* Left fog — keeps left copy area more legible */}
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, rgba(4,4,12,0.85) 0%, rgba(4,4,12,0.70) 38%, rgba(4,4,12,0.1) 70%, rgba(4,4,12,0.4) 100%)" }} />
 
         {/* ── MAIN HERO CONTENT ── */}
         <div className="hero-main" style={{
