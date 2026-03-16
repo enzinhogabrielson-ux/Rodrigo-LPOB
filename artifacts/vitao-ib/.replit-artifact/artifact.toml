@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Vitão IB - Landing Page"
+version = "1.0.0"
+id = "artifacts/vitao-ib"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+localPort = 23110
+name = "web"
+paths = ["/"]
+
+[services.development]
+run = "pnpm --filter @workspace/vitao-ib run dev"
+
+[services.env]
+PORT = "23110"
+BASE_PATH = "/"
+
+[services.production]
+build = ["pnpm", "--filter", "@workspace/vitao-ib", "run", "build"]
+publicDir = "artifacts/vitao-ib/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
