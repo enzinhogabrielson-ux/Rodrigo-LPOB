@@ -42,12 +42,12 @@ function WaButton({ label = "Entre no meu grupo", style = {}, size = "md" }: {
 
 /* Floating crypto card */
 const COINS = [
-  { symbol: "LTC", name: "Litecoin",  price: "$112.22",    change: "-1.71%", pos: false, color: "#A0A0A0" },
-  { symbol: "BTC", name: "Bitcoin",   price: "$94,595.33", change: "+1.71%", pos: true,  color: "#F7931A" },
-  { symbol: "SOL", name: "Solana",    price: "$194.46",    change: "-0.65%", pos: false, color: "#9945FF" },
-  { symbol: "DASH",name: "Dash",      price: "$24.68",     change: "+1.71%", pos: true,  color: "#008CE7" },
-  { symbol: "XRP", name: "XRP",       price: "$2.41",      change: "+1.66%", pos: true,  color: "#3A6DA8" },
-  { symbol: "ETH", name: "Ethereum",  price: "$2,609.21",  change: "+1.71%", pos: true,  color: "#627EEA" },
+  { symbol: "LTC", name: "Litecoin",  price: "$152.48",    change: "+2.15%", pos: true,  color: "#A0A0A0" },
+  { symbol: "BTC", name: "Bitcoin",   price: "$96,543.22", change: "+3.45%", pos: true,  color: "#F7931A" },
+  { symbol: "SOL", name: "Solana",    price: "$198.77",    change: "+1.82%", pos: true,  color: "#9945FF" },
+  { symbol: "DASH",name: "Dash",      price: "$31.52",     change: "-1.23%", pos: false, color: "#008CE7" },
+  { symbol: "XRP", name: "XRP",       price: "$2.58",      change: "+2.34%", pos: true,  color: "#3A6DA8" },
+  { symbol: "ETH", name: "Ethereum",  price: "$3,542.89",  change: "+2.87%", pos: true,  color: "#627EEA" },
 ];
 
 function FloatingCoinCard({ coin, style = {} }: { coin: typeof COINS[0]; style?: React.CSSProperties }) {
