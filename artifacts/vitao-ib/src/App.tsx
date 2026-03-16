@@ -503,7 +503,7 @@ export default function VitaoIBLP() {
       <section style={{ background: BG_DARK, padding: "100px 52px" }}>
         <div style={{
           maxWidth: 1060, margin: "0 auto",
-          display: "flex", alignItems: "center",
+          display: "flex", alignItems: "flex-start",
           gap: "clamp(44px,8vw,100px)", flexWrap: "wrap"
         }}>
           {/* Mamute Trader photo */}
@@ -511,7 +511,7 @@ export default function VitaoIBLP() {
             src={aboutPhoto}
             alt="Mamute Trader BR"
             style={{
-              flex: "0 0 auto", width: "clamp(240px,30vw,340px)", aspectRatio: "3/4",
+              flex: "0 0 auto", width: "clamp(240px,30vw,340px)", aspectRatio: "3/5",
               borderRadius: 20, overflow: "hidden",
               border: "1px solid rgba(214,184,138,.18)",
               objectFit: "cover",
