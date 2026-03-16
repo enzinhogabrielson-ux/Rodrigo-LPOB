@@ -4,12 +4,12 @@ import aboutPhoto from "@assets/about.jpeg";
 
 const CTA_LINK = "https://chat.whatsapp.com/LR1XkXae3KP0AzM9PCY1QC";
 
-const BG_MAIN = "#1A1A2E";
-const BG_DARK = "#252540";
+const BG_MAIN = "#FFFFFF";
+const BG_DARK = "#F8F8FA";
 const SAND = "#32C77A";
 const SAND_D = "#2BA86B";
 const ACCENT = "#32C77A";
-const TEXT_M = "#B8BFCC";
+const TEXT_M = "#666666";
 
 /* ─── COMPONENTS ─── */
 
@@ -71,7 +71,7 @@ function FloatingCoinCard({ coin, style = {} }: { coin: typeof COINS[0]; style?:
       }}>{coin.symbol.slice(0, 3)}</div>
       <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-          <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 11, color: "#fff" }}>{coin.name}</div>
+          <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 11, color: "#1A1A1A" }}>{coin.name}</div>
           <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 600, fontSize: 10, color: TEXT_M }}>{coin.price}</span>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
@@ -327,15 +327,15 @@ export default function VitaoIBLP() {
   }, []);
 
   return (
-    <div style={{ background: BG_MAIN, minHeight: "100vh", color: "#fff", overflowX: "hidden" }}>
+    <div style={{ background: BG_MAIN, minHeight: "100vh", color: "#1A1A1A", overflowX: "hidden" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Bebas+Neue&display=swap');
         *{box-sizing:border-box;margin:0;padding:0;}
-        html,body{background:${BG_MAIN};font-family:'Plus Jakarta Sans',sans-serif;overflow-x:hidden;}
-        ::selection{background:rgba(50,199,122,.35);}
+        html,body{background:${BG_MAIN};font-family:'Plus Jakarta Sans',sans-serif;overflow-x:hidden;color:#1A1A1A;}
+        ::selection{background:rgba(50,199,122,.25);}
         ::-webkit-scrollbar{width:4px;}
         ::-webkit-scrollbar-track{background:${BG_MAIN};}
-        ::-webkit-scrollbar-thumb{background:rgba(50,199,122,.4);border-radius:2px;}
+        ::-webkit-scrollbar-thumb{background:rgba(50,199,122,.6);border-radius:2px;}
 
         @keyframes marquee{
           0%{transform:translateX(0)}
@@ -385,9 +385,9 @@ export default function VitaoIBLP() {
       {/* ──── NAVBAR ──── */}
       <nav style={{
         position: "fixed", top: 0, left: 0, right: 0, zIndex: 999,
-        background: scrolled ? "rgba(8,8,18,.95)" : "transparent",
+        background: scrolled ? "rgba(255,255,255,.98)" : "transparent",
         backdropFilter: scrolled ? "blur(20px)" : "none",
-        borderBottom: scrolled ? "1px solid rgba(255,255,255,.05)" : "none",
+        borderBottom: scrolled ? "1px solid rgba(50,199,122,.15)" : "none",
         transition: "all .3s", padding: "14px 48px",
         display: "flex", justifyContent: "center", alignItems: "center"
       }}>
@@ -401,17 +401,15 @@ export default function VitaoIBLP() {
           position: "absolute", inset: 0,
           backgroundImage: "url('/hero-bg.png')",
           backgroundSize: "cover", backgroundPosition: "center right",
-          backgroundRepeat: "no-repeat"
+          backgroundRepeat: "no-repeat",
+          opacity: 0.15
         }} />
 
-        {/* Dark overlay to keep text readable */}
-        <div style={{ position: "absolute", inset: 0, background: "rgba(26,26,46,0.45)" }} />
+        {/* Light overlay */}
+        <div style={{ position: "absolute", inset: 0, background: "rgba(255,255,255,0.85)" }} />
 
         {/* Green ambient glow */}
-        <div style={{ position: "absolute", top: "10%", right: "25%", width: 500, height: 500, background: "radial-gradient(circle, rgba(50,199,122,.12) 0%, transparent 70%)", pointerEvents: "none" }} />
-
-        {/* Left fog — keeps left copy area more legible */}
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, rgba(26,26,46,0.9) 0%, rgba(26,26,46,0.75) 38%, rgba(26,26,46,0.2) 70%, rgba(26,26,46,0.5) 100%)" }} />
+        <div style={{ position: "absolute", top: "10%", right: "25%", width: 500, height: 500, background: "radial-gradient(circle, rgba(50,199,122,.08) 0%, transparent 70%)", pointerEvents: "none" }} />
 
         {/* ── MAIN HERO CONTENT ── */}
         <div className="hero-main" style={{
@@ -423,16 +421,16 @@ export default function VitaoIBLP() {
 
           {/* LEFT COPY */}
           <div className="hero-left" style={{ flex: "0 0 auto", maxWidth: 480 }}>
-            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,.07)", border: "1px solid rgba(255,255,255,.13)", borderRadius: 20, padding: "7px 18px", marginBottom: 24 }}>
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(50,199,122,.1)", border: `1px solid ${SAND}`, borderRadius: 20, padding: "7px 18px", marginBottom: 24 }}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={SAND} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-              <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 600, fontSize: 13, color: "rgba(255,255,255,.9)" }}>Maior comunidade trader no Brasil!</span>
+              <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 600, fontSize: 13, color: "#1A1A1A" }}>Maior comunidade trader no Brasil!</span>
             </div>
 
-            <h1 style={{ fontFamily: "'Bebas Neue',sans-serif", fontWeight: 400, fontSize: "clamp(48px,5.5vw,76px)", lineHeight: 1.0, color: "#FFF", marginBottom: 18, letterSpacing: "0.03em" }}>
+            <h1 style={{ fontFamily: "'Bebas Neue',sans-serif", fontWeight: 400, fontSize: "clamp(48px,5.5vw,76px)", lineHeight: 1.0, color: "#1A1A1A", marginBottom: 18, letterSpacing: "0.03em" }}>
               Lucre<br />diariamente<br />copiando minhas <span style={{ color: SAND }}>operações</span>
             </h1>
 
-            <p className="hero-desc" style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 400, fontSize: "clamp(13px,1.2vw,15px)", color: TEXT_M, lineHeight: 1.85, marginBottom: 28, maxWidth: 420 }}>
+            <p className="hero-desc" style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 400, fontSize: "clamp(13px,1.2vw,15px)", color: "#555555", lineHeight: 1.85, marginBottom: 28, maxWidth: 420 }}>
               Live de Alavancagem garantida, mais de 100 mil reais em bancas alavancadas por semana.
             </p>
 
@@ -480,7 +478,7 @@ export default function VitaoIBLP() {
                           color: coin.color, flexShrink: 0
                         }}>{coin.symbol.slice(0, 3)}</div>
                         <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
-                          <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 14, color: "#fff", whiteSpace: "nowrap" }}>{coin.name}</span>
+                          <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 14, color: "#1A1A1A", whiteSpace: "nowrap" }}>{coin.name}</span>
                           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                             <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 600, fontSize: 12, color: TEXT_M, whiteSpace: "nowrap" }}>{coin.price}</span>
                             <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 11, color: coin.pos ? SAND : "#FF5050", fontWeight: 700, whiteSpace: "nowrap" }}>{coin.change}</span>
@@ -525,7 +523,7 @@ export default function VitaoIBLP() {
       </section>
 
       {/* ──── ABOUT ──── */}
-      <section className="about-section" style={{ background: BG_DARK, padding: "100px 52px" }}>
+      <section className="about-section" style={{ background: '#F8F8FA', padding: "100px 52px" }}>
         <div style={{
           maxWidth: 1060, margin: "0 auto",
           display: "flex", alignItems: "flex-start",
@@ -536,7 +534,7 @@ export default function VitaoIBLP() {
 
           {/* Copy */}
           <div style={{ flex: 1, minWidth: 260 }}>
-            <h2 style={{ fontFamily: "'Bebas Neue',sans-serif", fontWeight: 400, fontSize: "clamp(42px,4.8vw,68px)", lineHeight: 1.0, color: "#FFF", marginBottom: 20, letterSpacing: "0.03em" }}>
+            <h2 style={{ fontFamily: "'Bebas Neue',sans-serif", fontWeight: 400, fontSize: "clamp(42px,4.8vw,68px)", lineHeight: 1.0, color: "#1A1A1A", marginBottom: 20, letterSpacing: "0.03em" }}>
               Transformamos<br />experiência em<br />direcionamento
             </h2>
 
@@ -573,7 +571,7 @@ export default function VitaoIBLP() {
               </svg>
             ))}
           </div>
-          <h2 style={{ fontFamily: "'Bebas Neue',sans-serif", fontWeight: 400, fontSize: "clamp(44px,5.2vw,70px)", color: "#FFF", lineHeight: 1.0, marginBottom: 16, letterSpacing: "0.03em" }}>
+          <h2 style={{ fontFamily: "'Bebas Neue',sans-serif", fontWeight: 400, fontSize: "clamp(44px,5.2vw,70px)", color: "#1A1A1A", lineHeight: 1.0, marginBottom: 16, letterSpacing: "0.03em" }}>
             São milhares de vidas<br />transformadas
           </h2>
           <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", color: TEXT_M, fontSize: 15.5, lineHeight: 1.85, maxWidth: 580, margin: "0 auto 56px" }}>
@@ -592,8 +590,8 @@ export default function VitaoIBLP() {
               <button key={d} onClick={fn} style={{
                 position: "absolute", top: "44%", ...(d === "l" ? { left: 0 } : { right: 0 }),
                 transform: "translateY(-50%)", width: 36, height: 36, borderRadius: "50%",
-                background: "rgba(255,255,255,.07)", border: "1px solid rgba(255,255,255,.12)",
-                color: "#fff", fontSize: 20, display: "flex", alignItems: "center", justifyContent: "center"
+                background: "rgba(50,199,122,.08)", border: "1px solid rgba(50,199,122,.25)",
+                color: "#1A1A1A", fontSize: 20, display: "flex", alignItems: "center", justifyContent: "center"
               }}>{d === "l" ? "‹" : "›"}</button>
             ))}
           </div>
@@ -601,7 +599,7 @@ export default function VitaoIBLP() {
             {[...Array(total)].map((_, i) => (
               <button key={i} onClick={() => setSlide(i)} style={{
                 width: i === slide ? 24 : 8, height: 8, borderRadius: 4,
-                background: i === slide ? SAND : "rgba(255,255,255,.18)",
+                background: i === slide ? SAND : "rgba(50,199,122,.15)",
                 transition: "all .3s"
               }} />
             ))}
@@ -610,7 +608,7 @@ export default function VitaoIBLP() {
       </section>
 
       {/* ──── LIVE CTA ──── */}
-      <section className="cta-section" style={{ background: BG_DARK, padding: "70px 52px 110px" }}>
+      <section className="cta-section" style={{ background: '#F8F8FA', padding: "70px 52px 110px" }}>
         <div style={{ maxWidth: 580, margin: "0 auto" }}>
           <div className="cta-card" style={{
             background: "linear-gradient(140deg,#2A2420 0%,#3A3128 42%,#2A2420 100%)",
@@ -620,12 +618,12 @@ export default function VitaoIBLP() {
             <div style={{ position: "absolute", top: -70, left: "50%", transform: "translateX(-50%)", width: 360, height: 220, background: "radial-gradient(ellipse, rgba(214,184,138,.28), transparent 72%)", pointerEvents: "none" }} />
             <div style={{ display: "flex", justifyContent: "center", marginBottom: 20, position: "relative", zIndex: 1 }}>
               <div className="livepulse" style={{ width: 56, height: 56, borderRadius: "50%", background: "#EF4444", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 2 }}>
-                <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: 8, color: "#fff", letterSpacing: ".13em" }}>LIVE</span>
+                <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: 8, color: "#1A1A1A", letterSpacing: ".13em" }}>LIVE</span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z" /></svg>
               </div>
             </div>
-            <h2 style={{ fontFamily: "'Bebas Neue',sans-serif", fontWeight: 400, fontSize: "clamp(40px,5vw,60px)", color: "#FFF", marginBottom: 14, position: "relative", zIndex: 1, letterSpacing: "0.03em" }}>Hoje tem live!</h2>
-            <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", color: "rgba(255,255,255,.62)", fontSize: 15.5, lineHeight: 1.78, maxWidth: 320, margin: "0 auto 32px", position: "relative", zIndex: 1 }}>
+            <h2 style={{ fontFamily: "'Bebas Neue',sans-serif", fontWeight: 400, fontSize: "clamp(40px,5vw,60px)", color: "#1A1A1A", marginBottom: 14, position: "relative", zIndex: 1, letterSpacing: "0.03em" }}>Hoje tem live!</h2>
+            <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", color: "#666666", fontSize: 15.5, lineHeight: 1.78, maxWidth: 320, margin: "0 auto 32px", position: "relative", zIndex: 1 }}>
               Clique no botão abaixo e participe, venha ganhar dinheiro comigo ao vivo!
             </p>
             <div style={{ position: "relative", zIndex: 1 }}>
@@ -636,7 +634,7 @@ export default function VitaoIBLP() {
       </section>
 
       {/* ──── FOOTER ──── */}
-      <footer className="footer-main" style={{ background: BG_DARK, borderTop: "1px solid rgba(255,255,255,.04)", padding: "28px 52px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
+      <footer className="footer-main" style={{ background: '#F8F8FA', borderTop: "1px solid rgba(255,255,255,.04)", padding: "28px 52px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 3 }}>
           <div style={{ width: 34, height: 34, borderRadius: 9, background: "rgba(214,184,138,.15)", border: "1.5px solid rgba(214,184,138,.5)", display: "flex", alignItems: "center", justifyContent: "center" }}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
