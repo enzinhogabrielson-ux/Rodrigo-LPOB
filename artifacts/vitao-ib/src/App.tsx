@@ -300,7 +300,7 @@ export default function VitaoIBLP() {
   return (
     <div style={{ background: BG_MAIN, minHeight: "100vh", color: "#fff", overflowX: "hidden" }}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Bebas+Neue&display=swap');
         *{box-sizing:border-box;margin:0;padding:0;}
         html,body{background:${BG_MAIN};font-family:'Plus Jakarta Sans',sans-serif;overflow-x:hidden;}
         ::selection{background:rgba(214,184,138,.35);}
@@ -415,7 +415,7 @@ export default function VitaoIBLP() {
               <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 600, fontSize: 13, color: "rgba(255,255,255,.9)" }}>Maior comunidade trader no Brasil!</span>
             </div>
 
-            <h1 style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: "clamp(32px,3.4vw,48px)", lineHeight: 1.08, color: "#FFF", marginBottom: 18, letterSpacing: "-0.025em" }}>
+            <h1 style={{ fontFamily: "'Bebas Neue',sans-serif", fontWeight: 400, fontSize: "clamp(48px,5.5vw,76px)", lineHeight: 1.0, color: "#FFF", marginBottom: 18, letterSpacing: "0.03em" }}>
               Forex com<br />análise técnica<br />de <span style={{ color: SAND }}>alto nível</span>
             </h1>
 
@@ -534,7 +534,7 @@ export default function VitaoIBLP() {
 
           {/* Copy */}
           <div style={{ flex: 1, minWidth: 260 }}>
-            <h2 style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: "clamp(28px,3.2vw,44px)", lineHeight: 1.2, color: "#FFF", marginBottom: 20 }}>
+            <h2 style={{ fontFamily: "'Bebas Neue',sans-serif", fontWeight: 400, fontSize: "clamp(42px,4.8vw,68px)", lineHeight: 1.0, color: "#FFF", marginBottom: 20, letterSpacing: "0.03em" }}>
               Transformamos<br />experiência em<br />direcionamento
             </h2>
 
@@ -571,7 +571,7 @@ export default function VitaoIBLP() {
               </svg>
             ))}
           </div>
-          <h2 style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: "clamp(28px,4vw,46px)", color: "#FFF", lineHeight: 1.2, marginBottom: 16 }}>
+          <h2 style={{ fontFamily: "'Bebas Neue',sans-serif", fontWeight: 400, fontSize: "clamp(44px,5.2vw,70px)", color: "#FFF", lineHeight: 1.0, marginBottom: 16, letterSpacing: "0.03em" }}>
             Traders operando<br />com consistência
           </h2>
           <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", color: TEXT_M, fontSize: 15.5, lineHeight: 1.85, maxWidth: 580, margin: "0 auto 56px" }}>
@@ -622,7 +622,7 @@ export default function VitaoIBLP() {
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z" /></svg>
               </div>
             </div>
-            <h2 style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: "clamp(26px,3.5vw,38px)", color: "#FFF", marginBottom: 14, position: "relative", zIndex: 1 }}>Hoje tem live!</h2>
+            <h2 style={{ fontFamily: "'Bebas Neue',sans-serif", fontWeight: 400, fontSize: "clamp(40px,5vw,60px)", color: "#FFF", marginBottom: 14, position: "relative", zIndex: 1, letterSpacing: "0.03em" }}>Hoje tem live!</h2>
             <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", color: "rgba(255,255,255,.62)", fontSize: 15.5, lineHeight: 1.78, maxWidth: 320, margin: "0 auto 32px", position: "relative", zIndex: 1 }}>
               Clique no botão abaixo e participe, venha ganhar dinheiro comigo ao vivo!
             </p>
