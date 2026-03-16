@@ -330,42 +330,40 @@ export default function VitaoIBLP() {
           }}>
             {/* CRYPTO CAROUSEL — 2 rows, large cards with 2 visible per row */}
             <div style={{
-              position: "absolute", top: "12%", left: "8%", right: "8%", zIndex: 1,
-              width: "84%", height: 145,
-              display: "flex", flexDirection: "column", gap: 6, alignItems: "stretch"
+              position: "absolute", top: "10%", left: "8%", right: "8%", zIndex: 1,
+              width: "84%", height: 200,
+              display: "flex", flexDirection: "column", gap: 8, alignItems: "stretch"
             }}>
               {[0, 1].map((rowIdx) => (
-                <div key={rowIdx} style={{ position: "relative", width: "100%", overflow: "hidden", flex: 1 }}>
-                  {/* Left blur - stronger fade */}
+                <div key={rowIdx} style={{ position: "relative", width: "100%", overflow: "hidden", height: 92 }}>
+                  {/* Left blur */}
                   <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 80, zIndex: 2, background: "linear-gradient(90deg, rgba(8,8,18,1) 0%, rgba(8,8,18,0.7) 50%, rgba(8,8,18,0) 100%)", pointerEvents: "none" }} />
-                  {/* Right blur - stronger fade */}
+                  {/* Right blur */}
                   <div style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: 80, zIndex: 2, background: "linear-gradient(270deg, rgba(8,8,18,1) 0%, rgba(8,8,18,0.7) 50%, rgba(8,8,18,0) 100%)", pointerEvents: "none" }} />
                   {/* Track */}
-                  <div className={rowIdx === 1 ? "ticker-track-offset" : "ticker-track"} style={{ display: "flex", gap: 12, width: "max-content", paddingLeft: 0, height: "100%", alignItems: "center" }}>
+                  <div className={rowIdx === 1 ? "ticker-track-offset" : "ticker-track"} style={{ display: "flex", gap: 12, width: "max-content", height: "100%", alignItems: "center" }}>
                     {[...COINS.slice(rowIdx * 3, rowIdx * 3 + 3), ...COINS.slice(rowIdx * 3, rowIdx * 3 + 3), ...COINS.slice(rowIdx * 3, rowIdx * 3 + 3)].map((coin, i) => (
                       <div key={i} style={{
-                        display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 8,
+                        display: "flex", alignItems: "center", gap: 12,
                         background: "rgba(15,15,28,0.70)", backdropFilter: "blur(10px)",
                         border: "1.5px solid rgba(255,255,255,0.05)", borderRadius: 12,
-                        padding: "14px 20px", flexShrink: 0, userSelect: "none",
-                        minWidth: 320, height: "100%"
+                        padding: "12px 18px", flexShrink: 0, userSelect: "none",
+                        minWidth: 220, height: 68
                       }}>
-                        <div style={{ display: "flex", alignItems: "center", gap: 8, width: "100%" }}>
-                          <div style={{
-                            width: 40, height: 40, borderRadius: "50%",
-                            background: coin.color + "22",
-                            border: `1px solid ${coin.color}77`,
-                            display: "flex", alignItems: "center", justifyContent: "center",
-                            fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 12,
-                            color: coin.color, flexShrink: 0
-                          }}>{coin.symbol.slice(0, 3)}</div>
-                          <div style={{ display: "flex", flexDirection: "column", gap: 2, flex: 1 }}>
-                            <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 14, color: "#fff" }}>{coin.name}</span>
-                            <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 600, fontSize: 12, color: TEXT_M }}>{coin.price}</span>
+                        <div style={{
+                          width: 38, height: 38, borderRadius: "50%",
+                          background: coin.color + "22",
+                          border: `1px solid ${coin.color}77`,
+                          display: "flex", alignItems: "center", justifyContent: "center",
+                          fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 11,
+                          color: coin.color, flexShrink: 0
+                        }}>{coin.symbol.slice(0, 3)}</div>
+                        <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
+                          <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 14, color: "#fff", whiteSpace: "nowrap" }}>{coin.name}</span>
+                          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                            <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 600, fontSize: 12, color: TEXT_M, whiteSpace: "nowrap" }}>{coin.price}</span>
+                            <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 11, color: coin.pos ? SAND : "#FF5050", fontWeight: 700, whiteSpace: "nowrap" }}>{coin.change}</span>
                           </div>
-                        </div>
-                        <div style={{ display: "flex", alignItems: "center", gap: 3 }}>
-                          <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 13, color: coin.pos ? SAND : "#FF5050", fontWeight: 700 }}>{coin.change}</span>
                         </div>
                       </div>
                     ))}
