@@ -330,8 +330,8 @@ export default function VitaoIBLP() {
                         display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 8,
                         background: "rgba(15,15,28,0.70)", backdropFilter: "blur(10px)",
                         border: "1.5px solid rgba(255,255,255,0.05)", borderRadius: 12,
-                        padding: "14px 18px", flexShrink: 0, userSelect: "none", whiteSpace: "nowrap",
-                        minWidth: 240, height: "100%"
+                        padding: "14px 18px", flexShrink: 0, userSelect: "none",
+                        minWidth: 280, height: "100%"
                       }}>
                         <div style={{ display: "flex", alignItems: "center", gap: 8, width: "100%" }}>
                           <div style={{
