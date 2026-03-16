@@ -385,6 +385,7 @@ export default function VitaoIBLP() {
           .hero-desc{max-width:100%!important;font-size:14px!important;text-align:center!important;}
           .hero-section{min-height:auto!important;}
           .ticker-fade{display:none!important;}
+          .ticker-container{left:0!important;right:0!important;width:100%!important;}
           .hero-right{
             display:flex!important;
             width:100%!important;
@@ -475,7 +476,7 @@ export default function VitaoIBLP() {
             height: "clamp(480px,72vh,700px)", overflow: "visible", minWidth: 320
           }}>
             {/* CRYPTO CAROUSEL — 2 rows, large cards with 2 visible per row */}
-            <div style={{
+            <div className="ticker-container" style={{
               position: "absolute", top: "10%", left: "8%", right: "8%", zIndex: 1,
               width: "84%", height: 200,
               display: "flex", flexDirection: "column", gap: 8, alignItems: "stretch"
@@ -492,7 +493,7 @@ export default function VitaoIBLP() {
                       <div key={i} style={{
                         display: "flex", alignItems: "center", gap: 12,
                         background: "transparent", backdropFilter: "none",
-                        border: "none", borderRadius: 12,
+                        border: "1.5px solid rgba(255,255,255,0.10)", borderRadius: 12,
                         padding: "12px 18px", flexShrink: 0, userSelect: "none",
                         minWidth: 220, height: 68
                       }}>
