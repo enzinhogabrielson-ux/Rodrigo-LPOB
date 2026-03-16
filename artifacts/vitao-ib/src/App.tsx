@@ -429,11 +429,11 @@ export default function VitaoIBLP() {
             </div>
 
             <h1 style={{ fontFamily: "'Bebas Neue',sans-serif", fontWeight: 400, fontSize: "clamp(48px,5.5vw,76px)", lineHeight: 1.0, color: "#FFF", marginBottom: 18, letterSpacing: "0.03em" }}>
-              Forex com<br />análise técnica<br />de <span style={{ color: SAND }}>alto nível</span>
+              Lucre<br />diariamente<br />copiando minhas <span style={{ color: SAND }}>operações</span>
             </h1>
 
             <p className="hero-desc" style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 400, fontSize: "clamp(13px,1.2vw,15px)", color: TEXT_M, lineHeight: 1.85, marginBottom: 28, maxWidth: 420 }}>
-              8+ anos no mercado. Price action, gestão de risco e psicologia de mercado. Nada de promessas irreais — aqui é estudo, método e execução.
+              Live de Alavancagem garantida, mais de 100 mil reais em bancas alavancadas por semana.
             </p>
 
             <div style={{ marginBottom: 26 }}>
