@@ -407,6 +407,9 @@ export default function VitaoIBLP() {
         {/* Dark overlay to keep text readable */}
         <div style={{ position: "absolute", inset: 0, background: "rgba(4,4,12,0.62)" }} />
 
+        {/* Black to Sand gradient overlay (left to right) */}
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(214,184,138,0.35) 100%)" }} />
+
         {/* Sand ambient glow */}
         <div style={{ position: "absolute", top: "10%", right: "25%", width: 500, height: 500, background: "radial-gradient(circle, rgba(214,184,138,.07) 0%, transparent 70%)", pointerEvents: "none" }} />
 
