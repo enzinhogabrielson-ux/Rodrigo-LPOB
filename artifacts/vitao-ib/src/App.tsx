@@ -177,10 +177,86 @@ function VideoCard({ active, name, idx }: { active: boolean; name: string; idx: 
   );
 }
 
+/* ─── ABOUT PILLARS ─── */
+const PILLARS = [
+  {
+    icon: "📊",
+    title: "Price Action",
+    short: "Leitura técnica de mercado",
+    detail: "Aprenda a ler o gráfico sem precisar de indicadores. Padrões de candlestick, suporte, resistência e estrutura de mercado na prática."
+  },
+  {
+    icon: "📐",
+    title: "Gestão de Risco",
+    short: "Proteção de capital",
+    detail: "Regras claras de stop, gerenciamento de lote e psicologia do drawdown. Você aprende a sobreviver no mercado antes de lucrar."
+  },
+  {
+    icon: "🧠",
+    title: "Psicologia de Mercado",
+    short: "Mentalidade profissional",
+    detail: "Controle emocional, disciplina e consistência. A diferença entre traders lucrativos e os que quebram está na cabeça, não no setup."
+  },
+  {
+    icon: "🎯",
+    title: "Estratégias Validadas",
+    short: "Ciclos reais comprovados",
+    detail: "Setups testados em bull e bear market, com histórico real de operações. Nada de backtest bonito — resultados de quem opera de verdade."
+  },
+];
+
+function PillarItem({ icon, title, short, detail, open, onToggle }: {
+  icon: string; title: string; short: string; detail: string; open: boolean; onToggle: () => void;
+}) {
+  const [hov, setHov] = useState(false);
+  return (
+    <div
+      onClick={onToggle}
+      onMouseEnter={() => setHov(true)}
+      onMouseLeave={() => setHov(false)}
+      style={{
+        background: open ? "rgba(214,184,138,0.08)" : hov ? "rgba(214,184,138,0.04)" : "rgba(255,255,255,0.02)",
+        border: `1px solid ${open ? "rgba(214,184,138,0.45)" : hov ? "rgba(214,184,138,0.22)" : "rgba(255,255,255,0.07)"}`,
+        borderRadius: 12, padding: "14px 18px", cursor: "pointer",
+        transition: "all 0.25s ease",
+        boxShadow: open ? "0 0 18px rgba(214,184,138,0.10)" : "none",
+      }}
+    >
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+          <span style={{ fontSize: 20 }}>{icon}</span>
+          <div>
+            <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 14.5, color: open || hov ? SAND : "#fff", transition: "color 0.2s" }}>{title}</div>
+            <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 12, color: TEXT_M, marginTop: 1 }}>{short}</div>
+          </div>
+        </div>
+        <span style={{
+          display: "inline-flex", alignItems: "center", justifyContent: "center",
+          width: 22, height: 22, borderRadius: "50%",
+          background: open ? SAND : "rgba(255,255,255,0.08)",
+          color: open ? BG_MAIN : TEXT_M, fontSize: 13, fontWeight: 700,
+          transform: open ? "rotate(45deg)" : "rotate(0deg)",
+          transition: "all 0.25s ease", flexShrink: 0
+        }}>+</span>
+      </div>
+      <div style={{
+        maxHeight: open ? 120 : 0, overflow: "hidden",
+        transition: "max-height 0.35s ease",
+      }}>
+        <p style={{
+          fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 13, color: "rgba(255,255,255,0.65)",
+          lineHeight: 1.7, paddingTop: 12, borderTop: "1px solid rgba(214,184,138,0.15)", marginTop: 12
+        }}>{detail}</p>
+      </div>
+    </div>
+  );
+}
+
 /* ─── MAIN PAGE ─── */
 export default function VitaoIBLP() {
   const [scrolled, setScrolled] = useState(false);
   const [slide, setSlide] = useState(1);
+  const [openPillar, setOpenPillar] = useState<number | null>(null);
   const total = 5;
   const names = ["Trader Lucas F.", "Ana Carolina P.", "Rodrigo Mendes", "Juliana Costa", "Marcos Silva"];
 
@@ -435,20 +511,24 @@ export default function VitaoIBLP() {
             <h2 style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: "clamp(28px,3.2vw,44px)", lineHeight: 1.2, color: "#FFF", marginBottom: 20 }}>
               Transformamos<br />experiência em<br />direcionamento
             </h2>
-            <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", color: TEXT_M, fontSize: 15.5, lineHeight: 1.9, marginBottom: 28 }}>
-              <p style={{ marginBottom: 14 }}>
-                📊 <strong>Price Action</strong> — Leitura técnica de mercado<br/>
-                📐 <strong>Gestão de Risco</strong> — Proteção de capital<br/>
-                🧠 <strong>Psicologia de Mercado</strong> — Mentalidade profissional<br/>
-                🎯 <strong>Estratégias Validadas</strong> — Ciclos reais comprovados
-              </p>
-              <p style={{ marginBottom: 14, color: "rgba(255,255,255,0.7)", fontSize: "14px", fontStyle: "italic" }}>
-                Nada de promessas irreais. Nada de sinal mágico.
-              </p>
-              <p style={{ color: "rgba(255,255,255,0.7)" }}>
-                Se você quer operar com base, estrutura e mentalidade profissional... bem-vindo à Arena do Mamute Trader BR.
-              </p>
+
+            {/* Interactive pillars */}
+            <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 24 }}>
+              {PILLARS.map((p, i) => (
+                <PillarItem
+                  key={i}
+                  {...p}
+                  open={openPillar === i}
+                  onToggle={() => setOpenPillar(openPillar === i ? null : i)}
+                />
+              ))}
             </div>
+
+            <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 13.5, color: "rgba(255,255,255,0.55)", fontStyle: "italic", marginBottom: 24, lineHeight: 1.7 }}>
+              Nada de promessas irreais. Nada de sinal mágico.<br />
+              Se você quer operar com base e mentalidade profissional... bem-vindo à Arena do Mamute Trader BR.
+            </p>
+
             <WaButton label="Entre no meu grupo" />
           </div>
         </div>
