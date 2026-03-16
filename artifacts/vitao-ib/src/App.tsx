@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import traderPhoto from "@assets/vitaopng_1773692507131.png";
+import aboutPhoto from "@assets/IMG_6484_1773692924439.jpeg";
 
 const CTA_LINK = "https://chat.whatsapp.com/LR1XkXae3KP0AzM9PCY1QC";
 
@@ -401,22 +402,19 @@ export default function VitaoIBLP() {
           display: "flex", alignItems: "center",
           gap: "clamp(44px,8vw,100px)", flexWrap: "wrap"
         }}>
-          {/* Photo placeholder */}
-          <div style={{
-            flex: "0 0 auto", width: "clamp(240px,30vw,340px)", aspectRatio: "3/4",
-            borderRadius: 20, overflow: "hidden",
-            background: "linear-gradient(148deg,#2A2420,#1F1A16)",
-            border: "1px solid rgba(214,184,138,.18)",
-            display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 16,
-            position: "relative"
-          }}>
-            <div style={{ position: "absolute", inset: 0, background: "radial-gradient(circle at 42% 58%, rgba(214,184,138,.1), transparent 62%)" }} />
-            <div style={{ width: 90, height: 90, borderRadius: "50%", background: "rgba(214,184,138,.2)", border: "2px solid rgba(214,184,138,.45)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 38, position: "relative", zIndex: 1 }}>🧑‍💼</div>
-            <div style={{ position: "relative", zIndex: 1, textAlign: "center", padding: "0 22px" }}>
-              <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 16, color: "rgba(255,255,255,.82)" }}>MAMUTE TRADER BR</div>
-              <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 12, color: TEXT_M, marginTop: 5 }}>Forex · Análise Técnica</div>
-            </div>
-          </div>
+          {/* Mamute Trader photo */}
+          <img 
+            src={aboutPhoto}
+            alt="Mamute Trader BR"
+            style={{
+              flex: "0 0 auto", width: "clamp(240px,30vw,340px)", aspectRatio: "3/4",
+              borderRadius: 20, overflow: "hidden",
+              border: "1px solid rgba(214,184,138,.18)",
+              objectFit: "cover",
+              objectPosition: "center top",
+              display: "block"
+            }}
+          />
 
           {/* Copy */}
           <div style={{ flex: 1, minWidth: 260 }}>
