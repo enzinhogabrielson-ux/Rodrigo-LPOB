@@ -396,16 +396,16 @@ export default function VitaoIBLP() {
       {/* ──── HERO ──── */}
       <section className="hero-section" style={{ minHeight: "100vh", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column" }}>
 
-        {/* Black to Green gradient (behind background image) */}
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(50,199,122,0.5) 100%)", zIndex: 1 }} />
-
         {/* Background image */}
         <div style={{
-          position: "absolute", inset: 0, zIndex: 2,
+          position: "absolute", inset: 0, zIndex: 1,
           backgroundImage: "url('/hero-bg.png')",
           backgroundSize: "cover", backgroundPosition: "center right",
           backgroundRepeat: "no-repeat"
         }} />
+
+        {/* Black to Green gradient (in front of background image) */}
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(50,199,122,0.6) 100%)", zIndex: 2 }} />
 
         {/* Dark overlay to keep text readable */}
         <div style={{ position: "absolute", inset: 0, zIndex: 3, background: "rgba(4,4,12,0.62)" }} />
