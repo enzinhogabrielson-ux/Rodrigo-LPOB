@@ -15,6 +15,21 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+      /* About section — desktop */
+      .about-section{background:#1A1713;padding:100px 52px;}
+      .about-inner{max-width:1060px;margin:0 auto;display:flex;align-items:flex-start;flex-direction:row;flex-wrap:wrap;gap:clamp(44px,8vw,100px);}
+      .about-photo{flex:0 0 auto;width:clamp(280px,36vw,420px);aspect-ratio:3/5;border-radius:20px;overflow:hidden;cursor:zoom-in;position:relative;display:block;}
+      .about-copy{flex:1;min-width:260px;}
+
+      /* About section — mobile */
+      @media(max-width:640px){
+        .about-section{padding:0 0 56px;}
+        .about-inner{flex-direction:column;gap:0;max-width:100%;align-items:stretch;}
+        .about-photo{width:100%;max-width:100%;aspect-ratio:1/1;border-radius:0;flex:none;}
+        .about-copy{padding:32px 20px 0;text-align:center;align-items:center;display:flex;flex-direction:column;}
+      }
+    </style>
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->

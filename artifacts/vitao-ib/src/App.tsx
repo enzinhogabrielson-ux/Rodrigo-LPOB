@@ -1,6 +1,19 @@
-import { useState, useEffect, type ReactNode } from "react";
+import { useState, useEffect, useRef, type ReactNode } from "react";
 import traderPhoto from "@assets/trader.png";
 import aboutPhoto from "@assets/about.jpeg";
+import "./about-mobile.css";
+
+function useIsMobile(bp = 640) {
+  const [m, setM] = useState(() => typeof window !== "undefined" && window.innerWidth <= bp);
+  useEffect(() => {
+    const mq = window.matchMedia(`(max-width:${bp}px)`);
+    const h = (e: MediaQueryListEvent) => setM(e.matches);
+    mq.addEventListener("change", h);
+    setM(mq.matches);
+    return () => mq.removeEventListener("change", h);
+  }, [bp]);
+  return m;
+}
 
 const CTA_LINK = "https://chat.whatsapp.com/LR1XkXae3KP0AzM9PCY1QC";
 
@@ -130,36 +143,42 @@ function AvatarGroup({ count }: { count: string }) {
   );
 }
 
-function VideoCard({ active, name, idx }: { active: boolean; name: string; idx: number }) {
+function VideoCard({ idx }: { idx: number }) {
   const depoImages = ["/depo1.webp", "/depo2.webp", "/depo3.webp"];
+  const src = depoImages[idx % depoImages.length];
   return (
     <div style={{
-      borderRadius: 16, overflow: "hidden", background: "#0a0a0a",
-      border: active ? "2px solid rgba(214,184,138,0.6)" : "1px solid rgba(255,255,255,0.06)",
-      transform: active ? "scale(1.05)" : "scale(0.9)",
-      opacity: active ? 1 : 0.45, transition: "all 0.35s ease",
-      minWidth: active ? 200 : 160, aspectRatio: "9/16",
-      display: "flex", flexDirection: "column", justifyContent: "flex-end",
-      position: "relative", flexShrink: 0
+      borderRadius: 20, overflow: "hidden", background: "#111",
+      border: "1px solid rgba(255,255,255,0.10)",
+      width: "100%", maxWidth: 300, aspectRatio: "9/16",
+      position: "relative", flexShrink: 0, margin: "0 auto",
+      boxShadow: "0 24px 64px rgba(0,0,0,0.55)"
     }}>
-      <img
-        src={depoImages[idx % depoImages.length]}
-        alt={`Depoimento ${idx + 1}`}
-        style={{
-          position: "absolute", top: 0, left: 0,
-          width: "100%", height: "100%",
-          objectFit: "cover", objectPosition: "top center",
-          display: "block"
-        }}
-      />
-      <div style={{
-        position: "absolute", bottom: 0, left: 0, right: 0,
-        background: "linear-gradient(to top, rgba(0,0,0,0.82) 0%, transparent 100%)",
-        padding: "24px 12px 12px",
-        display: "flex", flexDirection: "column", gap: 2
-      }}>
-        <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 11, fontWeight: 700, color: SAND }}>Print real</span>
-        <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 10, color: "rgba(255,255,255,0.55)" }}>{name}</span>
+      {/* Thumbnail */}
+      <img src={src} alt={`Depoimento ${idx + 1}`} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center", display: "block" }} />
+
+      {/* Video controls overlay */}
+      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "12px 14px 14px", background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%)" }}>
+        {/* Progress bar */}
+        <div style={{ width: "100%", height: 3, background: "rgba(255,255,255,0.25)", borderRadius: 2, marginBottom: 10, position: "relative" }}>
+          <div style={{ position: "absolute", left: 0, top: 0, height: "100%", width: "0%", background: SAND, borderRadius: 2 }} />
+        </div>
+        {/* Controls row */}
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            {/* Play */}
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+            <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 11, color: "rgba(255,255,255,0.85)" }}>0:00</span>
+          </div>
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            {/* Volume */}
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+            {/* Fullscreen */}
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+            {/* More */}
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -269,17 +288,23 @@ function PillarItem({ icon, title, short, detail, open, onToggle }: {
 /* ─── ABOUT PHOTO WITH LIGHTBOX ─── */
 function AboutPhoto({ src, onOpen }: { src: string; onOpen: () => void }) {
   const [hovered, setHovered] = useState(false);
+  const mob = useIsMobile();
   return (
     <div
       className="about-photo"
       onClick={onOpen}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      style={{
+      style={mob ? {
+        width: "100%", aspectRatio: "4/3",
+        borderRadius: 0, overflow: "hidden",
+        cursor: "zoom-in", position: "relative",
+        display: "block", flex: "none",
+        minHeight: 300
+      } : {
         flex: "0 0 auto", width: "clamp(280px,36vw,420px)", aspectRatio: "3/5",
         borderRadius: 20, overflow: "hidden",
-        cursor: "zoom-in", position: "relative",
-        display: "block"
+        cursor: "zoom-in", position: "relative", display: "block"
       }}
     >
       <img
@@ -395,8 +420,6 @@ export default function VitaoIBLP() {
             position:relative!important;
             overflow:visible!important;
           }
-          .about-section{padding:56px 20px!important;}
-          .about-photo{width:100%!important;max-width:300px!important;margin:0 auto!important;aspect-ratio:3/4!important;}
           .social-proof-section{padding:56px 20px!important;}
           .carousel-row{padding:0 8px 20px!important;}
           .cta-section{padding:44px 16px 64px!important;}
@@ -551,17 +574,13 @@ export default function VitaoIBLP() {
       </section>
 
       {/* ──── ABOUT ──── */}
-      <section className="about-section" style={{ background: BG_DARK, padding: "100px 52px" }}>
-        <div style={{
-          maxWidth: 1060, margin: "0 auto",
-          display: "flex", alignItems: "flex-start",
-          gap: "clamp(44px,8vw,100px)", flexWrap: "wrap"
-        }}>
+      <section className="about-section">
+        <div className="about-inner">
           {/* Mamute Trader photo */}
           <AboutPhoto src={aboutPhoto} onOpen={() => setLightbox(true)} />
 
           {/* Copy */}
-          <div style={{ flex: 1, minWidth: 260 }}>
+          <div className="about-copy">
             <h2 style={{ fontFamily: "'Bebas Neue',sans-serif", fontWeight: 400, fontSize: "clamp(42px,4.8vw,68px)", lineHeight: 1.0, color: "#FFF", marginBottom: 20, letterSpacing: "0.03em" }}>
               Transformamos<br />experiência em<br />direcionamento
             </h2>
@@ -590,48 +609,63 @@ export default function VitaoIBLP() {
 
       {/* ──── SOCIAL PROOF ──── */}
       <section className="social-proof-section" style={{ background: BG_MAIN, padding: "100px 52px" }}>
-        <div style={{ maxWidth: 920, margin: "0 auto", textAlign: "center" }}>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 5, marginBottom: 16 }}>
-            <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 15, color: TEXT_M, marginRight: 4 }}>5.0</span>
+        <div style={{ maxWidth: 520, margin: "0 auto", textAlign: "center" }}>
+
+          {/* Stars */}
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 5, marginBottom: 18 }}>
+            <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 15, color: "#E8A820", marginRight: 4 }}>5.0</span>
             {[...Array(5)].map((_, i) => (
-              <svg key={i} width="18" height="18" viewBox="0 0 24 24" fill={SAND} stroke={SAND} strokeWidth="1">
+              <svg key={i} width="20" height="20" viewBox="0 0 24 24" fill="#E8A820" stroke="#E8A820" strokeWidth="0.5">
                 <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
               </svg>
             ))}
           </div>
-          <h2 style={{ fontFamily: "'Bebas Neue',sans-serif", fontWeight: 400, fontSize: "clamp(44px,5.2vw,70px)", color: "#FFF", lineHeight: 1.0, marginBottom: 16, letterSpacing: "0.03em" }}>
+
+          {/* Heading — mixed weight like reference */}
+          <h2 style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: "clamp(26px,4vw,38px)", color: "#FFF", lineHeight: 1.25, marginBottom: 18 }}>
             São milhares de vidas<br />transformadas
           </h2>
-          <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", color: TEXT_M, fontSize: 15.5, lineHeight: 1.85, maxWidth: 580, margin: "0 auto 56px" }}>
+
+          <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", color: TEXT_M, fontSize: 15, lineHeight: 1.85, marginBottom: 44 }}>
             Operações comentadas, histórico público e metodologia clara ideal para quem quer acelerar o aprendizado e melhorar a execução.
           </p>
 
-          {/* Carousel */}
-          <div style={{ position: "relative", minHeight: 380 }}>
-            <div className="carousel-row" style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 16, padding: "0 52px 20px" }}>
-              {names.map((name, i) => {
-                if (Math.abs(i - slide) > 1) return null;
-                return <VideoCard key={i} active={i === slide} name={name} idx={i} />;
-              })}
+          {/* Single-card carousel */}
+          <div style={{ position: "relative", display: "flex", alignItems: "center", justifyContent: "center", gap: 16 }}>
+
+            {/* Left arrow */}
+            <button onClick={() => setSlide(s => (s - 1 + total) % total)} style={{
+              flexShrink: 0, width: 40, height: 40, borderRadius: "50%",
+              background: "rgba(255,255,255,.08)", border: "1px solid rgba(255,255,255,.15)",
+              color: "#fff", fontSize: 22, display: "flex", alignItems: "center", justifyContent: "center",
+              cursor: "pointer", transition: "background .2s"
+            }}>‹</button>
+
+            {/* Video card */}
+            <div style={{ flex: 1 }}>
+              <VideoCard idx={slide} />
             </div>
-            {[{ d: "l", fn: () => setSlide(s => (s - 1 + total) % total) }, { d: "r", fn: () => setSlide(s => (s + 1) % total) }].map(({ d, fn }) => (
-              <button key={d} onClick={fn} style={{
-                position: "absolute", top: "44%", ...(d === "l" ? { left: 0 } : { right: 0 }),
-                transform: "translateY(-50%)", width: 36, height: 36, borderRadius: "50%",
-                background: "rgba(255,255,255,.07)", border: "1px solid rgba(255,255,255,.12)",
-                color: "#fff", fontSize: 20, display: "flex", alignItems: "center", justifyContent: "center"
-              }}>{d === "l" ? "‹" : "›"}</button>
-            ))}
+
+            {/* Right arrow */}
+            <button onClick={() => setSlide(s => (s + 1) % total)} style={{
+              flexShrink: 0, width: 40, height: 40, borderRadius: "50%",
+              background: "rgba(255,255,255,.08)", border: "1px solid rgba(255,255,255,.15)",
+              color: "#fff", fontSize: 22, display: "flex", alignItems: "center", justifyContent: "center",
+              cursor: "pointer", transition: "background .2s"
+            }}>›</button>
           </div>
-          <div style={{ display: "flex", justifyContent: "center", gap: 7, marginTop: 20 }}>
+
+          {/* Dots */}
+          <div style={{ display: "flex", justifyContent: "center", gap: 7, marginTop: 28 }}>
             {[...Array(total)].map((_, i) => (
               <button key={i} onClick={() => setSlide(i)} style={{
                 width: i === slide ? 24 : 8, height: 8, borderRadius: 4,
-                background: i === slide ? SAND : "rgba(255,255,255,.18)",
-                transition: "all .3s"
+                background: i === slide ? SAND : "rgba(255,255,255,.20)",
+                transition: "all .3s", cursor: "pointer"
               }} />
             ))}
           </div>
+
         </div>
       </section>
 
