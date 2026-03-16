@@ -131,13 +131,13 @@ function AvatarGroup({ count }: { count: string }) {
 }
 
 function VideoCard({ active, name, idx }: { active: boolean; name: string; idx: number }) {
-  const colors = ["#D6B88A", "#D6B88A", "#EC4899", "#3B82F6", "#F59E0B"];
+  const colors = ["#D6B88A", "#D6B88A", "#9945FF", "#3A6DA8", "#F7931A"];
   const traderImages = [
-    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop",
-    "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=500&fit=crop",
-    "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=500&fit=crop",
-    "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=500&fit=crop",
-    "https://images.unsplash.com/photo-1507254156658-0f763b3ff4b2?w=400&h=500&fit=crop"
+    "/avatar_lf.png",
+    "/avatar_ac.png",
+    "/avatar_rm.png",
+    "/avatar_jc.png",
+    "/avatar_ms.png",
   ];
   return (
     <div style={{
@@ -149,7 +149,16 @@ function VideoCard({ active, name, idx }: { active: boolean; name: string; idx: 
       display: "flex", flexDirection: "column", justifyContent: "flex-end",
       position: "relative", flexShrink: 0
     }}>
-      <img src={traderImages[idx % traderImages.length]} alt={name} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.6 }} />
+      <img
+        src={traderImages[idx % traderImages.length]}
+        alt={name}
+        style={{
+          position: "absolute", top: 0, left: 0,
+          width: "100%", height: "100%",
+          objectFit: "cover", objectPosition: "center top",
+          opacity: 0.65, display: "block"
+        }}
+      />
       <div style={{
         position: "absolute", inset: 0,
         background: `linear-gradient(160deg, ${colors[idx % colors.length]}22 0%, #0D0D1A 100%)`,
