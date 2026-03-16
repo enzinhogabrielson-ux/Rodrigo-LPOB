@@ -131,18 +131,11 @@ function AvatarGroup({ count }: { count: string }) {
 }
 
 function VideoCard({ active, name, idx }: { active: boolean; name: string; idx: number }) {
-  const colors = ["#D6B88A", "#D6B88A", "#9945FF", "#3A6DA8", "#F7931A"];
-  const traderImages = [
-    "/avatar_lf.png",
-    "/avatar_ac.png",
-    "/avatar_rm.png",
-    "/avatar_jc.png",
-    "/avatar_ms.png",
-  ];
+  const depoImages = ["/depo1.webp", "/depo2.webp", "/depo3.webp"];
   return (
     <div style={{
-      borderRadius: 16, overflow: "hidden", background: "#12121E",
-      border: active ? "2px solid rgba(214,184,138,0.55)" : "1px solid rgba(255,255,255,0.05)",
+      borderRadius: 16, overflow: "hidden", background: "#0a0a0a",
+      border: active ? "2px solid rgba(214,184,138,0.6)" : "1px solid rgba(255,255,255,0.06)",
       transform: active ? "scale(1.05)" : "scale(0.9)",
       opacity: active ? 1 : 0.45, transition: "all 0.35s ease",
       minWidth: active ? 200 : 160, aspectRatio: "9/16",
@@ -150,38 +143,24 @@ function VideoCard({ active, name, idx }: { active: boolean; name: string; idx: 
       position: "relative", flexShrink: 0
     }}>
       <img
-        src={traderImages[idx % traderImages.length]}
-        alt={name}
+        src={depoImages[idx % depoImages.length]}
+        alt={`Depoimento ${idx + 1}`}
         style={{
           position: "absolute", top: 0, left: 0,
           width: "100%", height: "100%",
-          objectFit: "cover", objectPosition: "center top",
-          opacity: 0.65, display: "block"
+          objectFit: "cover", objectPosition: "top center",
+          display: "block"
         }}
       />
       <div style={{
-        position: "absolute", inset: 0,
-        background: `linear-gradient(160deg, ${colors[idx % colors.length]}22 0%, #0D0D1A 100%)`,
-        display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 12
+        position: "absolute", bottom: 0, left: 0, right: 0,
+        background: "linear-gradient(to top, rgba(0,0,0,0.82) 0%, transparent 100%)",
+        padding: "24px 12px 12px",
+        display: "flex", flexDirection: "column", gap: 2
       }}>
-        {active && (
-          <div style={{ width: 52, height: 52, borderRadius: "50%", background: "rgba(214,184,138,0.15)", border: "2px solid rgba(214,184,138,0.4)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill={SAND}><path d="M8 5v14l11-7z" /></svg>
-          </div>
-        )}
-        <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 12, color: active ? "rgba(255,255,255,0.75)" : "rgba(255,255,255,0.3)", textAlign: "center", padding: "0 14px", fontWeight: 600 }}>{name}</div>
-        <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 10, color: TEXT_M }}>Depoimento</div>
+        <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 11, fontWeight: 700, color: SAND }}>Print real</span>
+        <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 10, color: "rgba(255,255,255,0.55)" }}>{name}</span>
       </div>
-      {active && (
-        <div style={{ position: "relative", zIndex: 2, background: "rgba(8,8,18,0.88)", padding: "10px 14px" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-            <div style={{ flex: 1, height: 2, background: "rgba(255,255,255,0.1)", borderRadius: 1, position: "relative" }}>
-              <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: "30%", background: SAND, borderRadius: 1 }} />
-            </div>
-            <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 10, color: TEXT_M }}>0:42</span>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
