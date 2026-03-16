@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, type ReactNode } from "react";
 import traderPhoto from "@assets/vitaopng_1773692507131.png";
 import aboutPhoto from "@assets/IMG_6484_1773692924439.jpeg";
 
@@ -178,27 +178,53 @@ function VideoCard({ active, name, idx }: { active: boolean; name: string; idx: 
 }
 
 /* ─── ABOUT PILLARS ─── */
-const PILLARS = [
+const IcoChart = ({ c }: { c: string }) => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+  </svg>
+);
+const IcoShield = ({ c }: { c: string }) => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+    <polyline points="9 12 11 14 15 10" />
+  </svg>
+);
+const IcoMind = ({ c }: { c: string }) => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="10" />
+    <path d="M12 8v4l3 3" />
+    <path d="M8 12a4 4 0 0 1 8 0" />
+  </svg>
+);
+const IcoTarget = ({ c }: { c: string }) => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="10" />
+    <circle cx="12" cy="12" r="6" />
+    <circle cx="12" cy="12" r="2" />
+  </svg>
+);
+
+const PILLARS: { icon: ReactNode; title: string; short: string; detail: string }[] = [
   {
-    icon: "📊",
+    icon: <IcoChart c={SAND} />,
     title: "Price Action",
     short: "Leitura técnica de mercado",
     detail: "Aprenda a ler o gráfico sem precisar de indicadores. Padrões de candlestick, suporte, resistência e estrutura de mercado na prática."
   },
   {
-    icon: "📐",
+    icon: <IcoShield c={SAND} />,
     title: "Gestão de Risco",
     short: "Proteção de capital",
     detail: "Regras claras de stop, gerenciamento de lote e psicologia do drawdown. Você aprende a sobreviver no mercado antes de lucrar."
   },
   {
-    icon: "🧠",
+    icon: <IcoMind c={SAND} />,
     title: "Psicologia de Mercado",
     short: "Mentalidade profissional",
     detail: "Controle emocional, disciplina e consistência. A diferença entre traders lucrativos e os que quebram está na cabeça, não no setup."
   },
   {
-    icon: "🎯",
+    icon: <IcoTarget c={SAND} />,
     title: "Estratégias Validadas",
     short: "Ciclos reais comprovados",
     detail: "Setups testados em bull e bear market, com histórico real de operações. Nada de backtest bonito — resultados de quem opera de verdade."
@@ -206,7 +232,7 @@ const PILLARS = [
 ];
 
 function PillarItem({ icon, title, short, detail, open, onToggle }: {
-  icon: string; title: string; short: string; detail: string; open: boolean; onToggle: () => void;
+  icon: ReactNode; title: string; short: string; detail: string; open: boolean; onToggle: () => void;
 }) {
   const [hov, setHov] = useState(false);
   return (
@@ -224,7 +250,7 @@ function PillarItem({ icon, title, short, detail, open, onToggle }: {
     >
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <span style={{ fontSize: 20 }}>{icon}</span>
+          <span style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>{icon}</span>
           <div>
             <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 14.5, color: open || hov ? SAND : "#fff", transition: "color 0.2s" }}>{title}</div>
             <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 12, color: TEXT_M, marginTop: 1 }}>{short}</div>
@@ -385,7 +411,7 @@ export default function VitaoIBLP() {
           {/* LEFT COPY */}
           <div style={{ flex: "0 0 auto", maxWidth: 480 }}>
             <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,.07)", border: "1px solid rgba(255,255,255,.13)", borderRadius: 20, padding: "7px 18px", marginBottom: 24 }}>
-              <span style={{ fontSize: 16 }}>🇧🇷</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={SAND} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
               <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 600, fontSize: 13, color: "rgba(255,255,255,.9)" }}>Maior comunidade trader no Brasil!</span>
             </div>
 
@@ -539,7 +565,11 @@ export default function VitaoIBLP() {
         <div style={{ maxWidth: 920, margin: "0 auto", textAlign: "center" }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 5, marginBottom: 16 }}>
             <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 15, color: TEXT_M, marginRight: 4 }}>5.0</span>
-            {[...Array(5)].map((_, i) => <span key={i} style={{ color: "#F59E0B", fontSize: 19 }}>★</span>)}
+            {[...Array(5)].map((_, i) => (
+              <svg key={i} width="18" height="18" viewBox="0 0 24 24" fill={SAND} stroke={SAND} strokeWidth="1">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+              </svg>
+            ))}
           </div>
           <h2 style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: "clamp(28px,4vw,46px)", color: "#FFF", lineHeight: 1.2, marginBottom: 16 }}>
             Traders operando<br />com consistência
