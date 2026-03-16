@@ -670,16 +670,22 @@ export default function VitaoIBLP() {
       </section>
 
       {/* ──── LIVE CTA ──── */}
-      <section className="cta-section" style={{ background: "linear-gradient(160deg,#0E0B1A 0%,#16122A 50%,#0E0B1A 100%)", padding: "70px 24px 110px" }}>
-        <div style={{ maxWidth: 400, margin: "0 auto" }}>
+      <section className="cta-section" style={{ position: "relative", padding: "70px 24px 110px", overflow: "hidden" }}>
+        {/* Same hero-bg image */}
+        <div style={{ position: "absolute", inset: 0, backgroundImage: "url('/hero-bg.png')", backgroundSize: "cover", backgroundPosition: "center", zIndex: 0 }} />
+        {/* Green-to-dark overlay matching hero */}
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(160deg, rgba(50,199,122,0.45) 0%, rgba(4,12,8,0.88) 100%)", zIndex: 1 }} />
+
+        <div style={{ maxWidth: 400, margin: "0 auto", position: "relative", zIndex: 2 }}>
           <div className="cta-card" style={{
-            background: "linear-gradient(150deg,#1A1630 0%,#221D42 50%,#1A1630 100%)",
-            border: "1.5px solid rgba(120,90,220,.45)", borderRadius: 24,
+            background: "linear-gradient(150deg,rgba(10,22,14,0.85) 0%,rgba(18,36,24,0.9) 50%,rgba(10,22,14,0.85) 100%)",
+            border: "1.5px solid rgba(50,199,122,.35)", borderRadius: 24,
             padding: "52px 36px 44px", textAlign: "center", position: "relative", overflow: "hidden",
-            boxShadow: "0 0 60px rgba(100,70,200,.18), inset 0 1px 0 rgba(255,255,255,.06)"
+            boxShadow: "0 0 60px rgba(50,199,122,.12), inset 0 1px 0 rgba(255,255,255,.06)",
+            backdropFilter: "blur(12px)"
           }}>
-            {/* Purple glow top */}
-            <div style={{ position: "absolute", top: -80, left: "50%", transform: "translateX(-50%)", width: 320, height: 200, background: "radial-gradient(ellipse, rgba(120,90,220,.22), transparent 70%)", pointerEvents: "none" }} />
+            {/* Green glow top */}
+            <div style={{ position: "absolute", top: -80, left: "50%", transform: "translateX(-50%)", width: 320, height: 200, background: "radial-gradient(ellipse, rgba(50,199,122,.20), transparent 70%)", pointerEvents: "none" }} />
 
             {/* LIVE badge — red circle with LIVE text + play icon */}
             <div style={{ display: "flex", justifyContent: "center", marginBottom: 24, position: "relative", zIndex: 1 }}>
