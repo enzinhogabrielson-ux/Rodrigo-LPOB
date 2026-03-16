@@ -41,12 +41,12 @@ function WaButton({ label = "Entre no meu grupo", style = {}, size = "md" }: {
 
 /* Floating crypto card */
 const COINS = [
-  { symbol: "LTC", name: "Litecoin",  price: "$112.22",      change: "-%1.71", pos: false, color: "#A0A0A0" },
-  { symbol: "BTC", name: "Bitcoin",   price: "$94.595,33",   change: "+%1.71", pos: true,  color: "#F7931A" },
-  { symbol: "SOL", name: "Solana",    price: "$194.46",      change: "-%0.65", pos: false, color: "#9945FF" },
-  { symbol: "DASH",name: "Dash",      price: "$24.68",       change: "+%1.71", pos: true,  color: "#008CE7" },
-  { symbol: "XRP", name: "XRP",       price: "$2.407",       change: "+%1.66", pos: true,  color: "#3A6DA8" },
-  { symbol: "ETH", name: "Ethereum",  price: "$2.609,21",    change: "+%1.71", pos: true,  color: "#627EEA" },
+  { symbol: "LTC", name: "Litecoin",  price: "$112.22",    change: "-1.71%", pos: false, color: "#A0A0A0" },
+  { symbol: "BTC", name: "Bitcoin",   price: "$94,595.33", change: "+1.71%", pos: true,  color: "#F7931A" },
+  { symbol: "SOL", name: "Solana",    price: "$194.46",    change: "-0.65%", pos: false, color: "#9945FF" },
+  { symbol: "DASH",name: "Dash",      price: "$24.68",     change: "+1.71%", pos: true,  color: "#008CE7" },
+  { symbol: "XRP", name: "XRP",       price: "$2.41",      change: "+1.66%", pos: true,  color: "#3A6DA8" },
+  { symbol: "ETH", name: "Ethereum",  price: "$2,609.21",  change: "+1.71%", pos: true,  color: "#627EEA" },
 ];
 
 function FloatingCoinCard({ coin, style = {} }: { coin: typeof COINS[0]; style?: React.CSSProperties }) {
@@ -318,7 +318,7 @@ export default function VitaoIBLP() {
               display: "flex", flexDirection: "column", gap: 6, alignItems: "stretch"
             }}>
               {[0, 1].map((rowIdx) => (
-                <div key={rowIdx} style={{ position: "relative", width: "100%", overflow: "hidden", flex: 1 }}>
+                <div key={rowIdx} style={{ position: "relative", width: "100%", overflow: "hidden", flex: 1, marginLeft: rowIdx === 1 ? "140px" : "0" }}>
                   {/* Left blur - stronger fade */}
                   <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 80, zIndex: 2, background: "linear-gradient(90deg, rgba(8,8,18,1) 0%, rgba(8,8,18,0.7) 50%, rgba(8,8,18,0) 100%)", pointerEvents: "none" }} />
                   {/* Right blur - stronger fade */}
