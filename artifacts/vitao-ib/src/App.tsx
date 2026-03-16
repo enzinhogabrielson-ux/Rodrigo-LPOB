@@ -6,9 +6,9 @@ const CTA_LINK = "https://chat.whatsapp.com/LR1XkXae3KP0AzM9PCY1QC";
 
 const BG_MAIN = "#0F0D0B";
 const BG_DARK = "#1A1713";
-const SAND = "#D6B88A";
-const SAND_D = "#C4A376";
-const ACCENT = "#D6B88A";
+const SAND = "#32C77A";
+const SAND_D = "#28A566";
+const ACCENT = "#32C77A";
 const TEXT_M = "#A0A8BE";
 
 /* ─── COMPONENTS ─── */
