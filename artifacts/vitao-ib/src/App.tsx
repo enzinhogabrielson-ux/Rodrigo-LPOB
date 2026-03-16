@@ -266,6 +266,47 @@ function PillarItem({ icon, title, short, detail, open, onToggle }: {
   );
 }
 
+/* ─── ABOUT PHOTO WITH LIGHTBOX ─── */
+function AboutPhoto({ src, onOpen }: { src: string; onOpen: () => void }) {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <div
+      onClick={onOpen}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        flex: "0 0 auto", width: "clamp(280px,36vw,420px)", aspectRatio: "3/5",
+        borderRadius: 20, overflow: "hidden",
+        border: `1px solid rgba(214,184,138,${hovered ? ".55" : ".28"})`,
+        cursor: "zoom-in", position: "relative",
+        display: "block", transition: "border-color 0.2s",
+        boxShadow: hovered ? "0 0 28px rgba(214,184,138,0.15)" : "none"
+      }}
+    >
+      <img
+        src={src}
+        alt="Mamute Trader BR"
+        style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }}
+      />
+      <div style={{
+        position: "absolute", inset: 0,
+        background: hovered ? "rgba(0,0,0,0.32)" : "rgba(0,0,0,0)",
+        transition: "background 0.2s",
+        display: "flex", alignItems: "center", justifyContent: "center",
+      }}>
+        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.8"
+          style={{ opacity: hovered ? 1 : 0, transition: "opacity 0.2s", filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.5))" }}
+        >
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          <line x1="11" y1="8" x2="11" y2="14"/>
+          <line x1="8" y1="11" x2="14" y2="11"/>
+        </svg>
+      </div>
+    </div>
+  );
+}
+
 /* ─── MAIN PAGE ─── */
 export default function VitaoIBLP() {
   const [scrolled, setScrolled] = useState(false);
@@ -508,38 +549,7 @@ export default function VitaoIBLP() {
           gap: "clamp(44px,8vw,100px)", flexWrap: "wrap"
         }}>
           {/* Mamute Trader photo */}
-          <div
-            onClick={() => setLightbox(true)}
-            style={{
-              flex: "0 0 auto", width: "clamp(280px,36vw,420px)", aspectRatio: "3/5",
-              borderRadius: 20, overflow: "hidden",
-              border: "1px solid rgba(214,184,138,.28)",
-              cursor: "zoom-in", position: "relative",
-              display: "block"
-            }}
-          >
-            <img
-              src={aboutPhoto}
-              alt="Mamute Trader BR"
-              style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }}
-            />
-            <div style={{
-              position: "absolute", inset: 0,
-              background: "rgba(0,0,0,0)", transition: "background 0.2s",
-              display: "flex", alignItems: "center", justifyContent: "center",
-            }}
-              onMouseEnter={e => (e.currentTarget.style.background = "rgba(0,0,0,0.28)")}
-              onMouseLeave={e => (e.currentTarget.style.background = "rgba(0,0,0,0)")}
-            >
-              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.8" style={{ opacity: 0, transition: "opacity 0.2s" }}
-                onMouseEnter={e => (e.currentTarget.style.opacity = "1")}
-                onMouseLeave={e => (e.currentTarget.style.opacity = "0")}
-              >
-                <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-                <line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
-              </svg>
-            </div>
-          </div>
+          <AboutPhoto src={aboutPhoto} onOpen={() => setLightbox(true)} />
 
           {/* Copy */}
           <div style={{ flex: 1, minWidth: 260 }}>
