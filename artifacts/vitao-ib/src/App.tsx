@@ -193,14 +193,20 @@ export default function VitaoIBLP() {
           0%{transform:translateX(0)}
           100%{transform:translateX(calc(-100% / 3))}
         }
+        @keyframes marqueeOffset{
+          0%{transform:translateX(-140px)}
+          100%{transform:translateX(calc(-140px - 100% / 3))}
+        }
         @keyframes floatA{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
         @keyframes floatB{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
         @keyframes floatC{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
         @keyframes livePulse{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,.5)}70%{box-shadow:0 0 0 14px rgba(239,68,68,0)}}
         @keyframes gentleSway{0%,100%{transform:translateX(0) translateY(0)}25%{transform:translateX(-6px) translateY(-3px)}50%{transform:translateX(0) translateY(0)}75%{transform:translateX(6px) translateY(3px)}}
 
-        .ticker-track{animation:marquee 16s linear infinite}
+        .ticker-track{animation:marquee 18s linear infinite}
         .ticker-track:hover{animation-play-state:paused}
+        .ticker-track-offset{animation:marqueeOffset 18s linear infinite}
+        .ticker-track-offset:hover{animation-play-state:paused}
         .flt{animation:floatA 4s ease-in-out infinite}
         .flt2{animation:floatB 5.5s 1.4s ease-in-out infinite}
         .flt3{animation:floatC 6s 2.1s ease-in-out infinite}
@@ -318,20 +324,20 @@ export default function VitaoIBLP() {
               display: "flex", flexDirection: "column", gap: 6, alignItems: "stretch"
             }}>
               {[0, 1].map((rowIdx) => (
-                <div key={rowIdx} style={{ position: "relative", width: "100%", overflow: "hidden", flex: 1, marginLeft: rowIdx === 1 ? "140px" : "0" }}>
+                <div key={rowIdx} style={{ position: "relative", width: "100%", overflow: "hidden", flex: 1 }}>
                   {/* Left blur - stronger fade */}
                   <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 80, zIndex: 2, background: "linear-gradient(90deg, rgba(8,8,18,1) 0%, rgba(8,8,18,0.7) 50%, rgba(8,8,18,0) 100%)", pointerEvents: "none" }} />
                   {/* Right blur - stronger fade */}
                   <div style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: 80, zIndex: 2, background: "linear-gradient(270deg, rgba(8,8,18,1) 0%, rgba(8,8,18,0.7) 50%, rgba(8,8,18,0) 100%)", pointerEvents: "none" }} />
                   {/* Track */}
-                  <div className="ticker-track" style={{ display: "flex", gap: 12, width: "max-content", paddingLeft: 0, height: "100%", alignItems: "center" }}>
-                    {[...COINS.slice(rowIdx * 3, rowIdx * 3 + 3), ...COINS.slice(rowIdx * 3, rowIdx * 3 + 3)].map((coin, i) => (
+                  <div className={rowIdx === 1 ? "ticker-track-offset" : "ticker-track"} style={{ display: "flex", gap: 12, width: "max-content", paddingLeft: 0, height: "100%", alignItems: "center" }}>
+                    {[...COINS.slice(rowIdx * 3, rowIdx * 3 + 3), ...COINS.slice(rowIdx * 3, rowIdx * 3 + 3), ...COINS.slice(rowIdx * 3, rowIdx * 3 + 3)].map((coin, i) => (
                       <div key={i} style={{
                         display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 8,
                         background: "rgba(15,15,28,0.70)", backdropFilter: "blur(10px)",
                         border: "1.5px solid rgba(255,255,255,0.05)", borderRadius: 12,
-                        padding: "14px 18px", flexShrink: 0, userSelect: "none",
-                        minWidth: 280, height: "100%"
+                        padding: "14px 20px", flexShrink: 0, userSelect: "none",
+                        minWidth: 320, height: "100%"
                       }}>
                         <div style={{ display: "flex", alignItems: "center", gap: 8, width: "100%" }}>
                           <div style={{
