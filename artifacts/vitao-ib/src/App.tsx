@@ -454,6 +454,20 @@ export default function VitaoIBLP() {
               ))}
             </div>
 
+            {/* Sand glow behind trader */}
+            <div style={{
+              position: "absolute",
+              bottom: "0%",
+              left: "50%",
+              transform: "translateX(-50%)",
+              width: "80%",
+              height: "85%",
+              background: "radial-gradient(ellipse 65% 70% at 50% 80%, rgba(214,184,138,0.28) 0%, rgba(214,184,138,0.10) 40%, transparent 72%)",
+              pointerEvents: "none",
+              zIndex: 1,
+              filter: "blur(18px)",
+            }} />
+
             {/* Trader photo */}
             <img
               src={traderPhoto}
@@ -463,7 +477,7 @@ export default function VitaoIBLP() {
                 maxHeight: 680,
                 objectFit: "contain",
                 objectPosition: "bottom center",
-                filter: "drop-shadow(0 0 60px rgba(214,184,138,.18))",
+                filter: "drop-shadow(0 0 80px rgba(214,184,138,.22))",
                 pointerEvents: "none",
                 userSelect: "none",
                 position: "relative", zIndex: 2,
