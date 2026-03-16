@@ -277,10 +277,8 @@ function AboutPhoto({ src, onOpen }: { src: string; onOpen: () => void }) {
       style={{
         flex: "0 0 auto", width: "clamp(280px,36vw,420px)", aspectRatio: "3/5",
         borderRadius: 20, overflow: "hidden",
-        border: `1px solid rgba(214,184,138,${hovered ? ".55" : ".28"})`,
         cursor: "zoom-in", position: "relative",
-        display: "block", transition: "border-color 0.2s",
-        boxShadow: hovered ? "0 0 28px rgba(214,184,138,0.15)" : "none"
+        display: "block"
       }}
     >
       <img
