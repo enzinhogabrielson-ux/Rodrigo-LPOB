@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import traderPhoto from "@assets/image_1773688493264.png";
+import traderPhoto from "@assets/vitaopng_1773691600912.png";
 
 const CTA_LINK = "https://chat.whatsapp.com/LR1XkXae3KP0AzM9PCY1QC";
 
