@@ -69,10 +69,12 @@ function FloatingCoinCard({ coin, style = {} }: { coin: typeof COINS[0]; style?:
         fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 8,
         color: coin.color, flexShrink: 0
       }}>{coin.symbol.slice(0, 3)}</div>
-      <div>
-        <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 11, color: "#fff" }}>{coin.name}</div>
-        <div style={{ display: "flex", alignItems: "center", gap: 5, marginTop: 2 }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+          <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 11, color: "#fff" }}>{coin.name}</div>
           <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 600, fontSize: 10, color: TEXT_M }}>{coin.price}</span>
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
           <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 10, color: coin.pos ? SAND : "#FF5050", fontWeight: 700 }}>{coin.change}</span>
         </div>
       </div>
