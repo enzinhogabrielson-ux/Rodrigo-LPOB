@@ -670,24 +670,47 @@ export default function VitaoIBLP() {
       </section>
 
       {/* ──── LIVE CTA ──── */}
-      <section className="cta-section" style={{ background: BG_DARK, padding: "70px 52px 110px" }}>
-        <div style={{ maxWidth: 580, margin: "0 auto" }}>
+      <section className="cta-section" style={{ background: "linear-gradient(160deg,#0E0B1A 0%,#16122A 50%,#0E0B1A 100%)", padding: "70px 24px 110px" }}>
+        <div style={{ maxWidth: 400, margin: "0 auto" }}>
           <div className="cta-card" style={{
-            background: "linear-gradient(140deg,#2A2420 0%,#3A3128 42%,#2A2420 100%)",
-            border: "1px solid rgba(214,184,138,.4)", borderRadius: 22,
-            padding: "56px 44px", textAlign: "center", position: "relative", overflow: "hidden"
+            background: "linear-gradient(150deg,#1A1630 0%,#221D42 50%,#1A1630 100%)",
+            border: "1.5px solid rgba(120,90,220,.45)", borderRadius: 24,
+            padding: "52px 36px 44px", textAlign: "center", position: "relative", overflow: "hidden",
+            boxShadow: "0 0 60px rgba(100,70,200,.18), inset 0 1px 0 rgba(255,255,255,.06)"
           }}>
-            <div style={{ position: "absolute", top: -70, left: "50%", transform: "translateX(-50%)", width: 360, height: 220, background: "radial-gradient(ellipse, rgba(214,184,138,.28), transparent 72%)", pointerEvents: "none" }} />
-            <div style={{ display: "flex", justifyContent: "center", marginBottom: 20, position: "relative", zIndex: 1 }}>
-              <div className="livepulse" style={{ width: 56, height: 56, borderRadius: "50%", background: "#EF4444", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 2 }}>
-                <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: 8, color: "#fff", letterSpacing: ".13em" }}>LIVE</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z" /></svg>
+            {/* Purple glow top */}
+            <div style={{ position: "absolute", top: -80, left: "50%", transform: "translateX(-50%)", width: 320, height: 200, background: "radial-gradient(ellipse, rgba(120,90,220,.22), transparent 70%)", pointerEvents: "none" }} />
+
+            {/* LIVE badge — red circle with LIVE text + play icon */}
+            <div style={{ display: "flex", justifyContent: "center", marginBottom: 24, position: "relative", zIndex: 1 }}>
+              <div className="livepulse" style={{ position: "relative", width: 72, height: 72, borderRadius: "50%", background: "#EF4444", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 0 0 8px rgba(239,68,68,.15)" }}>
+                {/* LIVE text above center */}
+                <span style={{
+                  position: "absolute", top: 12, left: "50%", transform: "translateX(-50%)",
+                  fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 900, fontSize: 9,
+                  color: "#fff", letterSpacing: ".16em", lineHeight: 1
+                }}>LIVE</span>
+                {/* Play icon below */}
+                <svg style={{ marginTop: 10 }} width="20" height="20" viewBox="0 0 24 24" fill="#fff">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
               </div>
             </div>
-            <h2 style={{ fontFamily: "'Bebas Neue',sans-serif", fontWeight: 400, fontSize: "clamp(40px,5vw,60px)", color: "#FFF", marginBottom: 14, position: "relative", zIndex: 1, letterSpacing: "0.03em" }}>Hoje tem live!</h2>
-            <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", color: "rgba(255,255,255,.62)", fontSize: 15.5, lineHeight: 1.78, maxWidth: 320, margin: "0 auto 32px", position: "relative", zIndex: 1 }}>
+
+            <h2 style={{
+              fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700,
+              fontSize: "clamp(26px,5vw,32px)", color: "#FFF",
+              marginBottom: 14, position: "relative", zIndex: 1, lineHeight: 1.2
+            }}>Hoje tem live!</h2>
+
+            <p style={{
+              fontFamily: "'Plus Jakarta Sans',sans-serif", color: "rgba(255,255,255,.60)",
+              fontSize: 15, lineHeight: 1.78, maxWidth: 280, margin: "0 auto 32px",
+              position: "relative", zIndex: 1
+            }}>
               Clique no botão abaixo e participe, venha ganhar dinheiro comigo ao vivo!
             </p>
+
             <div style={{ position: "relative", zIndex: 1 }}>
               <WaButton label="Entre no meu grupo" size="lg" />
             </div>
