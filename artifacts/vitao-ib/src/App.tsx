@@ -221,14 +221,6 @@ export default function VitaoIBLP() {
         transition: "all .3s", padding: "14px 48px",
         display: "flex", justifyContent: "center", alignItems: "center"
       }}>
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 2 }}>
-          <div style={{ width: 44, height: 44, borderRadius: 12, background: "rgba(123,63,228,.18)", border: "1.5px solid rgba(123,63,228,.6)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-              <path d="M12 2 L12 22 M7 5 L12 2 L17 5 M7 19 L12 22 L17 19 M4 9 L7 7 M20 9 L17 7 M4 15 L7 17 M20 15 L17 17" stroke="#7B3FE4" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </div>
-          <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 9, color: "rgba(255,255,255,.5)", letterSpacing: "0.17em", marginTop: 2 }}>VITÃO IB</span>
-        </div>
       </nav>
 
       {/* ──── HERO ──── */}
@@ -298,12 +290,11 @@ export default function VitaoIBLP() {
             </div>
 
             <h1 style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: "clamp(32px,3.4vw,48px)", lineHeight: 1.08, color: "#FFF", marginBottom: 18, letterSpacing: "-0.025em" }}>
-              Lucre<br />diariamente<br />copiando minhas<br />
-              <span style={{ color: GREEN }}>operações</span>
+              Forex com<br />análise técnica<br />de <span style={{ color: GREEN }}>alto nível</span>
             </h1>
 
             <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 400, fontSize: "clamp(13px,1.2vw,15px)", color: TEXT_M, lineHeight: 1.85, marginBottom: 28, maxWidth: 420 }}>
-              Live de Alavancagem garantida, mais de 100 mil reais em bancas alavancadas por semana.
+              8+ anos no mercado. Price action, gestão de risco e psicologia de mercado. Nada de promessas irreais — aqui é estudo, método e execução.
             </p>
 
             <div style={{ marginBottom: 26 }}>
@@ -408,22 +399,30 @@ export default function VitaoIBLP() {
             <div style={{ position: "absolute", inset: 0, background: "radial-gradient(circle at 42% 58%, rgba(123,63,228,.1), transparent 62%)" }} />
             <div style={{ width: 90, height: 90, borderRadius: "50%", background: "rgba(123,63,228,.2)", border: "2px solid rgba(123,63,228,.45)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 38, position: "relative", zIndex: 1 }}>🧑‍💼</div>
             <div style={{ position: "relative", zIndex: 1, textAlign: "center", padding: "0 22px" }}>
-              <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 16, color: "rgba(255,255,255,.82)" }}>VITÃO TRADER</div>
-              <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 12, color: TEXT_M, marginTop: 5 }}>IB Oficial · Trader Profissional</div>
+              <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 16, color: "rgba(255,255,255,.82)" }}>MAMUTE TRADER BR</div>
+              <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 12, color: TEXT_M, marginTop: 5 }}>Forex · Análise Técnica</div>
             </div>
           </div>
 
           {/* Copy */}
           <div style={{ flex: 1, minWidth: 260 }}>
             <h2 style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: "clamp(28px,3.2vw,44px)", lineHeight: 1.2, color: "#FFF", marginBottom: 20 }}>
-              Vou te ajudar a<br />faturar todos os dias
+              Transformamos<br />experiência em<br />direcionamento
             </h2>
-            <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", color: TEXT_M, fontSize: 15.5, lineHeight: 1.9, marginBottom: 16 }}>
-              Vitão é trader responsável pelas lives de alavancagem. Sua abordagem combina price action e leitura de fluxo para definir entrada, stop e alvos objetivos, sempre com gestão de risco disciplinada (tamanho de posição, limites diários e ajustes por volatilidade).
-            </p>
-            <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", color: TEXT_M, fontSize: 15.5, lineHeight: 1.9, marginBottom: 38 }}>
-              As operações são conduzidas na corretora em tempo real, para quem quer acompanhar e aprender com execução profissional.
-            </p>
+            <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", color: TEXT_M, fontSize: 15.5, lineHeight: 1.9, marginBottom: 28 }}>
+              <p style={{ marginBottom: 14 }}>
+                📊 <strong>Price Action</strong> — Leitura técnica de mercado<br/>
+                📐 <strong>Gestão de Risco</strong> — Proteção de capital<br/>
+                🧠 <strong>Psicologia de Mercado</strong> — Mentalidade profissional<br/>
+                🎯 <strong>Estratégias Validadas</strong> — Ciclos reais comprovados
+              </p>
+              <p style={{ marginBottom: 14, color: "rgba(255,255,255,0.7)", fontSize: "14px", fontStyle: "italic" }}>
+                Nada de promessas irreais. Nada de sinal mágico.
+              </p>
+              <p style={{ color: "rgba(255,255,255,0.7)" }}>
+                Se você quer operar com base, estrutura e mentalidade profissional... bem-vindo à Arena do Mamute Trader BR.
+              </p>
+            </div>
             <WaButton label="Entre no meu grupo" />
           </div>
         </div>
@@ -437,10 +436,10 @@ export default function VitaoIBLP() {
             {[...Array(5)].map((_, i) => <span key={i} style={{ color: "#F59E0B", fontSize: 19 }}>★</span>)}
           </div>
           <h2 style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: "clamp(28px,4vw,46px)", color: "#FFF", lineHeight: 1.2, marginBottom: 16 }}>
-            São milhares de vidas<br />transformadas
+            Traders operando<br />com consistência
           </h2>
           <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", color: TEXT_M, fontSize: 15.5, lineHeight: 1.85, maxWidth: 580, margin: "0 auto 56px" }}>
-            Operações comentadas, histórico público e metodologia clara ideal para quem quer acelerar o aprendizado e melhorar a execução.
+            Transformamos disciplina em resultado. Operações comentadas, análise técnica estruturada e suporte direto para traders que querem evoluir.
           </p>
 
           {/* Carousel */}
@@ -506,10 +505,10 @@ export default function VitaoIBLP() {
               <path d="M12 2 L12 22 M7 5 L12 2 L17 5 M7 19 L12 22 L17 19 M4 9 L7 7 M20 9 L17 7 M4 15 L7 17 M20 15 L17 17" stroke="#7B3FE4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </div>
-          <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 8, color: "rgba(255,255,255,.4)", letterSpacing: ".14em" }}>VITÃO IB</span>
+          <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 7.5, color: "rgba(255,255,255,.4)", letterSpacing: ".12em" }}>MAMUTE BR</span>
         </div>
         <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 12, color: "rgba(255,255,255,.26)", textAlign: "center", flex: 1 }}>
-          2026 Copyright © Vitão IB Todos os direitos reservados.
+          2026 Copyright © Mamute Trader BR Todos os direitos reservados.
         </p>
         <div style={{ width: 44 }} />
       </footer>
