@@ -1,0 +1,116 @@
+{
+  "colorScheme": "dark",
+  "fonts": [
+    {
+      "family": "DM Sans",
+      "role": "body"
+    },
+    {
+      "family": "Inter",
+      "role": "unknown"
+    }
+  ],
+  "colors": {
+    "primary": "#00FFB2",
+    "accent": "#FF0066",
+    "background": "#171717",
+    "textPrimary": "#171717",
+    "link": "#FF0066"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "DM Sans",
+      "heading": "DM Sans"
+    },
+    "fontStacks": {
+      "heading": [
+        "Inter",
+        "sans-serif"
+      ],
+      "body": [
+        "sans-serif"
+      ],
+      "paragraph": [
+        "DM Sans",
+        "sans-serif"
+      ]
+    },
+    "fontSizes": {
+      "h1": "51px",
+      "h2": "48px",
+      "body": "14px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 10,
+    "borderRadius": "8px"
+  },
+  "components": {
+    "buttonPrimary": {
+      "background": "#181F19",
+      "textColor": "#0000EE",
+      "borderRadius": "118px",
+      "borderRadiusCorners": {
+        "topLeft": "118px",
+        "topRight": "118px",
+        "bottomRight": "118px",
+        "bottomLeft": "118px"
+      },
+      "shadow": "none"
+    }
+  },
+  "images": {
+    "favicon": "File saved at: attached_assets/favicon.png",
+    "ogImage": null
+  },
+  "__llm_logo_reasoning": {
+    "selectedIndex": -1,
+    "reasoning": "The provided logo candidate is not in the header and does not strongly match the brand 'Vini Evoryia'.",
+    "confidence": 0.3,
+    "rejected": true,
+    "source": "llm"
+  },
+  "__llm_button_reasoning": {
+    "primary": {
+      "index": 0,
+      "text": "Entre no meu grupo",
+      "reasoning": "Button #0 is the only button available and uses a distinct dark color, making it the primary CTA by default."
+    },
+    "secondary": {
+      "index": -1,
+      "text": "N/A",
+      "reasoning": "There is no secondary button available with a different color group."
+    },
+    "confidence": 0.9
+  },
+  "personality": {
+    "tone": "modern",
+    "energy": "medium",
+    "targetAudience": "young professionals"
+  },
+  "designSystem": {
+    "framework": "custom",
+    "componentLibrary": ""
+  },
+  "confidence": {
+    "buttons": 0.9,
+    "colors": 0.95,
+    "overall": 0.925
+  },
+  "__llm_metadata": {
+    "logoSelection": {
+      "llmCalled": true,
+      "llmSucceeded": true,
+      "finalSource": "llm",
+      "rawLogoSelection": {
+        "selectedLogoIndex": -1,
+        "selectedLogoReasoning": "The provided logo candidate is not in the header and does not strongly match the brand 'Vini Evoryia'.",
+        "confidence": 0.3
+      }
+    },
+    "buttonClassification": {
+      "llmCalled": true,
+      "llmSucceeded": true
+    }
+  }
+}

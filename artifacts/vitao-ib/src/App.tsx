@@ -39,54 +39,41 @@ function WaButton({ label = "Entre no meu grupo", style = {}, size = "md" }: {
   );
 }
 
-/* Scrolling crypto ticker */
+/* Floating crypto card */
 const COINS = [
-  { symbol: "LTC", name: "Litecoin",  price: "$112,22",      change: "-%1,71", pos: false, color: "#A0A0A0" },
-  { symbol: "BTC", name: "Bitcoin",   price: "$94.595,33",   change: "+%1,71", pos: true,  color: "#F7931A" },
-  { symbol: "SOL", name: "Solana",    price: "$194.46",      change: "-%0,65", pos: false, color: "#9945FF" },
-  { symbol: "DASH",name: "Dash",      price: "$24,68",       change: "+%1,71", pos: true,  color: "#008CE7" },
-  { symbol: "XRP", name: "XRP",       price: "$2,407",       change: "+%1,66", pos: true,  color: "#3A6DA8" },
-  { symbol: "ETH", name: "Ethereum",  price: "$2.609,21",    change: "+%1,71", pos: true,  color: "#627EEA" },
+  { symbol: "LTC", name: "Litecoin",  price: "$112.22",      change: "-%1.71", pos: false, color: "#A0A0A0" },
+  { symbol: "BTC", name: "Bitcoin",   price: "$94.595,33",   change: "+%1.71", pos: true,  color: "#F7931A" },
+  { symbol: "SOL", name: "Solana",    price: "$194.46",      change: "-%0.65", pos: false, color: "#9945FF" },
+  { symbol: "DASH",name: "Dash",      price: "$24.68",       change: "+%1.71", pos: true,  color: "#008CE7" },
+  { symbol: "XRP", name: "XRP",       price: "$2.407",       change: "+%1.66", pos: true,  color: "#3A6DA8" },
+  { symbol: "ETH", name: "Ethereum",  price: "$2.609,21",    change: "+%1.71", pos: true,  color: "#627EEA" },
 ];
 
-function CoinCard({ coin }: { coin: typeof COINS[0] }) {
+function FloatingCoinCard({ coin, style = {} }: { coin: typeof COINS[0]; style?: React.CSSProperties }) {
   return (
     <div style={{
-      display: "flex", alignItems: "center", gap: 10,
-      background: "rgba(18,18,36,0.72)", backdropFilter: "blur(14px)",
-      border: "1px solid rgba(255,255,255,0.09)", borderRadius: 14,
-      padding: "9px 16px", flexShrink: 0, minWidth: 160, userSelect: "none"
+      position: "absolute",
+      display: "flex", alignItems: "center", gap: 8,
+      background: "rgba(20,20,35,0.88)", backdropFilter: "blur(16px)",
+      border: "1px solid rgba(255,255,255,0.08)", borderRadius: 12,
+      padding: "8px 14px", userSelect: "none",
+      zIndex: 5,
+      ...style
     }}>
       <div style={{
-        width: 34, height: 34, borderRadius: "50%",
-        background: coin.color + "33",
-        border: `1.5px solid ${coin.color}66`,
+        width: 28, height: 28, borderRadius: "50%",
+        background: coin.color + "2a",
+        border: `1.2px solid ${coin.color}77`,
         display: "flex", alignItems: "center", justifyContent: "center",
-        fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: 10,
+        fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 8,
         color: coin.color, flexShrink: 0
       }}>{coin.symbol.slice(0, 3)}</div>
       <div>
-        <div style={{ display: "flex", alignItems: "baseline", gap: 7 }}>
-          <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 13, color: "#fff" }}>{coin.name}</span>
-          <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 11, color: coin.pos ? GREEN : "#FF5050", fontWeight: 700 }}>{coin.change}</span>
+        <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 11, color: "#fff" }}>{coin.name}</div>
+        <div style={{ display: "flex", alignItems: "center", gap: 5, marginTop: 2 }}>
+          <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 600, fontSize: 10, color: TEXT_M }}>{coin.price}</span>
+          <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 10, color: coin.pos ? GREEN : "#FF5050", fontWeight: 700 }}>{coin.change}</span>
         </div>
-        <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 600, fontSize: 12, color: TEXT_M, marginTop: 1 }}>{coin.price}</div>
-      </div>
-    </div>
-  );
-}
-
-function TickerMarquee() {
-  const track = [...COINS, ...COINS, ...COINS]; // triple for seamless loop
-  return (
-    <div style={{ position: "relative", width: "100%", overflow: "hidden", padding: "6px 0" }}>
-      {/* Left blur */}
-      <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 140, zIndex: 2, background: "linear-gradient(90deg, rgba(8,8,18,1) 0%, rgba(8,8,18,0) 100%)", pointerEvents: "none" }} />
-      {/* Right blur */}
-      <div style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: 140, zIndex: 2, background: "linear-gradient(270deg, rgba(8,8,18,1) 0%, rgba(8,8,18,0) 100%)", pointerEvents: "none" }} />
-      {/* Track */}
-      <div className="ticker-track" style={{ display: "flex", gap: 12, width: "max-content" }}>
-        {track.map((coin, i) => <CoinCard key={i} coin={coin} />)}
       </div>
     </div>
   );
@@ -202,26 +189,19 @@ export default function VitaoIBLP() {
         ::-webkit-scrollbar-track{background:${BG_MAIN};}
         ::-webkit-scrollbar-thumb{background:rgba(123,63,228,.4);border-radius:2px;}
 
-        @keyframes marquee{
-          0%{transform:translateX(0)}
-          100%{transform:translateX(calc(-100% / 3))}
-        }
-        .ticker-track{
-          animation: marquee 28s linear infinite;
-        }
-        .ticker-track:hover{animation-play-state:paused;}
-
         @keyframes floatA{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
         @keyframes floatB{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+        @keyframes floatC{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
         @keyframes livePulse{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,.5)}70%{box-shadow:0 0 0 14px rgba(239,68,68,0)}}
+
         .flt{animation:floatA 4s ease-in-out infinite}
         .flt2{animation:floatB 5.5s 1.4s ease-in-out infinite}
+        .flt3{animation:floatC 6s 2.1s ease-in-out infinite}
         .livepulse{animation:livePulse 1.8s ease-in-out infinite}
 
         button{background:none;border:none;cursor:pointer;padding:0;}
 
         @media(max-width:900px){
-          .hero-inner{flex-direction:column!important;}
           .hero-right{display:none!important;}
         }
       `}</style>
@@ -260,11 +240,6 @@ export default function VitaoIBLP() {
                 <stop offset="30%" stopColor="#7B3FE4" stopOpacity=".85" />
                 <stop offset="100%" stopColor="#25D366" stopOpacity=".4" />
               </linearGradient>
-              <linearGradient id="lineGrad2" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stopColor="#3B82F6" stopOpacity="0" />
-                <stop offset="50%" stopColor="#3B82F6" stopOpacity=".6" />
-                <stop offset="100%" stopColor="#3B82F6" stopOpacity="0" />
-              </linearGradient>
               <linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stopColor="#7B3FE4" stopOpacity=".22" />
                 <stop offset="100%" stopColor="#7B3FE4" stopOpacity="0" />
@@ -288,8 +263,6 @@ export default function VitaoIBLP() {
               fill="none" stroke="url(#lineGrad)" strokeWidth="2.8" />
             <polygon points="40,530 120,488 210,504 310,418 410,382 510,342 610,298 710,260 810,218 860,195 860,700 40,700"
               fill="url(#areaFill)" />
-            <polyline points="40,580 160,556 290,544 420,516 550,484 680,448 810,410 860,392"
-              fill="none" stroke="url(#lineGrad2)" strokeWidth="1.6" />
             {/* Grid lines */}
             {[200, 300, 400, 500].map(y => (
               <line key={y} x1="0" y1={y} x2="860" y2={y} stroke="rgba(255,255,255,.035)" strokeWidth="1" strokeDasharray="6,14" />
@@ -303,50 +276,44 @@ export default function VitaoIBLP() {
         {/* Left fog */}
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, rgba(5,5,16,1) 0%, rgba(5,5,16,.88) 35%, rgba(5,5,16,.2) 65%, rgba(5,5,16,.65) 100%)" }} />
 
-        {/* ── TICKER MARQUEE STRIP ── */}
-        <div style={{ position: "relative", zIndex: 20, width: "100%", paddingTop: 88, paddingBottom: 0 }}>
-          <TickerMarquee />
-        </div>
-
         {/* ── MAIN HERO CONTENT ── */}
-        <div className="hero-inner" style={{
+        <div style={{
           position: "relative", zIndex: 10, flex: 1,
-          display: "flex", alignItems: "center",
-          maxWidth: 1280, width: "100%", margin: "0 auto",
-          padding: "20px 52px 56px", gap: 0
+          display: "flex", alignItems: "center", justifyContent: "space-between",
+          maxWidth: 1320, width: "100%", margin: "0 auto",
+          padding: "80px 52px 56px", gap: 40
         }}>
 
           {/* LEFT COPY */}
-          <div style={{ flex: "0 0 auto", maxWidth: 510, paddingRight: 40 }}>
+          <div style={{ flex: "0 0 auto", maxWidth: 480 }}>
             <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,.07)", border: "1px solid rgba(255,255,255,.13)", borderRadius: 20, padding: "7px 18px", marginBottom: 24 }}>
               <span style={{ fontSize: 16 }}>🇧🇷</span>
               <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 600, fontSize: 13, color: "rgba(255,255,255,.9)" }}>Maior comunidade trader no Brasil!</span>
             </div>
 
-            <h1 style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: "clamp(32px,3.4vw,46px)", lineHeight: 1.1, color: "#FFF", marginBottom: 18, letterSpacing: "-0.025em" }}>
-              Lucre diariamente<br />
-              copiando minhas<br />
+            <h1 style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: "clamp(32px,3.4vw,48px)", lineHeight: 1.08, color: "#FFF", marginBottom: 18, letterSpacing: "-0.025em" }}>
+              Lucre<br />diariamente<br />copiando minhas<br />
               <span style={{ color: GREEN }}>operações</span>
             </h1>
 
-            <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 400, fontSize: "clamp(13px,1.2vw,15px)", color: TEXT_M, lineHeight: 1.85, marginBottom: 30, maxWidth: 420 }}>
+            <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 400, fontSize: "clamp(13px,1.2vw,15px)", color: TEXT_M, lineHeight: 1.85, marginBottom: 28, maxWidth: 420 }}>
               Live de Alavancagem garantida, mais de 100 mil reais em bancas alavancadas por semana.
             </p>
 
-            <div style={{ marginBottom: 28 }}>
+            <div style={{ marginBottom: 26 }}>
               <WaButton label="Entre no meu grupo" size="lg" />
             </div>
 
             <AvatarGroup count="5.149" />
           </div>
 
-          {/* RIGHT — Trader photo + floating badges */}
+          {/* RIGHT — Trader photo with floating crypto cards & badges */}
           <div className="hero-right" style={{
             position: "relative", flex: 1,
             display: "flex", justifyContent: "center", alignItems: "flex-end",
-            height: "clamp(480px,72vh,700px)", overflow: "visible"
+            height: "clamp(480px,72vh,700px)", overflow: "visible", minWidth: 320
           }}>
-            {/* Trader photo — PNG cutout, no box */}
+            {/* Trader photo */}
             <img
               src={traderPhoto}
               alt="Vitão Trader"
@@ -362,14 +329,19 @@ export default function VitaoIBLP() {
               }}
             />
 
-            {/* Floating profit badges — matching reference positions */}
+            {/* FLOATING CRYPTO CARDS — scattered around the hero */}
+            <FloatingCoinCard coin={COINS[1]} style={{ left: "5%", top: "8%", animation: "floatA 5s ease-in-out infinite" }} /> {/* Bitcoin */}
+            <FloatingCoinCard coin={COINS[2]} style={{ right: "8%", top: "18%", animation: "floatB 5.8s 1s ease-in-out infinite" }} /> {/* Solana */}
+            <FloatingCoinCard coin={COINS[3]} style={{ right: "22%", top: "35%", animation: "floatC 6.2s 1.8s ease-in-out infinite" }} /> {/* Dash */}
+
+            {/* FLOATING PROFIT BADGES */}
             <div className="flt" style={{ position: "absolute", left: "8%", top: "46%", zIndex: 10 }}>
               <ProfitBadge value="R$ 1.000" />
             </div>
             <div className="flt2" style={{ position: "absolute", right: "6%", top: "28%", zIndex: 10 }}>
               <ProfitBadge value="R$ 5.200" />
             </div>
-            <div className="flt" style={{ position: "absolute", left: "22%", bottom: "22%", zIndex: 10 }}>
+            <div className="flt3" style={{ position: "absolute", left: "20%", bottom: "18%", zIndex: 10 }}>
               <ProfitBadge value="R$ 2.300" />
             </div>
           </div>
