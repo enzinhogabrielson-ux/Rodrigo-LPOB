@@ -394,7 +394,7 @@ export default function VitaoIBLP() {
 
         @media(max-width:640px){
           .hero-main{
-            padding:72px 20px 0!important;
+            padding:40px 20px 0!important;
             flex-direction:column!important;
             justify-content:flex-start!important;
             text-align:center!important;
@@ -405,10 +405,11 @@ export default function VitaoIBLP() {
             display:flex!important;
             flex-direction:column!important;
             align-items:center!important;
-            padding-bottom:32px!important;
+            padding-bottom:20px!important;
           }
-          .hero-badge{font-size:12px!important;}
-          .hero-desc{max-width:100%!important;font-size:14px!important;text-align:center!important;}
+          .hero-h1{font-size:32px!important;line-height:1.1!important;margin-bottom:12px!important;}
+          .hero-badge{font-size:11px!important;margin-bottom:12px!important;}
+          .hero-desc{max-width:100%!important;font-size:13px!important;text-align:center!important;margin-bottom:18px!important;}
           .hero-section{min-height:auto!important;}
           .ticker-container{left:0!important;right:0!important;width:100%!important;}
           .hero-right{
@@ -477,7 +478,7 @@ export default function VitaoIBLP() {
               <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 600, fontSize: 13, color: "rgba(255,255,255,.9)" }}>Maior comunidade trader no Brasil!</span>
             </div>
 
-            <h1 style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: "clamp(42px,5.2vw,72px)", lineHeight: 1.05, color: "#FFF", marginBottom: 18, letterSpacing: "-0.01em" }}>
+            <h1 className="hero-h1" style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: "clamp(42px,5.2vw,72px)", lineHeight: 1.05, color: "#FFF", marginBottom: 18, letterSpacing: "-0.01em" }}>
               Lucre<br />diariamente<br />copiando minhas <span style={{ color: SAND }}>operações</span>
             </h1>
 
