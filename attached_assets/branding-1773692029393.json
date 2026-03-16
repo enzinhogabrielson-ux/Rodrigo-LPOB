@@ -1,0 +1,133 @@
+{
+  "colorScheme": "dark",
+  "fonts": [
+    {
+      "family": "Barlow",
+      "role": "body"
+    },
+    {
+      "family": "Barlow Condensed",
+      "role": "heading"
+    },
+    {
+      "family": "Bebas Neue",
+      "role": "display"
+    }
+  ],
+  "colors": {
+    "primary": "#99A1AF",
+    "accent": "#D6B88A",
+    "background": "#0F0D0B",
+    "textPrimary": "#0F0D0B",
+    "link": "#D6B88A"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Barlow",
+      "heading": "Barlow Condensed"
+    },
+    "fontStacks": {
+      "heading": [
+        "Bebas Neue",
+        "sans-serif"
+      ],
+      "body": [
+        "Barlow",
+        "sans-serif"
+      ],
+      "paragraph": [
+        "Barlow",
+        "sans-serif"
+      ]
+    },
+    "fontSizes": {
+      "h1": "128px",
+      "h2": "72px",
+      "body": "14px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 8,
+    "borderRadius": "0px"
+  },
+  "components": {
+    "buttonPrimary": {
+      "background": "#D6B88A",
+      "textColor": "#0F0D0B",
+      "borderRadius": "0px",
+      "borderRadiusCorners": {
+        "topLeft": "0px",
+        "topRight": "0px",
+        "bottomRight": "0px",
+        "bottomLeft": "0px"
+      },
+      "shadow": "none"
+    },
+    "buttonSecondary": {
+      "background": "#0F0D0B",
+      "textColor": "#EAE6E1",
+      "borderRadius": "0px",
+      "borderRadiusCorners": {
+        "topLeft": "0px",
+        "topRight": "0px",
+        "bottomRight": "0px",
+        "bottomLeft": "0px"
+      },
+      "shadow": "none"
+    }
+  },
+  "images": {
+    "favicon": "https://ocoliseu.com/favicon-coliseu.png",
+    "ogImage": "File saved at: attached_assets/ogImage.png"
+  },
+  "__llm_logo_reasoning": {
+    "selectedIndex": -1,
+    "reasoning": "No suitable brand logo was found. The candidate is too small and does not clearly represent the brand 'O Coliseu'.",
+    "confidence": 0.3,
+    "rejected": true,
+    "source": "llm"
+  },
+  "__llm_button_reasoning": {
+    "primary": {
+      "index": 0,
+      "text": "Garanta sua vaga no Coliseu",
+      "reasoning": "Button #0 has vibrant brand color (#D6B88A) and action-oriented text ('Garanta sua vaga no Coliseu'), making it the primary CTA."
+    },
+    "secondary": {
+      "index": 2,
+      "text": "O COLISEU",
+      "reasoning": "Button #2 has a different background color (#0F0D0B) and serves as a secondary option with less prominent text ('O COLISEU')."
+    },
+    "confidence": 0.95
+  },
+  "personality": {
+    "tone": "bold",
+    "energy": "high",
+    "targetAudience": "young adults interested in events"
+  },
+  "designSystem": {
+    "framework": "tailwind",
+    "componentLibrary": ""
+  },
+  "confidence": {
+    "buttons": 0.95,
+    "colors": 0.9,
+    "overall": 0.925
+  },
+  "__llm_metadata": {
+    "logoSelection": {
+      "llmCalled": true,
+      "llmSucceeded": true,
+      "finalSource": "llm",
+      "rawLogoSelection": {
+        "selectedLogoIndex": -1,
+        "selectedLogoReasoning": "No suitable brand logo was found. The candidate is too small and does not clearly represent the brand 'O Coliseu'.",
+        "confidence": 0.3
+      }
+    },
+    "buttonClassification": {
+      "llmCalled": true,
+      "llmSucceeded": true
+    }
+  }
+}
