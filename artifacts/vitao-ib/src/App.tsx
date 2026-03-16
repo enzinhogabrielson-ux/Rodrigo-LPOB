@@ -1,6 +1,6 @@
 import { useState, useEffect, type ReactNode } from "react";
-import traderPhoto from "@assets/vitaopng_1773695601693.png";
-import aboutPhoto from "@assets/IMG_6484_1773692924439.jpeg";
+import traderPhoto from "@assets/trader.png";
+import aboutPhoto from "@assets/about.jpeg";
 
 const CTA_LINK = "https://chat.whatsapp.com/LR1XkXae3KP0AzM9PCY1QC";
 
