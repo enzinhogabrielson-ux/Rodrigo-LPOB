@@ -574,10 +574,10 @@ export default function VitaoIBLP() {
             ))}
           </div>
           <h2 style={{ fontFamily: "'Bebas Neue',sans-serif", fontWeight: 400, fontSize: "clamp(44px,5.2vw,70px)", color: "#FFF", lineHeight: 1.0, marginBottom: 16, letterSpacing: "0.03em" }}>
-            Traders operando<br />com consistência
+            São milhares de vidas<br />transformadas
           </h2>
           <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", color: TEXT_M, fontSize: 15.5, lineHeight: 1.85, maxWidth: 580, margin: "0 auto 56px" }}>
-            Transformamos disciplina em resultado. Operações comentadas, análise técnica estruturada e suporte direto para traders que querem evoluir.
+            Operações comentadas, histórico público e metodologia clara ideal para quem quer acelerar o aprendizado e melhorar a execução.
           </p>
 
           {/* Carousel */}
