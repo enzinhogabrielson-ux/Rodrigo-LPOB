@@ -490,8 +490,8 @@ export default function VitaoIBLP() {
                     {[...COINS.slice(rowIdx * 3, rowIdx * 3 + 3), ...COINS.slice(rowIdx * 3, rowIdx * 3 + 3), ...COINS.slice(rowIdx * 3, rowIdx * 3 + 3)].map((coin, i) => (
                       <div key={i} style={{
                         display: "flex", alignItems: "center", gap: 12,
-                        background: "rgba(15,15,28,0.70)", backdropFilter: "blur(10px)",
-                        border: "1.5px solid rgba(255,255,255,0.05)", borderRadius: 12,
+                        background: "transparent", backdropFilter: "none",
+                        border: "none", borderRadius: 12,
                         padding: "12px 18px", flexShrink: 0, userSelect: "none",
                         minWidth: 220, height: 68
                       }}>
