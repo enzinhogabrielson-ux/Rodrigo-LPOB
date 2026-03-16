@@ -396,19 +396,19 @@ export default function VitaoIBLP() {
       {/* ──── HERO ──── */}
       <section className="hero-section" style={{ minHeight: "100vh", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column" }}>
 
+        {/* Black to Green gradient (behind background image) */}
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(50,199,122,0.5) 100%)", zIndex: 1 }} />
+
         {/* Background image */}
         <div style={{
-          position: "absolute", inset: 0,
+          position: "absolute", inset: 0, zIndex: 2,
           backgroundImage: "url('/hero-bg.png')",
           backgroundSize: "cover", backgroundPosition: "center right",
           backgroundRepeat: "no-repeat"
         }} />
 
         {/* Dark overlay to keep text readable */}
-        <div style={{ position: "absolute", inset: 0, background: "rgba(4,4,12,0.62)" }} />
-
-        {/* Black to Sand gradient overlay (left to right) */}
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(214,184,138,0.35) 100%)" }} />
+        <div style={{ position: "absolute", inset: 0, zIndex: 3, background: "rgba(4,4,12,0.62)" }} />
 
         {/* Sand ambient glow */}
         <div style={{ position: "absolute", top: "10%", right: "25%", width: 500, height: 500, background: "radial-gradient(circle, rgba(214,184,138,.07) 0%, transparent 70%)", pointerEvents: "none" }} />
