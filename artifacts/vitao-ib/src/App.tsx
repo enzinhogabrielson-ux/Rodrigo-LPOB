@@ -362,17 +362,37 @@ export default function VitaoIBLP() {
 
         button{background:none;border:none;cursor:pointer;padding:0;}
 
-        @media(max-width:900px){
+        @media(min-width:641px) and (max-width:900px){
           .hero-right{display:none!important;}
         }
 
         @media(max-width:640px){
-          .hero-main{padding:72px 20px 64px!important;flex-direction:column!important;justify-content:center!important;text-align:center!important;}
-          .hero-left{max-width:100%!important;display:flex!important;flex-direction:column!important;align-items:center!important;}
-          .hero-left > div:first-child{align-self:center!important;}
+          .hero-main{
+            padding:72px 20px 0!important;
+            flex-direction:column!important;
+            justify-content:flex-start!important;
+            text-align:center!important;
+            gap:0!important;
+          }
+          .hero-left{
+            max-width:100%!important;
+            display:flex!important;
+            flex-direction:column!important;
+            align-items:center!important;
+            padding-bottom:32px!important;
+          }
           .hero-badge{font-size:12px!important;}
-          .hero-desc{max-width:100%!important;font-size:14px!important;margin:0 auto 32px!important;}
-          .hero-section{min-height:100vh!important;padding-bottom:32px!important;}
+          .hero-desc{max-width:100%!important;font-size:14px!important;text-align:center!important;}
+          .hero-section{min-height:auto!important;}
+          .hero-right{
+            display:flex!important;
+            width:100%!important;
+            flex:none!important;
+            min-width:0!important;
+            height:480px!important;
+            position:relative!important;
+            overflow:visible!important;
+          }
           .about-section{padding:56px 20px!important;}
           .about-photo{width:100%!important;max-width:300px!important;margin:0 auto!important;aspect-ratio:3/4!important;}
           .social-proof-section{padding:56px 20px!important;}
