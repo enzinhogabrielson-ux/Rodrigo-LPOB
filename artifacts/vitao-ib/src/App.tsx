@@ -97,19 +97,25 @@ function ProfitBadge({ value, style = {} }: { value: string; style?: React.CSSPr
 }
 
 function AvatarGroup({ count }: { count: string }) {
-  const colors = ["#D6B88A", "#D6B88A", "#FF6B35", "#3B82F6", "#EC4899"];
-  const initials = ["LF", "AC", "RM", "JC", "MS"];
+  const avatarPhotos = [
+    "/avatar_lf.png",
+    "/avatar_ac.png",
+    "/avatar_rm.png",
+    "/avatar_jc.png",
+    "/avatar_ms.png",
+  ];
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
       <div style={{ display: "flex" }}>
-        {initials.map((init, i) => (
+        {avatarPhotos.map((src, i) => (
           <div key={i} style={{
             width: 36, height: 36, borderRadius: "50%",
-            background: colors[i], border: "2.5px solid #08080F",
+            border: "2.5px solid #08080F",
             marginLeft: i === 0 ? 0 : -12, zIndex: 5 - i,
-            display: "flex", alignItems: "center", justifyContent: "center",
-            fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 11, color: "#fff"
-          }}>{init}</div>
+            overflow: "hidden", flexShrink: 0
+          }}>
+            <img src={src} alt={`Membro ${i + 1}`} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+          </div>
         ))}
       </div>
       <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
