@@ -4,12 +4,12 @@ import aboutPhoto from "@assets/about.jpeg";
 
 const CTA_LINK = "https://chat.whatsapp.com/LR1XkXae3KP0AzM9PCY1QC";
 
-const BG_MAIN = "#1A1A2E";
-const BG_DARK = "#252540";
-const SAND = "#32C77A";
-const SAND_D = "#2BA86B";
-const ACCENT = "#32C77A";
-const TEXT_M = "#B8BFCC";
+const BG_MAIN = "#0F0D0B";
+const BG_DARK = "#1A1713";
+const SAND = "#D6B88A";
+const SAND_D = "#C4A376";
+const ACCENT = "#D6B88A";
+const TEXT_M = "#A0A8BE";
 
 /* ─── COMPONENTS ─── */
 
@@ -332,10 +332,10 @@ export default function VitaoIBLP() {
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Bebas+Neue&display=swap');
         *{box-sizing:border-box;margin:0;padding:0;}
         html,body{background:${BG_MAIN};font-family:'Plus Jakarta Sans',sans-serif;overflow-x:hidden;}
-        ::selection{background:rgba(50,199,122,.35);}
+        ::selection{background:rgba(214,184,138,.35);}
         ::-webkit-scrollbar{width:4px;}
         ::-webkit-scrollbar-track{background:${BG_MAIN};}
-        ::-webkit-scrollbar-thumb{background:rgba(50,199,122,.4);border-radius:2px;}
+        ::-webkit-scrollbar-thumb{background:rgba(214,184,138,.4);border-radius:2px;}
 
         @keyframes marquee{
           0%{transform:translateX(0)}
@@ -405,13 +405,13 @@ export default function VitaoIBLP() {
         }} />
 
         {/* Dark overlay to keep text readable */}
-        <div style={{ position: "absolute", inset: 0, background: "rgba(26,26,46,0.45)" }} />
+        <div style={{ position: "absolute", inset: 0, background: "rgba(4,4,12,0.62)" }} />
 
-        {/* Green ambient glow */}
-        <div style={{ position: "absolute", top: "10%", right: "25%", width: 500, height: 500, background: "radial-gradient(circle, rgba(50,199,122,.12) 0%, transparent 70%)", pointerEvents: "none" }} />
+        {/* Sand ambient glow */}
+        <div style={{ position: "absolute", top: "10%", right: "25%", width: 500, height: 500, background: "radial-gradient(circle, rgba(214,184,138,.07) 0%, transparent 70%)", pointerEvents: "none" }} />
 
         {/* Left fog — keeps left copy area more legible */}
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, rgba(26,26,46,0.9) 0%, rgba(26,26,46,0.75) 38%, rgba(26,26,46,0.2) 70%, rgba(26,26,46,0.5) 100%)" }} />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, rgba(4,4,12,0.85) 0%, rgba(4,4,12,0.70) 38%, rgba(4,4,12,0.1) 70%, rgba(4,4,12,0.4) 100%)" }} />
 
         {/* ── MAIN HERO CONTENT ── */}
         <div className="hero-main" style={{
