@@ -367,11 +367,12 @@ export default function VitaoIBLP() {
         }
 
         @media(max-width:640px){
-          .hero-main{padding:64px 20px 44px!important;flex-direction:column!important;}
-          .hero-left{max-width:100%!important;}
-          .hero-badge{font-size:11px!important;}
-          .hero-desc{max-width:100%!important;font-size:13px!important;}
-          .hero-section{min-height:auto!important;padding-bottom:32px!important;}
+          .hero-main{padding:72px 20px 64px!important;flex-direction:column!important;justify-content:center!important;text-align:center!important;}
+          .hero-left{max-width:100%!important;display:flex!important;flex-direction:column!important;align-items:center!important;}
+          .hero-left > div:first-child{align-self:center!important;}
+          .hero-badge{font-size:12px!important;}
+          .hero-desc{max-width:100%!important;font-size:14px!important;margin:0 auto 32px!important;}
+          .hero-section{min-height:100vh!important;padding-bottom:32px!important;}
           .about-section{padding:56px 20px!important;}
           .about-photo{width:100%!important;max-width:300px!important;margin:0 auto!important;aspect-ratio:3/4!important;}
           .social-proof-section{padding:56px 20px!important;}
