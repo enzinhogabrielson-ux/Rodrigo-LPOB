@@ -384,6 +384,7 @@ export default function VitaoIBLP() {
         .flt2{animation:floatB 5.5s 1.4s ease-in-out infinite}
         .flt3{animation:floatC 6s 2.1s ease-in-out infinite}
         .livepulse{animation:livePulse 1.8s ease-in-out infinite}
+        .ticker-fade{display:none!important;}
 
         button{background:none;border:none;cursor:pointer;padding:0;}
 
@@ -409,7 +410,6 @@ export default function VitaoIBLP() {
           .hero-badge{font-size:12px!important;}
           .hero-desc{max-width:100%!important;font-size:14px!important;text-align:center!important;}
           .hero-section{min-height:auto!important;}
-          .ticker-fade{display:none!important;}
           .ticker-container{left:0!important;right:0!important;width:100%!important;}
           .hero-right{
             display:flex!important;
@@ -477,7 +477,7 @@ export default function VitaoIBLP() {
               <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 600, fontSize: 13, color: "rgba(255,255,255,.9)" }}>Maior comunidade trader no Brasil!</span>
             </div>
 
-            <h1 style={{ fontFamily: "'Bebas Neue',sans-serif", fontWeight: 400, fontSize: "clamp(48px,5.5vw,76px)", lineHeight: 1.0, color: "#FFF", marginBottom: 18, letterSpacing: "0.03em" }}>
+            <h1 style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: "clamp(42px,5.2vw,72px)", lineHeight: 1.05, color: "#FFF", marginBottom: 18, letterSpacing: "-0.01em" }}>
               Lucre<br />diariamente<br />copiando minhas <span style={{ color: SAND }}>operações</span>
             </h1>
 
@@ -581,7 +581,7 @@ export default function VitaoIBLP() {
 
           {/* Copy */}
           <div className="about-copy">
-            <h2 style={{ fontFamily: "'Bebas Neue',sans-serif", fontWeight: 400, fontSize: "clamp(42px,4.8vw,68px)", lineHeight: 1.0, color: "#FFF", marginBottom: 20, letterSpacing: "0.03em" }}>
+            <h2 style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: "clamp(36px,4.5vw,62px)", lineHeight: 1.1, color: "#FFF", marginBottom: 20, letterSpacing: "-0.01em" }}>
               Transformamos<br />experiência em<br />direcionamento
             </h2>
 
