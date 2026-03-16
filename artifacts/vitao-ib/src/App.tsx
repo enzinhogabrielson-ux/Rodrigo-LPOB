@@ -384,6 +384,7 @@ export default function VitaoIBLP() {
           .hero-badge{font-size:12px!important;}
           .hero-desc{max-width:100%!important;font-size:14px!important;text-align:center!important;}
           .hero-section{min-height:auto!important;}
+          .ticker-fade{display:none!important;}
           .hero-right{
             display:flex!important;
             width:100%!important;
@@ -482,9 +483,9 @@ export default function VitaoIBLP() {
               {[0, 1].map((rowIdx) => (
                 <div key={rowIdx} style={{ position: "relative", width: "100%", overflow: "hidden", height: 92 }}>
                   {/* Left blur */}
-                  <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 80, zIndex: 2, background: "linear-gradient(90deg, rgba(8,8,18,1) 0%, rgba(8,8,18,0.7) 50%, rgba(8,8,18,0) 100%)", pointerEvents: "none" }} />
+                  <div className="ticker-fade" style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 80, zIndex: 2, background: "linear-gradient(90deg, rgba(8,8,18,1) 0%, rgba(8,8,18,0.7) 50%, rgba(8,8,18,0) 100%)", pointerEvents: "none" }} />
                   {/* Right blur */}
-                  <div style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: 80, zIndex: 2, background: "linear-gradient(270deg, rgba(8,8,18,1) 0%, rgba(8,8,18,0.7) 50%, rgba(8,8,18,0) 100%)", pointerEvents: "none" }} />
+                  <div className="ticker-fade" style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: 80, zIndex: 2, background: "linear-gradient(270deg, rgba(8,8,18,1) 0%, rgba(8,8,18,0.7) 50%, rgba(8,8,18,0) 100%)", pointerEvents: "none" }} />
                   {/* Track */}
                   <div className={rowIdx === 1 ? "ticker-track-offset" : "ticker-track"} style={{ display: "flex", gap: 12, width: "max-content", height: "100%", alignItems: "center" }}>
                     {[...COINS.slice(rowIdx * 3, rowIdx * 3 + 3), ...COINS.slice(rowIdx * 3, rowIdx * 3 + 3), ...COINS.slice(rowIdx * 3, rowIdx * 3 + 3)].map((coin, i) => (
