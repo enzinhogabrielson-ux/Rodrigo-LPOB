@@ -271,6 +271,7 @@ export default function VitaoIBLP() {
   const [scrolled, setScrolled] = useState(false);
   const [slide, setSlide] = useState(1);
   const [openPillar, setOpenPillar] = useState<number | null>(null);
+  const [lightbox, setLightbox] = useState(false);
   const total = 5;
   const names = ["Trader Lucas F.", "Ana Carolina P.", "Rodrigo Mendes", "Juliana Costa", "Marcos Silva"];
 
@@ -507,18 +508,38 @@ export default function VitaoIBLP() {
           gap: "clamp(44px,8vw,100px)", flexWrap: "wrap"
         }}>
           {/* Mamute Trader photo */}
-          <img 
-            src={aboutPhoto}
-            alt="Mamute Trader BR"
+          <div
+            onClick={() => setLightbox(true)}
             style={{
-              flex: "0 0 auto", width: "clamp(240px,30vw,340px)", aspectRatio: "3/5",
+              flex: "0 0 auto", width: "clamp(280px,36vw,420px)", aspectRatio: "3/5",
               borderRadius: 20, overflow: "hidden",
-              border: "1px solid rgba(214,184,138,.18)",
-              objectFit: "cover",
-              objectPosition: "center top",
+              border: "1px solid rgba(214,184,138,.28)",
+              cursor: "zoom-in", position: "relative",
               display: "block"
             }}
-          />
+          >
+            <img
+              src={aboutPhoto}
+              alt="Mamute Trader BR"
+              style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }}
+            />
+            <div style={{
+              position: "absolute", inset: 0,
+              background: "rgba(0,0,0,0)", transition: "background 0.2s",
+              display: "flex", alignItems: "center", justifyContent: "center",
+            }}
+              onMouseEnter={e => (e.currentTarget.style.background = "rgba(0,0,0,0.28)")}
+              onMouseLeave={e => (e.currentTarget.style.background = "rgba(0,0,0,0)")}
+            >
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.8" style={{ opacity: 0, transition: "opacity 0.2s" }}
+                onMouseEnter={e => (e.currentTarget.style.opacity = "1")}
+                onMouseLeave={e => (e.currentTarget.style.opacity = "0")}
+              >
+                <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                <line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
+              </svg>
+            </div>
+          </div>
 
           {/* Copy */}
           <div style={{ flex: 1, minWidth: 260 }}>
@@ -636,6 +657,42 @@ export default function VitaoIBLP() {
         </p>
         <div style={{ width: 44 }} />
       </footer>
+
+      {/* ──── LIGHTBOX ──── */}
+      {lightbox && (
+        <div
+          onClick={() => setLightbox(false)}
+          style={{
+            position: "fixed", inset: 0, zIndex: 9999,
+            background: "rgba(0,0,0,0.88)",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            cursor: "zoom-out", backdropFilter: "blur(6px)"
+          }}
+        >
+          <img
+            src={aboutPhoto}
+            alt="Mamute Trader BR"
+            style={{
+              maxHeight: "90vh", maxWidth: "90vw",
+              borderRadius: 20,
+              border: "1px solid rgba(214,184,138,.35)",
+              objectFit: "contain",
+              boxShadow: "0 32px 80px rgba(0,0,0,0.7)"
+            }}
+          />
+          <div style={{
+            position: "absolute", top: 24, right: 28,
+            width: 40, height: 40, borderRadius: "50%",
+            background: "rgba(255,255,255,0.1)",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            cursor: "pointer"
+          }}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.2" strokeLinecap="round">
+              <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
