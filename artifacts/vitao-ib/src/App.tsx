@@ -282,40 +282,6 @@ export default function VitaoIBLP() {
         {/* Left fog */}
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, rgba(5,5,16,1) 0%, rgba(5,5,16,.88) 35%, rgba(5,5,16,.2) 65%, rgba(5,5,16,.65) 100%)" }} />
 
-        {/* ── CRYPTO MARQUEE ── */}
-        <div style={{ position: "absolute", top: 0, left: 0, right: 0, zIndex: 25, width: "100%", height: 60, display: "flex", alignItems: "center" }}>
-          <div style={{ position: "relative", width: "100%", overflow: "hidden" }}>
-            {/* Left blur */}
-            <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 100, zIndex: 2, background: "linear-gradient(90deg, rgba(8,8,18,1) 0%, rgba(8,8,18,0) 100%)", pointerEvents: "none" }} />
-            {/* Right blur */}
-            <div style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: 100, zIndex: 2, background: "linear-gradient(270deg, rgba(8,8,18,1) 0%, rgba(8,8,18,0) 100%)", pointerEvents: "none" }} />
-            {/* Track */}
-            <div className="ticker-track" style={{ display: "flex", gap: 8, width: "max-content", paddingLeft: 20 }}>
-              {[...COINS, ...COINS, ...COINS].map((coin, i) => (
-                <div key={i} style={{
-                  display: "flex", alignItems: "center", gap: 6,
-                  background: "rgba(20,20,35,0.85)", backdropFilter: "blur(14px)",
-                  border: "1px solid rgba(255,255,255,0.06)", borderRadius: 10,
-                  padding: "6px 12px", flexShrink: 0, userSelect: "none"
-                }}>
-                  <div style={{
-                    width: 24, height: 24, borderRadius: "50%",
-                    background: coin.color + "28",
-                    border: `1px solid ${coin.color}66`,
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 7,
-                    color: coin.color, flexShrink: 0
-                  }}>{coin.symbol.slice(0, 3)}</div>
-                  <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
-                    <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 600, fontSize: 10, color: "#fff" }}>{coin.name}</span>
-                    <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 9, color: coin.pos ? GREEN : "#FF5050", fontWeight: 700 }}>{coin.change}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
         {/* ── MAIN HERO CONTENT ── */}
         <div style={{
           position: "relative", zIndex: 10, flex: 1,
@@ -347,12 +313,50 @@ export default function VitaoIBLP() {
             <AvatarGroup count="5.149" />
           </div>
 
-          {/* RIGHT — Trader photo with floating badges */}
+          {/* RIGHT — Trader photo with scrolling carousel & badges */}
           <div className="hero-right" style={{
             position: "relative", flex: 1,
             display: "flex", justifyContent: "center", alignItems: "flex-end",
             height: "clamp(480px,72vh,700px)", overflow: "visible", minWidth: 320
           }}>
+            {/* CRYPTO CAROUSEL — behind trader head */}
+            <div style={{
+              position: "absolute", top: "18%", left: "-10%", right: "-10%", zIndex: 1,
+              width: "120%", height: 70,
+              display: "flex", alignItems: "center"
+            }}>
+              <div style={{ position: "relative", width: "100%", overflow: "hidden" }}>
+                {/* Left blur */}
+                <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 80, zIndex: 2, background: "linear-gradient(90deg, rgba(8,8,18,1) 0%, rgba(8,8,18,0) 100%)", pointerEvents: "none" }} />
+                {/* Right blur */}
+                <div style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: 80, zIndex: 2, background: "linear-gradient(270deg, rgba(8,8,18,1) 0%, rgba(8,8,18,0) 100%)", pointerEvents: "none" }} />
+                {/* Track */}
+                <div className="ticker-track" style={{ display: "flex", gap: 6, width: "max-content", paddingLeft: 20 }}>
+                  {[...COINS, ...COINS, ...COINS].map((coin, i) => (
+                    <div key={i} style={{
+                      display: "flex", alignItems: "center", gap: 5,
+                      background: "rgba(15,15,28,0.76)", backdropFilter: "blur(12px)",
+                      border: "1px solid rgba(255,255,255,0.05)", borderRadius: 8,
+                      padding: "5px 10px", flexShrink: 0, userSelect: "none"
+                    }}>
+                      <div style={{
+                        width: 20, height: 20, borderRadius: "50%",
+                        background: coin.color + "26",
+                        border: `0.8px solid ${coin.color}66`,
+                        display: "flex", alignItems: "center", justifyContent: "center",
+                        fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 6,
+                        color: coin.color, flexShrink: 0
+                      }}>{coin.symbol.slice(0, 3)}</div>
+                      <div style={{ display: "flex", alignItems: "center", gap: 3 }}>
+                        <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 600, fontSize: 9, color: "#fff", whiteSpace: "nowrap" }}>{coin.name}</span>
+                        <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 8, color: coin.pos ? GREEN : "#FF5050", fontWeight: 700 }}>{coin.change}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
             {/* Trader photo */}
             <img
               src={traderPhoto}
