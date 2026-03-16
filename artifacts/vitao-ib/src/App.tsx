@@ -347,7 +347,7 @@ export default function VitaoIBLP() {
             <AvatarGroup count="5.149" />
           </div>
 
-          {/* RIGHT — Trader photo with floating crypto cards & badges */}
+          {/* RIGHT — Trader photo with floating badges */}
           <div className="hero-right" style={{
             position: "relative", flex: 1,
             display: "flex", justifyContent: "center", alignItems: "flex-end",
@@ -368,11 +368,6 @@ export default function VitaoIBLP() {
                 position: "relative", zIndex: 2
               }}
             />
-
-            {/* FLOATING CRYPTO CARDS — scattered around the hero */}
-            <FloatingCoinCard coin={COINS[1]} style={{ left: "5%", top: "8%", animation: "floatA 5s ease-in-out infinite" }} /> {/* Bitcoin */}
-            <FloatingCoinCard coin={COINS[2]} style={{ right: "8%", top: "18%", animation: "floatB 5.8s 1s ease-in-out infinite" }} /> {/* Solana */}
-            <FloatingCoinCard coin={COINS[3]} style={{ right: "22%", top: "35%", animation: "floatC 6.2s 1.8s ease-in-out infinite" }} /> {/* Dash */}
 
             {/* FLOATING PROFIT BADGES */}
             <div className="flt" style={{ position: "absolute", left: "8%", top: "46%", zIndex: 10 }}>
