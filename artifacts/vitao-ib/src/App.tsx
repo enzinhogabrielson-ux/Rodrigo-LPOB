@@ -189,11 +189,17 @@ export default function VitaoIBLP() {
         ::-webkit-scrollbar-track{background:${BG_MAIN};}
         ::-webkit-scrollbar-thumb{background:rgba(123,63,228,.4);border-radius:2px;}
 
+        @keyframes marquee{
+          0%{transform:translateX(0)}
+          100%{transform:translateX(calc(-100% / 3))}
+        }
         @keyframes floatA{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
         @keyframes floatB{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
         @keyframes floatC{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
         @keyframes livePulse{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,.5)}70%{box-shadow:0 0 0 14px rgba(239,68,68,0)}}
 
+        .ticker-track{animation:marquee 18s linear infinite}
+        .ticker-track:hover{animation-play-state:paused}
         .flt{animation:floatA 4s ease-in-out infinite}
         .flt2{animation:floatB 5.5s 1.4s ease-in-out infinite}
         .flt3{animation:floatC 6s 2.1s ease-in-out infinite}
@@ -276,12 +282,26 @@ export default function VitaoIBLP() {
         {/* Left fog */}
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, rgba(5,5,16,1) 0%, rgba(5,5,16,.88) 35%, rgba(5,5,16,.2) 65%, rgba(5,5,16,.65) 100%)" }} />
 
+        {/* ── CRYPTO TICKER MARQUEE ── */}
+        <div style={{ position: "relative", zIndex: 20, width: "100%", padding: "16px 0", paddingTop: 20 }}>
+          <div style={{ position: "relative", width: "100%", overflow: "hidden" }}>
+            {/* Left blur */}
+            <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 120, zIndex: 2, background: "linear-gradient(90deg, rgba(8,8,18,1) 0%, rgba(8,8,18,0) 100%)", pointerEvents: "none" }} />
+            {/* Right blur */}
+            <div style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: 120, zIndex: 2, background: "linear-gradient(270deg, rgba(8,8,18,1) 0%, rgba(8,8,18,0) 100%)", pointerEvents: "none" }} />
+            {/* Track */}
+            <div className="ticker-track" style={{ display: "flex", gap: 10, width: "max-content" }}>
+              {[...COINS, ...COINS, ...COINS].map((coin, i) => <FloatingCoinCard key={i} coin={coin} style={{ position: "static" }} />)}
+            </div>
+          </div>
+        </div>
+
         {/* ── MAIN HERO CONTENT ── */}
         <div style={{
           position: "relative", zIndex: 10, flex: 1,
           display: "flex", alignItems: "center", justifyContent: "space-between",
           maxWidth: 1320, width: "100%", margin: "0 auto",
-          padding: "80px 52px 56px", gap: 40
+          padding: "20px 52px 56px", gap: 40
         }}>
 
           {/* LEFT COPY */}
