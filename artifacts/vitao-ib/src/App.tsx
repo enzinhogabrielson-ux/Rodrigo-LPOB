@@ -405,7 +405,7 @@ export default function VitaoIBLP() {
         }} />
 
         {/* Green to Black gradient (in front of background image) */}
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, rgba(50,199,122,0.6) 0%, rgba(0,0,0,0.85) 100%)", zIndex: 2 }} />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, rgba(50,199,122,0.25) 0%, rgba(0,0,0,0.35) 100%)", zIndex: 2 }} />
 
         {/* Dark overlay to keep text readable */}
         <div style={{ position: "absolute", inset: 0, zIndex: 3, background: "rgba(4,4,12,0.62)" }} />
