@@ -197,6 +197,7 @@ export default function VitaoIBLP() {
         @keyframes floatB{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
         @keyframes floatC{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
         @keyframes livePulse{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,.5)}70%{box-shadow:0 0 0 14px rgba(239,68,68,0)}}
+        @keyframes gentleSway{0%,100%{transform:translateX(0) translateY(0)}25%{transform:translateX(-6px) translateY(-3px)}50%{transform:translateX(0) translateY(0)}75%{transform:translateX(6px) translateY(3px)}}
 
         .ticker-track{animation:marquee 16s linear infinite}
         .ticker-track:hover{animation-play-state:paused}
@@ -362,7 +363,8 @@ export default function VitaoIBLP() {
                 filter: "drop-shadow(0 0 60px rgba(214,184,138,.18))",
                 pointerEvents: "none",
                 userSelect: "none",
-                position: "relative", zIndex: 2
+                position: "relative", zIndex: 2,
+                animation: "gentleSway 6s ease-in-out infinite"
               }}
             />
 
