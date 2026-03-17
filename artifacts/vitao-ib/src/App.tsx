@@ -616,7 +616,7 @@ export default function VitaoIBLP() {
               Com anos de atuação nos bastidores do mercado financeiro, Rodrigo Ferraço desenvolveu uma leitura profunda sobre fluxo institucional, macroeconomia global e a dinâmica que realmente move os grandes ativos do mercado.
             </p>
             <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 13.5, color: "rgba(255,255,255,0.55)", marginBottom: 24, lineHeight: 1.75 }}>
-              Economista, especialista no mercado de metais internacionais e Forex, construiu sua experiência operando e analisando os movimentos do capital institucional, entendendo como bancos, fundos e grandes participantes posicionam dinheiro nos mercados globais.
+              Economista, especialista no mercado de metais internacionais e BeFinance, construiu sua experiência operando e analisando os movimentos do capital institucional, entendendo como bancos, fundos e grandes participantes posicionam dinheiro nos mercados globais.
             </p>
 
             <WaButton label="Entre no meu grupo" />
