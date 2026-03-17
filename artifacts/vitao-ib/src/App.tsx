@@ -566,6 +566,19 @@ export default function VitaoIBLP() {
               }}
             />
 
+            {/* AUTHORITY TICKET */}
+            <div style={{
+              position: "absolute", top: "8%", left: "-8%", zIndex: 10,
+              background: "rgba(20,16,10,0.72)", backdropFilter: "blur(16px)",
+              border: "1px solid rgba(214,184,138,0.35)",
+              borderRadius: 14, padding: "12px 18px",
+              display: "flex", flexDirection: "column", gap: 4,
+              whiteSpace: "nowrap"
+            }}>
+              <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 13, color: SAND, letterSpacing: "0.01em" }}>Rodrigo Ferraço</div>
+              <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 11, color: "rgba(255,255,255,0.65)", fontWeight: 600 }}>10+ Anos | 20M+ Operados</div>
+            </div>
+
             {/* FLOATING PROFIT BADGES */}
             <div className="flt" style={{ position: "absolute", left: "8%", top: "46%", zIndex: 10 }}>
               <ProfitBadge value="R$ 1.000" />
