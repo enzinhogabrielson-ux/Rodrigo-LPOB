@@ -552,7 +552,7 @@ export default function VitaoIBLP() {
             {/* Trader photo */}
             <img
               src={traderPhoto}
-              alt="Vitão Trader"
+              alt="Rodrigo Ferraço - Especialista em Trading Institucional"
               style={{
                 height: "100%",
                 maxHeight: 680,
