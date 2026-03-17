@@ -1,29 +1,42 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
   <defs>
-    <linearGradient id="mammoth-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#D6B88A;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#A88860;stop-opacity:1" />
-    </linearGradient>
+    <radialGradient id="bg-grad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#1A2E1F;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#0F0D0B;stop-opacity:1"/>
+    </radialGradient>
   </defs>
+
+  <!-- Background circle -->
+  <circle cx="50" cy="50" r="50" fill="url(#bg-grad)"/>
+
   <!-- Body -->
-  <ellipse cx="50" cy="55" rx="28" ry="32" fill="url(#mammoth-grad)" stroke="#8B7355" stroke-width="1.5"/>
+  <ellipse cx="50" cy="62" rx="22" ry="20" fill="#32C77A"/>
+
   <!-- Head -->
-  <circle cx="50" cy="28" r="18" fill="url(#mammoth-grad)" stroke="#8B7355" stroke-width="1.5"/>
-  <!-- Trunk -->
-  <path d="M 50 40 Q 52 52 50 65" stroke="#8B7355" stroke-width="3" fill="none" stroke-linecap="round"/>
-  <!-- Tusks left -->
-  <path d="M 42 50 Q 35 55 32 65" stroke="#F5DEB3" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-  <!-- Tusks right -->
-  <path d="M 58 50 Q 65 55 68 65" stroke="#F5DEB3" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-  <!-- Eyes -->
-  <circle cx="44" cy="24" r="2" fill="#2C2C2C"/>
-  <circle cx="56" cy="24" r="2" fill="#2C2C2C"/>
+  <circle cx="50" cy="38" r="16" fill="#32C77A"/>
+
   <!-- Ears -->
-  <ellipse cx="35" cy="32" rx="5" ry="8" fill="#A88860" stroke="#8B7355" stroke-width="1"/>
-  <ellipse cx="65" cy="32" rx="5" ry="8" fill="#A88860" stroke="#8B7355" stroke-width="1"/>
+  <ellipse cx="35" cy="33" rx="5" ry="7" fill="#28A566"/>
+  <ellipse cx="65" cy="33" rx="5" ry="7" fill="#28A566"/>
+
+  <!-- Trunk (curves down then to the right) -->
+  <path d="M 50 48 Q 48 57 46 63 Q 44 68 48 70" stroke="#28A566" stroke-width="4" fill="none" stroke-linecap="round"/>
+
+  <!-- Tusks -->
+  <path d="M 40 48 Q 33 54 31 63" stroke="#e8f5e9" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M 60 48 Q 67 54 69 63" stroke="#e8f5e9" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+  <!-- Eyes -->
+  <circle cx="43" cy="34" r="2.5" fill="#0F0D0B"/>
+  <circle cx="57" cy="34" r="2.5" fill="#0F0D0B"/>
+  <!-- Eye shine -->
+  <circle cx="44" cy="33" r="0.8" fill="white"/>
+  <circle cx="58" cy="33" r="0.8" fill="white"/>
+
   <!-- Legs -->
-  <rect x="38" y="80" width="4" height="15" rx="2" fill="#8B7355"/>
-  <rect x="58" y="80" width="4" height="15" rx="2" fill="#8B7355"/>
-  <rect x="46" y="82" width="4" height="13" rx="2" fill="#8B7355"/>
-  <rect x="66" y="82" width="4" height="13" rx="2" fill="#8B7355"/>
+  <rect x="35" y="77" width="7" height="14" rx="3" fill="#28A566"/>
+  <rect x="58" y="77" width="7" height="14" rx="3" fill="#28A566"/>
+
+  <!-- Fur bumps on top of head -->
+  <path d="M 44 24 Q 46 19 50 22 Q 54 19 56 24" stroke="#28A566" stroke-width="2" fill="none" stroke-linecap="round"/>
 </svg>
