@@ -1,0 +1,42 @@
+> @workspace/vitao-ib@1.0.0 build
+> npx vite build
+
+vite.config.ts (1:427) [UNRESOLVED_IMPORT] Warning: Could not resolve 'vite' in vite.config.ts
+   ╭─[ vite.config.ts:1:428 ]
+   │
+ 1 │ const __vite_injected_original_dirname = "C:\\Users\\enzog\\Documentos\\GitHub\\Vitao-IB-Landing\\artifacts\\vitao-ib";const __vite_injected_original_filename = "C:\\Users\\enzog\\Documentos\\GitHub\\Vitao-IB-Landing\\artifacts\\vitao-ib\\vite.config.ts";const __vite_injected_original_import_meta_url = "file:///C:/Users/enzog/Documentos/GitHub/Vitao-IB-Landing/artifacts/vitao-ib/vite.config.ts";import { defineConfig } from "vite";
+   │                                                                                                                                                                                                                                                                                                                                                                                                                                            ───┬──
+   │                                                                                                                                                                                                                                                                                                                                                                                                                                               ╰──── Module not found, treating it as an external dependency
+───╯
+
+vite.config.ts (2:18) [UNRESOLVED_IMPORT] Warning: Could not resolve '@vitejs/plugin-react' in vite.config.ts
+   ╭─[ vite.config.ts:2:19 ]
+   │
+ 2 │ import react from "@vitejs/plugin-react";
+   │                   ───────────┬──────────
+   │                              ╰──────────── Module not found, treating it as an external dependency
+───╯
+
+vite.config.ts (3:24) [UNRESOLVED_IMPORT] Warning: Could not resolve '@tailwindcss/vite' in vite.config.ts
+   ╭─[ vite.config.ts:3:25 ]
+   │
+ 3 │ import tailwindcss from "@tailwindcss/vite";
+   │                         ─────────┬─────────
+   │                                  ╰─────────── Module not found, treating it as an external dependency
+───╯
+
+failed to load config from C:\Users\enzog\Documentos\GitHub\Vitao-IB-Landing\artifacts\vitao-ib\vite.config.ts
+error during build:
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'vite' imported from C:\Users\enzog\Documentos\GitHub\Vitao-IB-Landing\artifacts\vitao-ib\node_modules\.vite-temp\vite.config.ts.timestamp-1773706522463-2a7fe9f708e3f8.mjs
+    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:316:9)
+    at packageResolve (node:internal/modules/esm/resolve:768:81)
+    at moduleResolve (node:internal/modules/esm/resolve:858:18)
+    at defaultResolve (node:internal/modules/esm/resolve:990:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:718:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:735:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:764:52)
+    at #resolve (node:internal/modules/esm/loader:700:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:620:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:143:33) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
