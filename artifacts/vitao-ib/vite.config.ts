@@ -2,39 +2,31 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import path from "path";
+import { fileURLToPath } from "url";
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const port = Number(process.env.PORT ?? 3000);
-const basePath = process.env.BASE_PATH ?? "/";
 
 export default defineConfig({
-  base: basePath,
   plugins: [
     react(),
     tailwindcss(),
   ],
   resolve: {
     alias: {
-      "@": path.resolve(import.meta.dirname, "src"),
-      "@assets": path.resolve(import.meta.dirname, "src", "assets"),
+      "@": path.resolve(__dirname, "src"),
+      "@assets": path.resolve(__dirname, "src", "assets"),
     },
-    dedupe: ["react", "react-dom"],
   },
-  root: path.resolve(import.meta.dirname),
+  root: __dirname,
   build: {
-    outDir: path.resolve(import.meta.dirname, "dist/public"),
+    outDir: path.resolve(__dirname, "dist"),
     emptyOutDir: true,
   },
   server: {
     port,
     host: "0.0.0.0",
     allowedHosts: true,
-    headers: {
-      "Cache-Control": "no-store, no-cache, must-revalidate",
-    },
-    fs: {
-      strict: true,
-      deny: ["**/.*"],
-    },
   },
   preview: {
     port,
