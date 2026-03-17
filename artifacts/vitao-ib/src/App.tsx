@@ -455,8 +455,8 @@ export default function VitaoIBLP() {
           backgroundRepeat: "no-repeat"
         }} />
 
-        {/* Left-side darkening so text stays readable, right stays open */}
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, rgba(4,12,8,0.82) 0%, rgba(4,12,8,0.45) 50%, rgba(4,12,8,0.15) 100%)", zIndex: 2 }} />
+        {/* Black fade left to right */}
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.6) 35%, rgba(0,0,0,0.1) 65%, rgba(0,0,0,0) 100%)", zIndex: 2 }} />
 
         {/* Subtle top/bottom vignette */}
         <div style={{ position: "absolute", inset: 0, zIndex: 3, background: "linear-gradient(180deg, rgba(4,12,8,0.35) 0%, transparent 30%, transparent 70%, rgba(4,12,8,0.5) 100%)" }} />
