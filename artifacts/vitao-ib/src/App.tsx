@@ -451,15 +451,15 @@ export default function VitaoIBLP() {
         <div style={{
           position: "absolute", inset: 0, zIndex: 1,
           backgroundImage: "url('/hero-bg.png')",
-          backgroundSize: "cover", backgroundPosition: "center right",
+          backgroundSize: "cover", backgroundPosition: "center center",
           backgroundRepeat: "no-repeat"
         }} />
 
-        {/* Green to Black gradient (in front of background image) */}
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, rgba(50,199,122,0.6) 0%, rgba(0,0,0,0.85) 100%)", zIndex: 2 }} />
+        {/* Left-side darkening so text stays readable, right stays open */}
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, rgba(4,12,8,0.82) 0%, rgba(4,12,8,0.45) 50%, rgba(4,12,8,0.15) 100%)", zIndex: 2 }} />
 
-        {/* Dark overlay to keep text readable */}
-        <div style={{ position: "absolute", inset: 0, zIndex: 3, background: "rgba(4,4,12,0.62)" }} />
+        {/* Subtle top/bottom vignette */}
+        <div style={{ position: "absolute", inset: 0, zIndex: 3, background: "linear-gradient(180deg, rgba(4,12,8,0.35) 0%, transparent 30%, transparent 70%, rgba(4,12,8,0.5) 100%)" }} />
 
         {/* Sand ambient glow */}
         <div style={{ position: "absolute", top: "10%", right: "25%", width: 500, height: 500, background: "radial-gradient(circle, rgba(214,184,138,.07) 0%, transparent 70%)", pointerEvents: "none" }} />
