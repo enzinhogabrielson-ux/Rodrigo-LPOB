@@ -385,6 +385,10 @@ export default function VitaoIBLP() {
         .flt3{animation:floatC 6s 2.1s ease-in-out infinite}
         .livepulse{animation:livePulse 1.8s ease-in-out infinite}
         .ticker-fade{display:none!important;}
+        .ticker-row-mask{
+          mask-image:linear-gradient(90deg,transparent 0%,black 10%,black 90%,transparent 100%);
+          -webkit-mask-image:linear-gradient(90deg,transparent 0%,black 10%,black 90%,transparent 100%);
+        }
 
         button{background:none;border:none;cursor:pointer;padding:0;}
 
@@ -506,7 +510,7 @@ export default function VitaoIBLP() {
               display: "flex", flexDirection: "column", gap: 8, alignItems: "stretch"
             }}>
               {[0, 1].map((rowIdx) => (
-                <div key={rowIdx} style={{ position: "relative", width: "100%", overflow: "hidden", height: 92 }}>
+                <div key={rowIdx} className="ticker-row-mask" style={{ position: "relative", width: "100%", overflow: "hidden", height: 92 }}>
                   {/* Left blur */}
                   <div className="ticker-fade" style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 80, zIndex: 2, background: "linear-gradient(90deg, rgba(8,8,18,1) 0%, rgba(8,8,18,0.7) 50%, rgba(8,8,18,0) 100%)", pointerEvents: "none" }} />
                   {/* Right blur */}
