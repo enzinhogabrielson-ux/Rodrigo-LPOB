@@ -749,7 +749,6 @@ export default function VitaoIBLP() {
               <path d="M12 2 L12 22 M7 5 L12 2 L17 5 M7 19 L12 22 L17 19 M4 9 L7 7 M20 9 L17 7 M4 15 L7 17 M20 15 L17 17" stroke="#D6B88A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </div>
-          <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 7.5, color: "rgba(255,255,255,.4)", letterSpacing: ".12em" }}>COLISEU</span>
         </div>
         <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 12, color: "rgba(255,255,255,.26)", textAlign: "center", flex: 1 }}>
           2026 Copyright © Rodrigo Ferraço Todos os direitos reservados.
