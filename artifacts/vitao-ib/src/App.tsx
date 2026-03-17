@@ -1,7 +1,9 @@
 import { useState, useEffect, useRef, type ReactNode } from "react";
 import traderPhoto from "@assets/trader.png";
-import aboutPhoto from "@assets/about.jpeg";
 import "./about-mobile.css";
+
+const RODRIGO_PHOTO = "https://rodrigoferraco.ocoliseu.com/assets/Rodrigo_Ferra%C3%A7o_(2)_1773249785897-BjdD8Li-.jpg";
+const aboutPhoto = RODRIGO_PHOTO;
 
 function useIsMobile(bp = 640) {
   const [m, setM] = useState(() => typeof window !== "undefined" && window.innerWidth <= bp);
@@ -15,13 +17,13 @@ function useIsMobile(bp = 640) {
   return m;
 }
 
-const CTA_LINK = "https://chat.whatsapp.com/LR1XkXae3KP0AzM9PCY1QC";
+const CTA_LINK = "https://chat.whatsapp.com/DKnrtqBIwkU2ziUQDYOtJE";
 
 const BG_MAIN = "#0F0D0B";
 const BG_DARK = "#1A1713";
-const SAND = "#32C77A";
-const SAND_D = "#28A566";
-const ACCENT = "#32C77A";
+const SAND = "#D6B88A";
+const SAND_D = "#C4A070";
+const ACCENT = "#D6B88A";
 const TEXT_M = "#A0A8BE";
 
 /* ─── COMPONENTS ─── */
@@ -309,7 +311,7 @@ function AboutPhoto({ src, onOpen }: { src: string; onOpen: () => void }) {
     >
       <img
         src={src}
-        alt="Mamute Trader BR"
+        alt="Rodrigo Ferraço"
         style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }}
       />
       <div style={{
@@ -587,7 +589,7 @@ export default function VitaoIBLP() {
           {/* Copy */}
           <div className="about-copy">
             <h2 style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: "clamp(36px,4.5vw,62px)", lineHeight: 1.1, color: "#FFF", marginBottom: 20, letterSpacing: "-0.01em" }}>
-              Transformamos<br />experiência em<br />direcionamento
+              Quem é<br />Rodrigo<br /><span style={{ color: SAND }}>Ferraço?</span>
             </h2>
 
             {/* Interactive pillars */}
@@ -603,14 +605,13 @@ export default function VitaoIBLP() {
             </div>
 
             <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 13.5, color: "rgba(255,255,255,0.55)", marginBottom: 8, lineHeight: 1.75 }}>
-              Há mais de 8 anos no mercado financeiro, construindo consistência, disciplina e leitura estratégica do mercado.
+              Com anos de atuação nos bastidores do mercado financeiro, Rodrigo Ferraço desenvolveu uma leitura profunda sobre fluxo institucional, macroeconomia global e a dinâmica que realmente move os grandes ativos do mercado.
             </p>
             <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 13.5, color: "rgba(255,255,255,0.55)", marginBottom: 8, lineHeight: 1.75 }}>
-              Nada de promessas irreais, nada de sinal mágico. Aqui é estudo, método e execução.
+              Economista, especialista no mercado de metais internacionais e Forex, construiu sua experiência operando e analisando os movimentos do capital institucional, entendendo como bancos, fundos e grandes participantes posicionam dinheiro nos mercados globais.
             </p>
             <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 13.5, color: "rgba(255,255,255,0.55)", fontStyle: "italic", marginBottom: 24, lineHeight: 1.75 }}>
-              Transformamos experiência em direcionamento, disciplina em resultado.<br />
-              Bem-vindo ao grupo do Mamute Trader BR.
+              Cansado de ver pessoas comuns perdendo dinheiro com promessas fáceis, criou o <strong style={{ color: SAND, fontStyle: "normal" }}>Coliseu</strong>: uma comunidade onde a realidade do mercado é apresentada sem ilusões, com leitura institucional aplicada, operações ao vivo e tomada de decisão em tempo real.
             </p>
 
             <WaButton label="Entre no meu grupo" />
@@ -684,19 +685,19 @@ export default function VitaoIBLP() {
       <section className="cta-section" style={{ position: "relative", padding: "70px 24px 110px", overflow: "hidden" }}>
         {/* Same hero-bg image */}
         <div style={{ position: "absolute", inset: 0, backgroundImage: "url('/hero-bg.png')", backgroundSize: "cover", backgroundPosition: "center", zIndex: 0 }} />
-        {/* Green-to-dark overlay matching hero */}
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(160deg, rgba(50,199,122,0.45) 0%, rgba(4,12,8,0.88) 100%)", zIndex: 1 }} />
+        {/* Gold-to-dark overlay matching hero */}
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(160deg, rgba(214,184,138,0.35) 0%, rgba(15,13,11,0.92) 100%)", zIndex: 1 }} />
 
         <div style={{ maxWidth: 400, margin: "0 auto", position: "relative", zIndex: 2 }}>
           <div className="cta-card" style={{
-            background: "linear-gradient(150deg,rgba(10,22,14,0.85) 0%,rgba(18,36,24,0.9) 50%,rgba(10,22,14,0.85) 100%)",
-            border: "1.5px solid rgba(50,199,122,.35)", borderRadius: 24,
+            background: "linear-gradient(150deg,rgba(20,16,10,0.88) 0%,rgba(30,24,14,0.92) 50%,rgba(20,16,10,0.88) 100%)",
+            border: "1.5px solid rgba(214,184,138,.35)", borderRadius: 24,
             padding: "52px 36px 44px", textAlign: "center", position: "relative", overflow: "hidden",
-            boxShadow: "0 0 60px rgba(50,199,122,.12), inset 0 1px 0 rgba(255,255,255,.06)",
+            boxShadow: "0 0 60px rgba(214,184,138,.12), inset 0 1px 0 rgba(255,255,255,.06)",
             backdropFilter: "blur(12px)"
           }}>
-            {/* Green glow top */}
-            <div style={{ position: "absolute", top: -80, left: "50%", transform: "translateX(-50%)", width: 320, height: 200, background: "radial-gradient(ellipse, rgba(50,199,122,.20), transparent 70%)", pointerEvents: "none" }} />
+            {/* Gold glow top */}
+            <div style={{ position: "absolute", top: -80, left: "50%", transform: "translateX(-50%)", width: 320, height: 200, background: "radial-gradient(ellipse, rgba(214,184,138,.18), transparent 70%)", pointerEvents: "none" }} />
 
             {/* LIVE badge — red circle with LIVE text + play icon */}
             <div style={{ display: "flex", justifyContent: "center", marginBottom: 24, position: "relative", zIndex: 1 }}>
@@ -743,10 +744,10 @@ export default function VitaoIBLP() {
               <path d="M12 2 L12 22 M7 5 L12 2 L17 5 M7 19 L12 22 L17 19 M4 9 L7 7 M20 9 L17 7 M4 15 L7 17 M20 15 L17 17" stroke="#D6B88A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </div>
-          <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 7.5, color: "rgba(255,255,255,.4)", letterSpacing: ".12em" }}>MAMUTE BR</span>
+          <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 7.5, color: "rgba(255,255,255,.4)", letterSpacing: ".12em" }}>COLISEU</span>
         </div>
         <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 12, color: "rgba(255,255,255,.26)", textAlign: "center", flex: 1 }}>
-          2026 Copyright © Mamute Trader BR Todos os direitos reservados.
+          2026 Copyright © Rodrigo Ferraço Todos os direitos reservados.
         </p>
         <div style={{ width: 44 }} />
       </footer>
@@ -764,7 +765,7 @@ export default function VitaoIBLP() {
         >
           <img
             src={aboutPhoto}
-            alt="Mamute Trader BR"
+            alt="Rodrigo Ferraço"
             style={{
               maxHeight: "90vh", maxWidth: "90vw",
               borderRadius: 20,

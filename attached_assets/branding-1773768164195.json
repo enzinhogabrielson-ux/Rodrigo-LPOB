@@ -1,0 +1,122 @@
+{
+  "colorScheme": "dark",
+  "fonts": [
+    {
+      "family": "Barlow",
+      "role": "body"
+    },
+    {
+      "family": "Barlow Condensed",
+      "role": "heading"
+    },
+    {
+      "family": "Bebas Neue",
+      "role": "display"
+    }
+  ],
+  "colors": {
+    "primary": "#99A1AF",
+    "accent": "#D6B88A",
+    "background": "#0F0D0B",
+    "textPrimary": "#0F0D0B",
+    "link": "#D6B88A"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Barlow",
+      "heading": "Barlow Condensed"
+    },
+    "fontStacks": {
+      "heading": [
+        "Bebas Neue",
+        "sans-serif"
+      ],
+      "body": [
+        "Barlow",
+        "sans-serif"
+      ],
+      "paragraph": [
+        "Barlow",
+        "sans-serif"
+      ]
+    },
+    "fontSizes": {
+      "h1": "128px",
+      "h2": "72px",
+      "body": "14px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 8,
+    "borderRadius": "0px"
+  },
+  "components": {
+    "buttonPrimary": {
+      "background": "#D6B88A",
+      "textColor": "#0F0D0B",
+      "borderRadius": "0px",
+      "borderRadiusCorners": {
+        "topLeft": "0px",
+        "topRight": "0px",
+        "bottomRight": "0px",
+        "bottomLeft": "0px"
+      },
+      "shadow": "none"
+    },
+    "buttonSecondary": {
+      "background": "#0F0D0B",
+      "textColor": "#EAE6E1",
+      "borderRadius": "0px",
+      "borderRadiusCorners": {
+        "topLeft": "0px",
+        "topRight": "0px",
+        "bottomRight": "0px",
+        "bottomLeft": "0px"
+      },
+      "shadow": "none"
+    }
+  },
+  "images": {
+    "logo": null,
+    "favicon": "https://rodrigoferraco.ocoliseu.com/favicon-coliseu.png",
+    "ogImage": "File saved at: attached_assets/ogImage.png"
+  },
+  "__llm_button_reasoning": {
+    "primary": {
+      "index": 0,
+      "text": "Garanta sua vaga no Coliseu",
+      "reasoning": "Button #0 has vibrant, action-oriented text ('Garanta sua vaga no Coliseu') and uses the accent color #D6B88A, which is a strong indicator of a primary CTA."
+    },
+    "secondary": {
+      "index": 2,
+      "text": "COLISEU",
+      "reasoning": "Button #2 has a different background color (#0F0D0B) and serves as a secondary option with less vibrant styling, making it suitable as a secondary button."
+    },
+    "confidence": 0.95
+  },
+  "personality": {
+    "tone": "modern",
+    "energy": "medium",
+    "targetAudience": "unknown"
+  },
+  "designSystem": {
+    "framework": "tailwind",
+    "componentLibrary": ""
+  },
+  "confidence": {
+    "buttons": 0.95,
+    "colors": 0.9,
+    "overall": 0.925
+  },
+  "__llm_metadata": {
+    "logoSelection": {
+      "llmCalled": false,
+      "llmSucceeded": false,
+      "finalSource": "none"
+    },
+    "buttonClassification": {
+      "llmCalled": true,
+      "llmSucceeded": true
+    }
+  }
+}
