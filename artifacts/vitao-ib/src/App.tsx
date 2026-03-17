@@ -602,9 +602,15 @@ export default function VitaoIBLP() {
               ))}
             </div>
 
-            <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 13.5, color: "rgba(255,255,255,0.55)", fontStyle: "italic", marginBottom: 24, lineHeight: 1.7 }}>
-              Nada de promessas irreais. Nada de sinal mágico.<br />
-              Se você quer operar com base e mentalidade profissional... bem-vindo à Arena do Mamute Trader BR.
+            <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 13.5, color: "rgba(255,255,255,0.55)", marginBottom: 8, lineHeight: 1.75 }}>
+              Há mais de 8 anos no mercado financeiro, construindo consistência, disciplina e leitura estratégica do mercado.
+            </p>
+            <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 13.5, color: "rgba(255,255,255,0.55)", marginBottom: 8, lineHeight: 1.75 }}>
+              Nada de promessas irreais, nada de sinal mágico. Aqui é estudo, método e execução.
+            </p>
+            <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 13.5, color: "rgba(255,255,255,0.55)", fontStyle: "italic", marginBottom: 24, lineHeight: 1.75 }}>
+              Transformamos experiência em direcionamento, disciplina em resultado.<br />
+              Bem-vindo ao grupo do Mamute Trader BR.
             </p>
 
             <WaButton label="Entre no meu grupo" />
