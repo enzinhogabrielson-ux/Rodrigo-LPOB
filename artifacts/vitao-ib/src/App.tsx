@@ -177,56 +177,115 @@ function OceanScene() {
     if (!ctx) return;
 
     canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight * 0.45;
+    canvas.height = window.innerHeight * 0.5;
 
     let time = 0;
 
-    const drawWave = (yOffset: number, amplitude: number, frequency: number, speed: number, color: string) => {
-      ctx.strokeStyle = color;
-      ctx.lineWidth = 2;
-      ctx.beginPath();
-
-      for (let x = 0; x <= canvas.width; x += 5) {
-        const y = yOffset + Math.sin((x * frequency + time * speed) / 100) * amplitude;
-        if (x === 0) ctx.moveTo(x, y);
-        else ctx.lineTo(x, y);
-      }
-
-      ctx.lineTo(canvas.width, canvas.height);
-      ctx.lineTo(0, canvas.height);
-      ctx.fillStyle = color.replace("1)", "0.15)").replace("0.8)", "0.1)");
-      ctx.fill();
-      ctx.stroke();
-    };
-
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      // Deep ocean gradient background
+    const drawWaveLayers = () => {
+      // Gradient background
       const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-      gradient.addColorStop(0, "#0A1F2E");
-      gradient.addColorStop(0.5, "#0D2E3A");
-      gradient.addColorStop(1, "#051119");
+      gradient.addColorStop(0, "#0A2540");
+      gradient.addColorStop(0.3, "#0D3550");
+      gradient.addColorStop(0.6, "#051530");
+      gradient.addColorStop(1, "#020813");
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Draw multiple waves with different speeds and amplitudes
-      drawWave(canvas.height * 0.4, 25, 0.015, 0.8, "rgba(0,217,255,0.8)");
-      drawWave(canvas.height * 0.5, 20, 0.012, 1.2, "rgba(0,150,200,0.6)");
-      drawWave(canvas.height * 0.65, 18, 0.01, 0.5, "rgba(0,100,150,0.4)");
-      drawWave(canvas.height * 0.75, 15, 0.008, 1.5, "rgba(0,80,120,0.3)");
+      // Wave 1: Large main wave
+      ctx.fillStyle = "rgba(0,217,255,0.15)";
+      ctx.beginPath();
+      ctx.moveTo(0, canvas.height * 0.35);
+      for (let x = 0; x <= canvas.width; x += 4) {
+        const y = canvas.height * 0.35 + 
+                  Math.sin((x * 0.008 + time * 0.03) * Math.PI / 100) * 45 +
+                  Math.sin((x * 0.004 + time * 0.02) * Math.PI / 100) * 25;
+        ctx.lineTo(x, y);
+      }
+      ctx.lineTo(canvas.width, canvas.height);
+      ctx.lineTo(0, canvas.height);
+      ctx.fill();
 
-      // Particle effects (bioluminescence)
-      for (let i = 0; i < 20; i++) {
-        const x = (Math.sin(time * 0.001 + i) * canvas.width) % canvas.width;
-        const y = (canvas.height * 0.3) + Math.cos(time * 0.0005 + i * 2) * canvas.height * 0.2;
-        const size = Math.sin(time * 0.002 + i) * 1.5 + 2;
-        ctx.fillStyle = `rgba(0,217,255,${0.3 + Math.sin(time * 0.003 + i) * 0.3})`;
+      // Wave 1 outline
+      ctx.strokeStyle = "rgba(0,217,255,0.8)";
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(0, canvas.height * 0.35);
+      for (let x = 0; x <= canvas.width; x += 4) {
+        const y = canvas.height * 0.35 + 
+                  Math.sin((x * 0.008 + time * 0.03) * Math.PI / 100) * 45 +
+                  Math.sin((x * 0.004 + time * 0.02) * Math.PI / 100) * 25;
+        ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+
+      // Wave 2: Medium wave
+      ctx.fillStyle = "rgba(0,180,220,0.12)";
+      ctx.beginPath();
+      ctx.moveTo(0, canvas.height * 0.48);
+      for (let x = 0; x <= canvas.width; x += 4) {
+        const y = canvas.height * 0.48 + 
+                  Math.sin((x * 0.006 + time * 0.025) * Math.PI / 100) * 35 +
+                  Math.sin((x * 0.003 + time * 0.018) * Math.PI / 100) * 18;
+        ctx.lineTo(x, y);
+      }
+      ctx.lineTo(canvas.width, canvas.height);
+      ctx.lineTo(0, canvas.height);
+      ctx.fill();
+
+      // Wave 2 outline
+      ctx.strokeStyle = "rgba(0,180,220,0.65)";
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      ctx.moveTo(0, canvas.height * 0.48);
+      for (let x = 0; x <= canvas.width; x += 4) {
+        const y = canvas.height * 0.48 + 
+                  Math.sin((x * 0.006 + time * 0.025) * Math.PI / 100) * 35 +
+                  Math.sin((x * 0.003 + time * 0.018) * Math.PI / 100) * 18;
+        ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+
+      // Wave 3: Deep wave
+      ctx.fillStyle = "rgba(0,150,180,0.1)";
+      ctx.beginPath();
+      ctx.moveTo(0, canvas.height * 0.62);
+      for (let x = 0; x <= canvas.width; x += 4) {
+        const y = canvas.height * 0.62 + 
+                  Math.sin((x * 0.005 + time * 0.02) * Math.PI / 100) * 28 +
+                  Math.sin((x * 0.0025 + time * 0.015) * Math.PI / 100) * 15;
+        ctx.lineTo(x, y);
+      }
+      ctx.lineTo(canvas.width, canvas.height);
+      ctx.lineTo(0, canvas.height);
+      ctx.fill();
+
+      // Wave 3 outline
+      ctx.strokeStyle = "rgba(0,150,180,0.5)";
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(0, canvas.height * 0.62);
+      for (let x = 0; x <= canvas.width; x += 4) {
+        const y = canvas.height * 0.62 + 
+                  Math.sin((x * 0.005 + time * 0.02) * Math.PI / 100) * 28 +
+                  Math.sin((x * 0.0025 + time * 0.015) * Math.PI / 100) * 15;
+        ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+
+      // Bioluminescent particles
+      ctx.fillStyle = "rgba(0,217,255,0.6)";
+      for (let i = 0; i < 30; i++) {
+        const x = (Math.sin(time * 0.0008 + i * 0.5) * canvas.width * 0.6 + canvas.width * 0.5) % canvas.width;
+        const y = canvas.height * 0.25 + Math.cos(time * 0.0005 + i * 0.3) * canvas.height * 0.25;
+        const size = Math.sin(time * 0.003 + i) * 1.5 + 2;
         ctx.beginPath();
         ctx.arc(x, y, size, 0, Math.PI * 2);
         ctx.fill();
       }
+    };
 
+    const animate = () => {
+      drawWaveLayers();
       time++;
       animationRef.current = requestAnimationFrame(animate);
     };
@@ -235,7 +294,7 @@ function OceanScene() {
 
     const handleResize = () => {
       canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight * 0.45;
+      canvas.height = window.innerHeight * 0.5;
     };
 
     window.addEventListener("resize", handleResize);
@@ -251,7 +310,7 @@ function OceanScene() {
       ref={canvasRef}
       style={{
         width: "100%",
-        height: "45vh",
+        height: "50vh",
         display: "block",
         backgroundColor: "#051119"
       }}
