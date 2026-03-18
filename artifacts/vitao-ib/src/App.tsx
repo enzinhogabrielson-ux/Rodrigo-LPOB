@@ -19,6 +19,7 @@ function useIsMobile(bp = 640) {
 
 function SharkIcon() {
   const [sharkX, setSharkX] = useState(0);
+  const [sharkY, setSharkY] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,7 +29,12 @@ function SharkIcon() {
       
       // Shark moves based on scroll percentage (0 to 100vw)
       const newX = percent * (window.innerWidth + 150) - 75;
+      
+      // Wave motion - vertical oscillation
+      const waveY = Math.sin(scrolled * 0.01) * 15;
+      
       setSharkX(newX);
+      setSharkY(waveY);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -39,14 +45,15 @@ function SharkIcon() {
     <div
       style={{
         position: "fixed",
-        bottom: 60,
+        bottom: 30,
         left: `${sharkX}px`,
+        top: `auto`,
+        transform: `translateY(${sharkY}px) ${sharkX > window.innerWidth / 2 ? "scaleX(1)" : "scaleX(-1)"}`,
         width: 140,
         height: 90,
         pointerEvents: "none",
         zIndex: 100,
-        filter: "drop-shadow(0 0 35px rgba(0,217,255,0.8))",
-        transform: sharkX > window.innerWidth / 2 ? "scaleX(1)" : "scaleX(-1)"
+        filter: "drop-shadow(0 0 35px rgba(0,217,255,0.8))"
       }}
     >
       <img
