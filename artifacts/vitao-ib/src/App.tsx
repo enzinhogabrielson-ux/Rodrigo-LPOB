@@ -19,12 +19,12 @@ function useIsMobile(bp = 640) {
 
 const CTA_LINK = "https://chat.whatsapp.com/DKnrtqBIwkU2ziUQDYOtJE";
 
-const BG_MAIN = "#0F0D0B";
-const BG_DARK = "#1A1713";
-const SAND = "#D6B88A";
-const SAND_D = "#C4A070";
-const ACCENT = "#D6B88A";
-const TEXT_M = "#A0A8BE";
+const BG_MAIN = "#0A0E1A";
+const BG_DARK = "#0D1628";
+const SAND = "#00D9FF";
+const SAND_D = "#0099CC";
+const ACCENT = "#00D9FF";
+const TEXT_M = "#A0B8D4";
 
 /* ─── COMPONENTS ─── */
 
@@ -44,7 +44,7 @@ function WaButton({ label = "Entre no meu grupo", style = {}, size = "md" }: {
         fontFamily: "'Plus Jakarta Sans',sans-serif",
         fontSize: lg ? 16 : 14, borderRadius: 999,
         textDecoration: "none", transition: "all 0.2s",
-        boxShadow: h ? "0 6px 28px rgba(214,184,138,0.38)" : "0 2px 14px rgba(214,184,138,0.22)",
+        boxShadow: h ? "0 6px 28px rgba(0,217,255,0.38)" : "0 2px 14px rgba(0,217,255,0.22)",
         transform: h ? "scale(1.03)" : "scale(1)", ...style
       }}>
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style={{ flexShrink: 0 }}>
@@ -100,7 +100,7 @@ function FloatingCoinCard({ coin, style = {} }: { coin: typeof COINS[0]; style?:
 function ProfitBadge({ value, style = {} }: { value: string; style?: React.CSSProperties }) {
   return (
     <div style={{
-      background: "rgba(20,16,10,0.82)", border: `1px solid rgba(214,184,138,0.55)`,
+      background: "rgba(20,16,10,0.82)", border: `1px solid rgba(0,217,255,0.55)`,
       borderRadius: 9, padding: "8px 15px",
       display: "inline-flex", alignItems: "center", gap: 7,
       fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 14, color: SAND,
@@ -135,7 +135,7 @@ function AvatarGroup({ count }: { count: string }) {
       </div>
       <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
         <span style={{
-          background: "rgba(214,184,138,0.15)", border: "1px solid rgba(214,184,138,0.35)",
+          background: "rgba(0,217,255,0.15)", border: "1px solid rgba(0,217,255,0.35)",
           borderRadius: 20, padding: "4px 12px",
           fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 13, color: SAND,
         }}>{count}</span>
@@ -250,11 +250,11 @@ function PillarItem({ icon, title, short, detail, open, onToggle }: {
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}
       style={{
-        background: open ? "rgba(214,184,138,0.08)" : hov ? "rgba(214,184,138,0.04)" : "rgba(255,255,255,0.02)",
-        border: `1px solid ${open ? "rgba(214,184,138,0.45)" : hov ? "rgba(214,184,138,0.22)" : "rgba(255,255,255,0.07)"}`,
+        background: open ? "rgba(0,217,255,0.08)" : hov ? "rgba(0,217,255,0.04)" : "rgba(255,255,255,0.02)",
+        border: `1px solid ${open ? "rgba(0,217,255,0.45)" : hov ? "rgba(0,217,255,0.22)" : "rgba(255,255,255,0.07)"}`,
         borderRadius: 12, padding: "14px 18px", cursor: "pointer",
         transition: "all 0.25s ease",
-        boxShadow: open ? "0 0 18px rgba(214,184,138,0.10)" : "none",
+        boxShadow: open ? "0 0 18px rgba(0,217,255,0.10)" : "none",
       }}
     >
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
@@ -280,7 +280,7 @@ function PillarItem({ icon, title, short, detail, open, onToggle }: {
       }}>
         <p style={{
           fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 13, color: "rgba(255,255,255,0.65)",
-          lineHeight: 1.7, paddingTop: 12, borderTop: "1px solid rgba(214,184,138,0.15)", marginTop: 12
+          lineHeight: 1.7, paddingTop: 12, borderTop: "1px solid rgba(0,217,255,0.15)", marginTop: 12
         }}>{detail}</p>
       </div>
     </div>
@@ -359,10 +359,10 @@ export default function VitaoIBLP() {
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Bebas+Neue&display=swap');
         *{box-sizing:border-box;margin:0;padding:0;}
         html,body{background:${BG_MAIN};font-family:'Plus Jakarta Sans',sans-serif;overflow-x:hidden;}
-        ::selection{background:rgba(214,184,138,.35);}
+        ::selection{background:rgba(0,217,255,.35);}
         ::-webkit-scrollbar{width:4px;}
         ::-webkit-scrollbar-track{background:${BG_MAIN};}
-        ::-webkit-scrollbar-thumb{background:rgba(214,184,138,.4);border-radius:2px;}
+        ::-webkit-scrollbar-thumb{background:rgba(0,217,255,.4);border-radius:2px;}
 
         @keyframes marquee{
           0%{transform:translateX(0)}
@@ -377,6 +377,7 @@ export default function VitaoIBLP() {
         @keyframes floatC{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
         @keyframes livePulse{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,.5)}70%{box-shadow:0 0 0 14px rgba(239,68,68,0)}}
         @keyframes gentleSway{0%,100%{transform:translateX(0) translateY(0)}25%{transform:translateX(-6px) translateY(-3px)}50%{transform:translateX(0) translateY(0)}75%{transform:translateX(6px) translateY(3px)}}
+        @keyframes wave{0%{background-position:0 0}100%{background-position:100px 0}}
 
         .ticker-track{animation:marquee 18s linear infinite}
         .ticker-track:hover{animation-play-state:paused}
@@ -464,7 +465,7 @@ export default function VitaoIBLP() {
         <div style={{ position: "absolute", inset: 0, zIndex: 3, background: "linear-gradient(180deg, rgba(4,12,8,0.35) 0%, transparent 30%, transparent 70%, rgba(4,12,8,0.5) 100%)" }} />
 
         {/* Sand ambient glow */}
-        <div style={{ position: "absolute", top: "10%", right: "25%", width: 500, height: 500, background: "radial-gradient(circle, rgba(214,184,138,.07) 0%, transparent 70%)", pointerEvents: "none" }} />
+        <div style={{ position: "absolute", top: "10%", right: "25%", width: 500, height: 500, background: "radial-gradient(circle, rgba(0,217,255,.07) 0%, transparent 70%)", pointerEvents: "none" }} />
 
         {/* Left fog — keeps left copy area more legible */}
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, rgba(4,4,12,0.85) 0%, rgba(4,4,12,0.70) 38%, rgba(4,4,12,0.1) 70%, rgba(4,4,12,0.4) 100%)" }} />
@@ -558,7 +559,7 @@ export default function VitaoIBLP() {
                 maxHeight: 680,
                 objectFit: "contain",
                 objectPosition: "bottom center",
-                filter: "drop-shadow(0 0 60px rgba(214,184,138,.18))",
+                filter: "drop-shadow(0 0 60px rgba(0,217,255,.18))",
                 pointerEvents: "none",
                 userSelect: "none",
                 position: "relative", zIndex: 2,
@@ -570,7 +571,7 @@ export default function VitaoIBLP() {
             <div className="flt" style={{
               position: "absolute", left: "8%", top: "46%", zIndex: 10,
               background: "rgba(20,16,10,0.72)", backdropFilter: "blur(16px)",
-              border: "1px solid rgba(214,184,138,0.35)",
+              border: "1px solid rgba(0,217,255,0.35)",
               borderRadius: 14, padding: "12px 18px",
               display: "flex", flexDirection: "column", gap: 4,
               whiteSpace: "nowrap"
@@ -691,18 +692,18 @@ export default function VitaoIBLP() {
         {/* Same hero-bg image */}
         <div style={{ position: "absolute", inset: 0, backgroundImage: "url('/hero-bg.png')", backgroundSize: "cover", backgroundPosition: "center", zIndex: 0 }} />
         {/* Gold-to-dark overlay matching hero */}
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(160deg, rgba(214,184,138,0.35) 0%, rgba(15,13,11,0.92) 100%)", zIndex: 1 }} />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(160deg, rgba(0,217,255,0.25) 0%, rgba(10,14,26,0.92) 100%)", zIndex: 1 }} />
 
         <div style={{ maxWidth: 400, margin: "0 auto", position: "relative", zIndex: 2 }}>
           <div className="cta-card" style={{
-            background: "linear-gradient(150deg,rgba(20,16,10,0.88) 0%,rgba(30,24,14,0.92) 50%,rgba(20,16,10,0.88) 100%)",
-            border: "1.5px solid rgba(214,184,138,.35)", borderRadius: 24,
+            background: "linear-gradient(150deg,rgba(13,22,40,0.88) 0%,rgba(20,35,60,0.92) 50%,rgba(13,22,40,0.88) 100%)",
+            border: "1.5px solid rgba(0,217,255,.35)", borderRadius: 24,
             padding: "52px 36px 44px", textAlign: "center", position: "relative", overflow: "hidden",
-            boxShadow: "0 0 60px rgba(214,184,138,.12), inset 0 1px 0 rgba(255,255,255,.06)",
+            boxShadow: "0 0 60px rgba(0,217,255,.12), inset 0 1px 0 rgba(255,255,255,.06)",
             backdropFilter: "blur(12px)"
           }}>
-            {/* Gold glow top */}
-            <div style={{ position: "absolute", top: -80, left: "50%", transform: "translateX(-50%)", width: 320, height: 200, background: "radial-gradient(ellipse, rgba(214,184,138,.18), transparent 70%)", pointerEvents: "none" }} />
+            {/* Cyan glow top */}
+            <div style={{ position: "absolute", top: -80, left: "50%", transform: "translateX(-50%)", width: 320, height: 200, background: "radial-gradient(ellipse, rgba(0,217,255,.22), transparent 70%)", pointerEvents: "none" }} />
 
             {/* LIVE badge — red circle with LIVE text + play icon */}
             <div style={{ display: "flex", justifyContent: "center", marginBottom: 24, position: "relative", zIndex: 1 }}>
@@ -744,7 +745,7 @@ export default function VitaoIBLP() {
       {/* ──── FOOTER ──── */}
       <footer className="footer-main" style={{ background: BG_DARK, borderTop: "1px solid rgba(255,255,255,.04)", padding: "28px 52px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 3 }}>
-          <div style={{ width: 34, height: 34, borderRadius: 9, background: "rgba(214,184,138,.15)", border: "1.5px solid rgba(214,184,138,.5)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <div style={{ width: 34, height: 34, borderRadius: 9, background: "rgba(0,217,255,.15)", border: "1.5px solid rgba(0,217,255,.5)", display: "flex", alignItems: "center", justifyContent: "center" }}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
               <path d="M12 2 L12 22 M7 5 L12 2 L17 5 M7 19 L12 22 L17 19 M4 9 L7 7 M20 9 L17 7 M4 15 L7 17 M20 15 L17 17" stroke="#D6B88A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
@@ -773,7 +774,7 @@ export default function VitaoIBLP() {
             style={{
               maxHeight: "90vh", maxWidth: "90vw",
               borderRadius: 20,
-              border: "1px solid rgba(214,184,138,.35)",
+              border: "1px solid rgba(0,217,255,.35)",
               objectFit: "contain",
               boxShadow: "0 32px 80px rgba(0,0,0,0.7)"
             }}

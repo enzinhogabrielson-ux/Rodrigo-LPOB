@@ -1,16 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <!-- Gold circle background -->
-  <circle cx="32" cy="32" r="32" fill="#D6B88A"/>
+  <!-- Cyan circle background -->
+  <circle cx="32" cy="32" r="32" fill="#00D9FF"/>
 
-  <!-- Trading chart icon (upward trend) -->
-  <path d="M 16 42 L 28 28 L 38 35 L 48 18" stroke="#0F0D0B" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Ocean wave pattern -->
+  <g opacity="0.9">
+    <path d="M 0 32 Q 8 28 16 32 T 32 32 T 48 32 T 64 32" stroke="#0A0E1A" stroke-width="2" fill="none"/>
+    <path d="M 0 40 Q 8 36 16 40 T 32 40 T 48 40 T 64 40" stroke="#0A0E1A" stroke-width="2" fill="none"/>
+    <path d="M 0 48 Q 8 44 16 48 T 32 48 T 48 48 T 64 48" stroke="#0A0E1A" stroke-width="2" fill="none"/>
+  </g>
   
-  <!-- Small circle markers on chart line -->
-  <circle cx="16" cy="42" r="2.5" fill="#0F0D0B"/>
-  <circle cx="28" cy="28" r="2.5" fill="#0F0D0B"/>
-  <circle cx="38" cy="35" r="2.5" fill="#0F0D0B"/>
-  <circle cx="48" cy="18" r="2.5" fill="#0F0D0B"/>
-  
-  <!-- Horizontal axis line -->
-  <line x1="12" y1="48" x2="52" y2="48" stroke="#0F0D0B" stroke-width="2" stroke-linecap="round"/>
+  <!-- Fish or water drop symbol -->
+  <g fill="#0A0E1A" transform="translate(32, 20)">
+    <ellipse cx="0" cy="0" rx="6" ry="8"/>
+    <path d="M 6 0 L 12 -4 L 12 4 Z"/>
+  </g>
 </svg>
