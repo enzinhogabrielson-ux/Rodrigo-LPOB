@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, type ReactNode } from "react";
 import "./about-mobile.css";
-import rodrigoPhoto from "@assets/rodrigo-new.png";
+import rodrigoPhoto from "@assets/rodrigo-final.png";
 
 const RODRIGO_PHOTO = "https://rodrigoferraco.ocoliseu.com/assets/Rodrigo_Ferra%C3%A7o_(2)_1773249785897-BjdD8Li-.jpg";
 const aboutPhoto = RODRIGO_PHOTO;
