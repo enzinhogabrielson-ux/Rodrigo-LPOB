@@ -58,8 +58,7 @@ function SharkTracker() {
         style={{
           width: "100%",
           height: "100%",
-          objectFit: "contain",
-          filter: "hue-rotate(180deg) saturate(1.5) brightness(1.2)"
+          objectFit: "contain"
         }}
       />
     </div>
