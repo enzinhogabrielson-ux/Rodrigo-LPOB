@@ -63,6 +63,8 @@ function WaterBar() {
 function SharkTracker() {
   const [sharkX, setSharkX] = useState(0);
   const [scrollPercent, setScrollPercent] = useState(0);
+  const [sharkY, setSharkY] = useState(0);
+  const [bubbles, setBubbles] = useState<Array<{id: number; x: number; y: number; size: number; duration: number}>>([]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -70,45 +72,190 @@ function SharkTracker() {
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       const percent = docHeight > 0 ? (scrolled / docHeight) : 0;
       const newX = percent * (window.innerWidth + 200) - 100;
+      const oscillation = Math.sin(Date.now() / 800) * 12;
       
       setSharkX(newX);
       setScrollPercent(percent);
+      setSharkY(oscillation);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (scrollPercent > 0.02) {
+      const interval = setInterval(() => {
+        const newBubble = {
+          id: Date.now(),
+          x: (Math.random() - 0.5) * 80,
+          y: (Math.random() - 0.5) * 60 + 20,
+          size: Math.random() * 6 + 3,
+          duration: Math.random() * 1000 + 1500
+        };
+        setBubbles(prev => [...prev.slice(-4), newBubble]);
+      }, 300);
+      return () => clearInterval(interval);
+    }
+  }, [scrollPercent]);
+
   const isInWater = scrollPercent > 0.05;
 
   return (
-    <div style={{
-      position: "fixed",
-      left: `${sharkX}px`,
-      top: `${isInWater ? 3 : 120}px`,
-      width: 140,
-      height: 90,
-      pointerEvents: "none",
-      zIndex: isInWater ? 999 : 998,
-      opacity: scrollPercent > 0.02 ? 1 : 0,
-      transition: "opacity 0.3s ease, top 0.2s ease",
-      filter: "drop-shadow(0 0 30px rgba(0,217,255,0.9))",
-      transform: sharkX > 0 ? "scaleX(1)" : "scaleX(-1)",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center"
-    }}>
-      <img 
-        src="/shark.png" 
-        alt="Shark" 
-        style={{
-          width: "100%",
-          height: "100%",
-          display: "block",
-          imageRendering: "crisp-edges"
-        }}
-      />
-    </div>
+    <>
+      <div style={{
+        position: "fixed",
+        left: `${sharkX}px`,
+        top: `${isInWater ? 3 + sharkY : 120}px`,
+        width: 140,
+        height: 90,
+        pointerEvents: "none",
+        zIndex: isInWater ? 999 : 998,
+        opacity: scrollPercent > 0.02 ? 1 : 0,
+        transition: "opacity 0.3s ease",
+        filter: "drop-shadow(0 0 40px rgba(0,217,255,1)) drop-shadow(0 0 20px rgba(0,200,255,0.6))",
+        transform: sharkX > 0 ? "scaleX(1)" : "scaleX(-1)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center"
+      }}>
+        <img 
+          src="/shark.png" 
+          alt="Shark" 
+          style={{
+            width: "100%",
+            height: "100%",
+            display: "block",
+            imageRendering: "crisp-edges",
+            filter: "brightness(1.1) drop-shadow(0 0 15px rgba(0,217,255,0.7))"
+          }}
+        />
+        {/* Bubbles */}
+        {bubbles.map(bubble => (
+          <div
+            key={bubble.id}
+            style={{
+              position: "absolute",
+              left: bubble.x + 70,
+              top: bubble.y + 45,
+              width: bubble.size,
+              height: bubble.size,
+              borderRadius: "50%",
+              border: "1.5px solid rgba(0,217,255,0.6)",
+              pointerEvents: "none",
+              animation: `bubble-rise ${bubble.duration}ms ease-in forwards`,
+              opacity: 0.7
+            }}
+          />
+        ))}
+      </div>
+      <style>{`
+        @keyframes bubble-rise {
+          0% {
+            transform: translateY(0) scale(1);
+            opacity: 0.7;
+          }
+          100% {
+            transform: translateY(-120px) scale(0.6);
+            opacity: 0;
+          }
+        }
+      `}</style>
+    </>
+  );
+}
+
+function OceanScene() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const animationRef = useRef<number>();
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight * 0.45;
+
+    let time = 0;
+
+    const drawWave = (yOffset: number, amplitude: number, frequency: number, speed: number, color: string) => {
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+
+      for (let x = 0; x <= canvas.width; x += 5) {
+        const y = yOffset + Math.sin((x * frequency + time * speed) / 100) * amplitude;
+        if (x === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+
+      ctx.lineTo(canvas.width, canvas.height);
+      ctx.lineTo(0, canvas.height);
+      ctx.fillStyle = color.replace("1)", "0.15)").replace("0.8)", "0.1)");
+      ctx.fill();
+      ctx.stroke();
+    };
+
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Deep ocean gradient background
+      const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+      gradient.addColorStop(0, "#0A1F2E");
+      gradient.addColorStop(0.5, "#0D2E3A");
+      gradient.addColorStop(1, "#051119");
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Draw multiple waves with different speeds and amplitudes
+      drawWave(canvas.height * 0.4, 25, 0.015, 0.8, "rgba(0,217,255,0.8)");
+      drawWave(canvas.height * 0.5, 20, 0.012, 1.2, "rgba(0,150,200,0.6)");
+      drawWave(canvas.height * 0.65, 18, 0.01, 0.5, "rgba(0,100,150,0.4)");
+      drawWave(canvas.height * 0.75, 15, 0.008, 1.5, "rgba(0,80,120,0.3)");
+
+      // Particle effects (bioluminescence)
+      for (let i = 0; i < 20; i++) {
+        const x = (Math.sin(time * 0.001 + i) * canvas.width) % canvas.width;
+        const y = (canvas.height * 0.3) + Math.cos(time * 0.0005 + i * 2) * canvas.height * 0.2;
+        const size = Math.sin(time * 0.002 + i) * 1.5 + 2;
+        ctx.fillStyle = `rgba(0,217,255,${0.3 + Math.sin(time * 0.003 + i) * 0.3})`;
+        ctx.beginPath();
+        ctx.arc(x, y, size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      time++;
+      animationRef.current = requestAnimationFrame(animate);
+    };
+
+    animate();
+
+    const handleResize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight * 0.45;
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      if (animationRef.current) cancelAnimationFrame(animationRef.current);
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      style={{
+        width: "100%",
+        height: "45vh",
+        display: "block",
+        backgroundColor: "#051119"
+      }}
+    />
   );
 }
 
@@ -842,6 +989,11 @@ export default function VitaoIBLP() {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* ──── OCEAN SCENE ──── */}
+      <section style={{ width: "100%", overflow: "hidden" }}>
+        <OceanScene />
       </section>
 
       {/* ──── FOOTER ──── */}
