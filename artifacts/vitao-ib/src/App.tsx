@@ -39,7 +39,7 @@ function WaterBar() {
       left: 0,
       width: "100%",
       height: 30,
-      background: "transparent",
+      backgroundColor: "transparent",
       borderBottom: "1px solid rgba(0,217,255,0.25)",
       zIndex: 998,
       pointerEvents: "none",
@@ -52,7 +52,7 @@ function WaterBar() {
         left: 0,
         width: "100%",
         height: "100%",
-        background: `linear-gradient(90deg, transparent, rgba(0,217,255,0.15), transparent)`,
+        backgroundImage: `linear-gradient(90deg, transparent, rgba(0,217,255,0.15), transparent)`,
         backgroundSize: "200px 100%",
         animation: "wave 4s linear infinite"
       }} />
