@@ -22,14 +22,14 @@ function SharkIcon() {
     <div
       style={{
         position: "fixed",
-        bottom: 40,
-        right: 40,
-        width: 80,
-        height: 80,
+        bottom: 60,
+        left: 0,
+        width: 100,
+        height: 70,
         pointerEvents: "none",
         zIndex: 100,
-        filter: "drop-shadow(0 0 30px rgba(0,217,255,0.6))",
-        animation: "float 3s ease-in-out infinite"
+        filter: "drop-shadow(0 0 35px rgba(0,217,255,0.8))",
+        animation: "swim 15s linear infinite"
       }}
     >
       <img
@@ -39,7 +39,7 @@ function SharkIcon() {
           width: "100%",
           height: "100%",
           display: "block",
-          filter: "brightness(1.15) drop-shadow(0 0 15px rgba(0,217,255,0.7))"
+          filter: "brightness(1.2) drop-shadow(0 0 20px rgba(0,217,255,0.8))"
         }}
       />
     </div>
@@ -407,9 +407,11 @@ export default function VitaoIBLP() {
         @keyframes floatC{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
         @keyframes livePulse{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,.5)}70%{box-shadow:0 0 0 14px rgba(239,68,68,0)}}
         @keyframes gentleSway{0%,100%{transform:translateX(0) translateY(0)}25%{transform:translateX(-6px) translateY(-3px)}50%{transform:translateX(0) translateY(0)}75%{transform:translateX(6px) translateY(3px)}}
-        @keyframes float{
-          0%,100%{transform:translateY(0)}
-          50%{transform:translateY(-15px)}
+        @keyframes swim{
+          0%{left:-120px;transform:scaleX(-1)}
+          50%{transform:scaleX(-1)}
+          50.1%{transform:scaleX(1)}
+          100%{left:calc(100vw);transform:scaleX(1)}
         }
         @keyframes wave{
           0%{background-position:0 0}
