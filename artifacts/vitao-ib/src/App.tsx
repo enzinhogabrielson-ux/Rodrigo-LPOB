@@ -38,22 +38,21 @@ function WaterBar() {
       top: 0,
       left: 0,
       width: "100%",
-      height: 80,
-      background: "linear-gradient(180deg, rgba(0,217,255,0.15) 0%, rgba(0,217,255,0.05) 100%)",
-      borderBottom: "2px solid rgba(0,217,255,0.4)",
+      height: 30,
+      background: "transparent",
+      borderBottom: "1px solid rgba(0,217,255,0.25)",
       zIndex: 998,
       pointerEvents: "none",
-      backdropFilter: "blur(4px)",
       overflow: "hidden"
     }}>
-      {/* Animated wave effect */}
+      {/* Subtle animated wave effect */}
       <div style={{
         position: "absolute",
         bottom: 0,
         left: 0,
         width: "100%",
-        height: "60%",
-        background: `linear-gradient(90deg, transparent, rgba(0,217,255,0.3), transparent)`,
+        height: "100%",
+        background: `linear-gradient(90deg, transparent, rgba(0,217,255,0.15), transparent)`,
         backgroundSize: "200px 100%",
         animation: "wave 4s linear infinite"
       }} />
@@ -86,7 +85,7 @@ function SharkTracker() {
     <div style={{
       position: "fixed",
       left: `${sharkX}px`,
-      top: `${isInWater ? 20 : 100}px`,
+      top: `${isInWater ? 0 : 100}px`,
       width: 120,
       height: 80,
       pointerEvents: "none",
