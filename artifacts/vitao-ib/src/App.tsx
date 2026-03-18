@@ -17,21 +17,15 @@ function useIsMobile(bp = 640) {
   return m;
 }
 
-function SharkTracker() {
-  const [sharkX, setSharkX] = useState(0);
-  const [sharkY, setSharkY] = useState(0);
-  const [visible, setVisible] = useState(false);
+function WaterBar() {
+  const [scrollPercent, setScrollPercent] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrolled = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPercent = docHeight > 0 ? (scrolled / docHeight) : 0;
-      const newX = scrollPercent * (window.innerWidth + 200) - 100;
-      
-      setSharkX(newX);
-      setSharkY(100 + Math.sin(scrollPercent * Math.PI * 4) * 30);
-      setVisible(true);
+      const scrolled = window.scrollY;
+      const percent = docHeight > 0 ? (scrolled / docHeight) * 100 : 0;
+      setScrollPercent(percent);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -41,14 +35,64 @@ function SharkTracker() {
   return (
     <div style={{
       position: "fixed",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: 80,
+      background: "linear-gradient(180deg, rgba(0,217,255,0.15) 0%, rgba(0,217,255,0.05) 100%)",
+      borderBottom: "2px solid rgba(0,217,255,0.4)",
+      zIndex: 998,
+      pointerEvents: "none",
+      backdropFilter: "blur(4px)",
+      overflow: "hidden"
+    }}>
+      {/* Animated wave effect */}
+      <div style={{
+        position: "absolute",
+        bottom: 0,
+        left: 0,
+        width: "100%",
+        height: "60%",
+        background: `linear-gradient(90deg, transparent, rgba(0,217,255,0.3), transparent)`,
+        backgroundSize: "200px 100%",
+        animation: "wave 4s linear infinite"
+      }} />
+    </div>
+  );
+}
+
+function SharkTracker() {
+  const [sharkX, setSharkX] = useState(0);
+  const [scrollPercent, setScrollPercent] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrolled = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const percent = docHeight > 0 ? (scrolled / docHeight) : 0;
+      const newX = percent * (window.innerWidth + 200) - 100;
+      
+      setSharkX(newX);
+      setScrollPercent(percent);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const isInWater = scrollPercent > 0.05;
+
+  return (
+    <div style={{
+      position: "fixed",
       left: `${sharkX}px`,
-      top: `${sharkY}px`,
+      top: `${isInWater ? 20 : 100}px`,
       width: 120,
       height: 80,
       pointerEvents: "none",
-      zIndex: 999,
-      opacity: visible ? 0.9 : 0,
-      transition: "opacity 0.3s ease",
+      zIndex: isInWater ? 999 : 998,
+      opacity: scrollPercent > 0.02 ? 0.9 : 0,
+      transition: "opacity 0.3s ease, top 0.2s ease",
       filter: "drop-shadow(0 0 25px rgba(0,217,255,0.8))",
       transform: sharkX > 0 ? "scaleX(1)" : "scaleX(-1)"
     }}>
@@ -403,6 +447,7 @@ export default function VitaoIBLP() {
 
   return (
     <div style={{ background: BG_MAIN, minHeight: "100vh", color: "#fff", overflowX: "hidden" }}>
+      <WaterBar />
       <SharkTracker />
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Bebas+Neue&display=swap');
@@ -426,7 +471,11 @@ export default function VitaoIBLP() {
         @keyframes floatC{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
         @keyframes livePulse{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,.5)}70%{box-shadow:0 0 0 14px rgba(239,68,68,0)}}
         @keyframes gentleSway{0%,100%{transform:translateX(0) translateY(0)}25%{transform:translateX(-6px) translateY(-3px)}50%{transform:translateX(0) translateY(0)}75%{transform:translateX(6px) translateY(3px)}}
-        @keyframes wave{0%{background-position:0 0}100%{background-position:100px 0}}
+        @keyframes wave{
+          0%{background-position:0 0}
+          50%{background-position:100px 0}
+          100%{background-position:200px 0}
+        }
 
         .ticker-track{animation:marquee 18s linear infinite}
         .ticker-track:hover{animation-play-state:paused}
