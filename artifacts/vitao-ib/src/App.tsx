@@ -85,9 +85,9 @@ function SharkTracker() {
     <div style={{
       position: "fixed",
       left: `${sharkX}px`,
-      top: `${isInWater ? 0 : 100}px`,
-      width: 120,
-      height: 80,
+      top: `${isInWater ? -5 : 100}px`,
+      width: 60,
+      height: 40,
       pointerEvents: "none",
       zIndex: isInWater ? 999 : 998,
       opacity: scrollPercent > 0.02 ? 0.9 : 0,
