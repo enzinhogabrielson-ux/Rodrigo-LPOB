@@ -17,93 +17,31 @@ function useIsMobile(bp = 640) {
   return m;
 }
 
-function SharkScroll() {
-  const [sharkX, setSharkX] = useState(0);
-  const [sharkY, setSharkY] = useState(0);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrolled = window.scrollY;
-      const percent = docHeight > 0 ? (scrolled / docHeight) : 0;
-      
-      // Shark moves horizontally based on scroll
-      const newX = percent * (window.innerWidth + 100) - 50;
-      // Vertical wave motion
-      const oscillation = Math.sin(scrolled * 0.015) * 20;
-      
-      setSharkX(newX);
-      setSharkY(oscillation);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
+function SharkIcon() {
   return (
-    <div 
-      ref={containerRef}
+    <div
       style={{
-        position: "relative",
-        width: "100%",
-        height: 200,
-        overflow: "hidden",
-        background: "linear-gradient(180deg, rgba(10,14,26,0) 0%, rgba(10,14,26,0.3) 100%)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        borderTop: "1px solid rgba(0,217,255,0.1)"
+        position: "fixed",
+        bottom: 40,
+        right: 40,
+        width: 80,
+        height: 80,
+        pointerEvents: "none",
+        zIndex: 100,
+        filter: "drop-shadow(0 0 30px rgba(0,217,255,0.6))",
+        animation: "float 3s ease-in-out infinite"
       }}
     >
-      <div
+      <img
+        src="/shark.png"
+        alt="Shark"
         style={{
-          position: "absolute",
-          left: `${sharkX}px`,
-          top: `${100 + sharkY}px`,
-          width: 180,
-          height: 120,
-          pointerEvents: "none",
-          filter: "drop-shadow(0 0 40px rgba(0,217,255,0.7))",
-          transform: sharkX > window.innerWidth / 2 ? "scaleX(1)" : "scaleX(-1)",
-          transition: "filter 0.3s ease"
-        }}
-      >
-        <img
-          src="/shark.png"
-          alt="Shark"
-          style={{
-            width: "100%",
-            height: "100%",
-            display: "block",
-            filter: "brightness(1.2) drop-shadow(0 0 20px rgba(0,217,255,0.6))"
-          }}
-        />
-      </div>
-
-      {/* Subtle wave background */}
-      <svg
-        style={{
-          position: "absolute",
-          bottom: 0,
-          left: 0,
           width: "100%",
           height: "100%",
-          opacity: 0.3,
-          pointerEvents: "none"
+          display: "block",
+          filter: "brightness(1.15) drop-shadow(0 0 15px rgba(0,217,255,0.7))"
         }}
-        viewBox="0 0 1200 100"
-        preserveAspectRatio="none"
-      >
-        <path
-          d="M0,50 Q300,10 600,50 T1200,50 L1200,100 L0,100 Z"
-          fill="rgba(0,217,255,0.05)"
-        />
-        <path
-          d="M0,60 Q300,30 600,60 T1200,60 L1200,100 L0,100 Z"
-          fill="rgba(0,217,255,0.03)"
-        />
-      </svg>
+      />
     </div>
   );
 }
@@ -469,6 +407,10 @@ export default function VitaoIBLP() {
         @keyframes floatC{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
         @keyframes livePulse{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,.5)}70%{box-shadow:0 0 0 14px rgba(239,68,68,0)}}
         @keyframes gentleSway{0%,100%{transform:translateX(0) translateY(0)}25%{transform:translateX(-6px) translateY(-3px)}50%{transform:translateX(0) translateY(0)}75%{transform:translateX(6px) translateY(3px)}}
+        @keyframes float{
+          0%,100%{transform:translateY(0)}
+          50%{transform:translateY(-15px)}
+        }
         @keyframes wave{
           0%{background-position:0 0}
           50%{background-position:100px 0}
@@ -839,9 +781,6 @@ export default function VitaoIBLP() {
         </div>
       </section>
 
-      {/* ──── SHARK SCROLL SECTION ──── */}
-      <SharkScroll />
-
       {/* ──── FOOTER ──── */}
       <footer className="footer-main" style={{ background: BG_DARK, borderTop: "1px solid rgba(255,255,255,.04)", padding: "28px 52px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 3 }}>
@@ -856,6 +795,9 @@ export default function VitaoIBLP() {
         </p>
         <div style={{ width: 44 }} />
       </footer>
+
+      {/* ──── SHARK ICON ──── */}
+      <SharkIcon />
 
       {/* ──── LIGHTBOX ──── */}
       {lightbox && (
