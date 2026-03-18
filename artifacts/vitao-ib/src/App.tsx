@@ -18,18 +18,35 @@ function useIsMobile(bp = 640) {
 }
 
 function SharkIcon() {
+  const [sharkX, setSharkX] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrolled = window.scrollY;
+      const percent = docHeight > 0 ? (scrolled / docHeight) : 0;
+      
+      // Shark moves based on scroll percentage (0 to 100vw)
+      const newX = percent * (window.innerWidth + 150) - 75;
+      setSharkX(newX);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div
       style={{
         position: "fixed",
         bottom: 60,
-        left: 0,
-        width: 100,
-        height: 70,
+        left: `${sharkX}px`,
+        width: 140,
+        height: 90,
         pointerEvents: "none",
         zIndex: 100,
         filter: "drop-shadow(0 0 35px rgba(0,217,255,0.8))",
-        animation: "swim 15s linear infinite"
+        transform: sharkX > window.innerWidth / 2 ? "scaleX(1)" : "scaleX(-1)"
       }}
     >
       <img
@@ -39,6 +56,7 @@ function SharkIcon() {
           width: "100%",
           height: "100%",
           display: "block",
+          objectFit: "contain",
           filter: "brightness(1.2) drop-shadow(0 0 20px rgba(0,217,255,0.8))"
         }}
       />
@@ -407,12 +425,6 @@ export default function VitaoIBLP() {
         @keyframes floatC{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
         @keyframes livePulse{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,.5)}70%{box-shadow:0 0 0 14px rgba(239,68,68,0)}}
         @keyframes gentleSway{0%,100%{transform:translateX(0) translateY(0)}25%{transform:translateX(-6px) translateY(-3px)}50%{transform:translateX(0) translateY(0)}75%{transform:translateX(6px) translateY(3px)}}
-        @keyframes swim{
-          0%{left:-120px;transform:scaleX(-1)}
-          50%{transform:scaleX(-1)}
-          50.1%{transform:scaleX(1)}
-          100%{left:calc(100vw);transform:scaleX(1)}
-        }
         @keyframes wave{
           0%{background-position:0 0}
           50%{background-position:100px 0}
