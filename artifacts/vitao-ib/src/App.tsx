@@ -85,15 +85,18 @@ function SharkTracker() {
     <div style={{
       position: "fixed",
       left: `${sharkX}px`,
-      top: `${isInWater ? -5 : 100}px`,
-      width: 60,
-      height: 40,
+      top: `${isInWater ? 3 : 120}px`,
+      width: 140,
+      height: 90,
       pointerEvents: "none",
       zIndex: isInWater ? 999 : 998,
-      opacity: scrollPercent > 0.02 ? 0.9 : 0,
+      opacity: scrollPercent > 0.02 ? 1 : 0,
       transition: "opacity 0.3s ease, top 0.2s ease",
-      filter: "drop-shadow(0 0 25px rgba(0,217,255,0.8))",
-      transform: sharkX > 0 ? "scaleX(1)" : "scaleX(-1)"
+      filter: "drop-shadow(0 0 30px rgba(0,217,255,0.9))",
+      transform: sharkX > 0 ? "scaleX(1)" : "scaleX(-1)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center"
     }}>
       <img 
         src="/shark.png" 
@@ -101,7 +104,8 @@ function SharkTracker() {
         style={{
           width: "100%",
           height: "100%",
-          objectFit: "contain"
+          display: "block",
+          imageRendering: "crisp-edges"
         }}
       />
     </div>
