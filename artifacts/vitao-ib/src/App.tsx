@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, type ReactNode } from "react";
-import traderPhoto from "@assets/trader.png";
 import "./about-mobile.css";
+import rodrigoPhoto from "@assets/rodrigo-new.png";
 
 const RODRIGO_PHOTO = "https://rodrigoferraco.ocoliseu.com/assets/Rodrigo_Ferra%C3%A7o_(2)_1773249785897-BjdD8Li-.jpg";
 const aboutPhoto = RODRIGO_PHOTO;
@@ -552,7 +552,8 @@ export default function VitaoIBLP() {
 
             {/* Trader photo */}
             <img
-              src={traderPhoto}
+              key="rodrigo-photo"
+              src={rodrigoPhoto}
               alt="Rodrigo Ferraço - Especialista em Trading Institucional"
               style={{
                 height: "100%",
