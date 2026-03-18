@@ -43,34 +43,24 @@ function SharkTracker() {
       position: "fixed",
       left: `${sharkX}px`,
       top: `${sharkY}px`,
-      width: 80,
+      width: 120,
       height: 80,
       pointerEvents: "none",
       zIndex: 999,
-      opacity: visible ? 0.8 : 0,
+      opacity: visible ? 0.9 : 0,
       transition: "opacity 0.3s ease",
-      filter: "drop-shadow(0 0 20px rgba(0,217,255,0.6))"
+      filter: "drop-shadow(0 0 25px rgba(0,217,255,0.8))",
+      transform: sharkX > 0 ? "scaleX(1)" : "scaleX(-1)"
     }}>
-      <svg viewBox="0 0 100 100" width="100%" height="100%" style={{ transform: sharkX > 0 ? "scaleX(1)" : "scaleX(-1)" }}>
-        {/* Shark body */}
-        <ellipse cx="50" cy="50" rx="35" ry="28" fill="url(#sharkGrad)" />
-        {/* Shark head */}
-        <polygon points="85,50 95,45 95,55" fill="url(#sharkGrad)" />
-        {/* Dorsal fin */}
-        <polygon points="50,20 45,5 55,5" fill="#00D9FF" />
-        {/* Side fin */}
-        <polygon points="65,55 75,60 70,70" fill="#0099CC" />
-        {/* Eye */}
-        <circle cx="75" cy="43" r="4" fill="#fff" />
-        {/* Glow effect */}
-        <circle cx="50" cy="50" r="40" fill="none" stroke="rgba(0,217,255,0.3)" strokeWidth="1" />
-        <defs>
-          <linearGradient id="sharkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style={{ stopColor: "#00D9FF", stopOpacity: 0.9 }} />
-            <stop offset="100%" style={{ stopColor: "#0099CC", stopOpacity: 0.8 }} />
-          </linearGradient>
-        </defs>
-      </svg>
+      <img 
+        src="/shark.png" 
+        alt="Shark" 
+        style={{
+          width: "100%",
+          height: "100%",
+          objectFit: "contain"
+        }}
+      />
     </div>
   );
 }
