@@ -9,12 +9,13 @@
     max-width: 100% !important;
   }
   .about-photo {
-    width: 100vw !important;
+    width: calc(100% + 40px) !important;
     max-width: 100vw !important;
     aspect-ratio: 1 / 1 !important;
     border-radius: 0 !important;
     flex: none !important;
     margin-left: -20px !important;
+    margin-right: -20px !important;
   }
   .about-copy {
     padding: 32px 20px 0 !important;
