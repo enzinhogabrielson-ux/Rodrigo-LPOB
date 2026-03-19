@@ -201,7 +201,7 @@ function AvatarGroup({ count }: { count: string }) {
 }
 
 function VideoCard({ idx }: { idx: number }) {
-  const depoImages = ["/depo1.webp", "/depo2.webp", "/depo3.webp"];
+  const depoImages = ["/depo1.png", "/depo2.png", "/depo3.png", "/depo4.png"];
   const src = depoImages[idx % depoImages.length];
   return (
     <div style={{
