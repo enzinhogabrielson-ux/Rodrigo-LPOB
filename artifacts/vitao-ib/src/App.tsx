@@ -207,36 +207,13 @@ function VideoCard({ idx }: { idx: number }) {
     <div style={{
       borderRadius: 20, overflow: "hidden", background: "#111",
       border: "1px solid rgba(255,255,255,0.10)",
-      width: "100%", maxWidth: 300, aspectRatio: "9/16",
+      width: "100%", maxWidth: 340, aspectRatio: "auto",
       position: "relative", flexShrink: 0, margin: "0 auto",
-      boxShadow: "0 24px 64px rgba(0,0,0,0.55)"
+      boxShadow: "0 24px 64px rgba(0,0,0,0.55)",
+      minHeight: 500, display: "flex", alignItems: "center", justifyContent: "center"
     }}>
-      {/* Thumbnail */}
-      <img src={src} alt={`Depoimento ${idx + 1}`} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center", display: "block" }} />
-
-      {/* Video controls overlay */}
-      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "12px 14px 14px", background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%)" }}>
-        {/* Progress bar */}
-        <div style={{ width: "100%", height: 3, background: "rgba(255,255,255,0.25)", borderRadius: 2, marginBottom: 10, position: "relative" }}>
-          <div style={{ position: "absolute", left: 0, top: 0, height: "100%", width: "0%", background: SAND, borderRadius: 2 }} />
-        </div>
-        {/* Controls row */}
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            {/* Play */}
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
-            <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 11, color: "rgba(255,255,255,0.85)" }}>0:00</span>
-          </div>
-          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            {/* Volume */}
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
-            {/* Fullscreen */}
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
-            {/* More */}
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg>
-          </div>
-        </div>
-      </div>
+      {/* Image */}
+      <img src={src} alt={`Depoimento ${idx + 1}`} style={{ width: "100%", height: "100%", objectFit: "contain", objectPosition: "center", display: "block", padding: 0 }} />
     </div>
   );
 }
