@@ -388,45 +388,45 @@ export default function VitaoIBLP() {
 
         @media(max-width:640px){
           .hero-section{
-            display:flex!important;
-            flex-direction:column!important;
-            min-height:auto!important;
-          }
-          .hero-section > iframe{
+            min-height:100vh!important;
             position:relative!important;
-            top:auto!important;
-            left:auto!important;
-            width:100%!important;
-            height:auto!important;
-            min-width:unset!important;
-            min-height:unset!important;
-            transform:none!important;
-            aspect-ratio:16/9;
-            order:2;
           }
           .hero-section > .hero-overlay{
-            display:none!important;
+            background:linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.15) 70%, rgba(0,0,0,0) 100%)!important;
           }
           .hero-main{
-            padding:40px 20px 24px!important;
+            padding:60px 20px 0!important;
             flex-direction:column!important;
             justify-content:flex-start!important;
-            text-align:center!important;
+            text-align:left!important;
             gap:0!important;
-            order:1;
-            background:#0A0E1A!important;
+            align-items:flex-start!important;
           }
           .hero-left{
             max-width:100%!important;
             display:flex!important;
             flex-direction:column!important;
-            align-items:center!important;
+            align-items:flex-start!important;
             padding-bottom:0!important;
+          }
+          .hero-badge-wrap{display:none!important;}
+          .hero-cta-wrap{display:none!important;}
+          .hero-avatars-wrap{display:none!important;}
+          .hero-mobile-bottom{
+            display:flex!important;
+            position:absolute!important;
+            bottom:0!important;
+            left:0!important;
+            right:0!important;
+            z-index:10!important;
+            flex-direction:column!important;
+            align-items:center!important;
+            padding:0 20px 28px!important;
+            background:linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0) 100%)!important;
           }
           .hero-h1{font-size:32px!important;line-height:1.1!important;margin-bottom:12px!important;}
           .hero-badge{font-size:11px!important;margin-bottom:12px!important;}
-          .hero-desc{max-width:100%!important;font-size:13px!important;text-align:center!important;margin-bottom:18px!important;}
-          .hero-section{min-height:auto!important;}
+          .hero-desc{max-width:100%!important;font-size:13px!important;text-align:left!important;margin-bottom:18px!important;}
           .ticker-container{left:0!important;right:0!important;width:100%!important;}
           .hero-right{
             display:flex!important;
@@ -493,7 +493,7 @@ export default function VitaoIBLP() {
         }}>
 
           <div className="hero-left" style={{ flex: "0 0 auto", maxWidth: 480 }}>
-            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,.07)", border: "1px solid rgba(255,255,255,.13)", borderRadius: 20, padding: "7px 18px", marginBottom: 24 }}>
+            <div className="hero-badge-wrap" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,.07)", border: "1px solid rgba(255,255,255,.13)", borderRadius: 20, padding: "7px 18px", marginBottom: 24 }}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={SAND} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
               <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 600, fontSize: 13, color: "rgba(255,255,255,.9)" }}>¡La mayor comunidad trader de Latinoamérica!</span>
             </div>
@@ -506,13 +506,22 @@ export default function VitaoIBLP() {
               Live de apalancamiento garantizado, más de 100 mil en cuentas apalancadas por semana.
             </p>
 
-            <div style={{ marginBottom: 26 }}>
+            <div className="hero-cta-wrap" style={{ marginBottom: 26 }}>
               <WaButton label="Únete a mi grupo" size="lg" />
             </div>
 
-            <AvatarGroup count="5.149" />
+            <div className="hero-avatars-wrap">
+              <AvatarGroup count="5.149" />
+            </div>
           </div>
 
+        </div>
+
+        <div className="hero-mobile-bottom" style={{ display: "none" }}>
+          <WaButton label="Únete a mi grupo" size="lg" />
+          <div style={{ marginTop: 16 }}>
+            <AvatarGroup count="5.149" />
+          </div>
         </div>
       </section>
 
