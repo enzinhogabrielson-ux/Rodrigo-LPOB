@@ -432,19 +432,22 @@ export default function VitaoIBLP() {
       <section className="hero-section" style={{ minHeight: "100vh", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column" }}>
 
         <iframe
-          src="https://player.vimeo.com/video/1175565741?badge=0&autopause=0&controls=0&loop=1&autoplay=1&muted=1&player_id=0&app_id=58479"
+          src="https://player.vimeo.com/video/1175565741?badge=0&autopause=0&controls=0&loop=1&autoplay=1&muted=1&background=1&player_id=0&app_id=58479"
           frameBorder="0"
           allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
           referrerPolicy="strict-origin-when-cross-origin"
           title="BigBoss Video Background"
           style={{
             position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
+            top: "50%",
+            left: "50%",
+            width: "177.78vh",
+            height: "56.25vw",
+            minWidth: "100%",
+            minHeight: "100%",
+            transform: "translate(-50%, -50%)",
             zIndex: 1,
-            objectFit: "cover"
+            border: "none"
           }}
         />
 
