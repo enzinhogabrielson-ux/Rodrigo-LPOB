@@ -1,4 +1,4 @@
-import { useState, useEffect, type ReactNode } from "react";
+import { useState, useEffect, useRef, type ReactNode } from "react";
 import "./about-mobile.css";
 import bigbossAbout from "@assets/bigboss-05.jpeg";
 
@@ -163,8 +163,27 @@ function VideoCard({ idx }: { idx: number }) {
     { type: "image", src: "/depo5.jpeg" },
   ];
   const item = depoItems[idx % depoItems.length];
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (item.type !== "video" || !containerRef.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          videoRef.current?.play();
+        } else {
+          videoRef.current?.pause();
+        }
+      },
+      { threshold: 0.5 }
+    );
+    observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, [item.type, idx]);
+
   return (
-    <div style={{
+    <div ref={containerRef} style={{
       borderRadius: 20, overflow: "hidden", background: "#111",
       border: "1px solid rgba(255,255,255,0.10)",
       width: "100%", maxWidth: 340, aspectRatio: "auto",
@@ -175,7 +194,7 @@ function VideoCard({ idx }: { idx: number }) {
       {item.type === "image" ? (
         <img src={item.src} alt={`Testimonio ${idx + 1}`} style={{ width: "100%", height: "100%", objectFit: "contain", objectPosition: "center", display: "block", padding: 0 }} />
       ) : (
-        <video src={item.src} autoPlay loop playsInline controls style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+        <video ref={videoRef} src={item.src} loop playsInline controls style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
       )}
     </div>
   );
