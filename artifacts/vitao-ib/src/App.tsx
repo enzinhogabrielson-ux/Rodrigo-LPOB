@@ -388,30 +388,32 @@ export default function VitaoIBLP() {
 
         @media(max-width:640px){
           .hero-section{
-            min-height:85vh!important;
+            min-height:100vh!important;
+            min-height:100dvh!important;
             position:relative!important;
           }
           .hero-section > .hero-overlay{
-            background:linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.15) 70%, rgba(0,0,0,0) 100%)!important;
+            background:linear-gradient(180deg, rgba(10,14,26,0.95) 0%, rgba(10,14,26,0.6) 35%, rgba(0,0,0,0.1) 55%, rgba(0,0,0,0.0) 65%, rgba(0,0,0,0.3) 80%, rgba(10,14,26,0.95) 100%)!important;
           }
           .hero-main{
-            padding:60px 20px 0!important;
+            padding:48px 24px 0!important;
             flex-direction:column!important;
             justify-content:flex-start!important;
-            text-align:left!important;
+            text-align:center!important;
             gap:0!important;
-            align-items:flex-start!important;
+            align-items:center!important;
           }
           .hero-left{
             max-width:100%!important;
             display:flex!important;
             flex-direction:column!important;
-            align-items:flex-start!important;
+            align-items:center!important;
             padding-bottom:0!important;
           }
           .hero-badge-wrap{display:none!important;}
           .hero-cta-wrap{display:none!important;}
           .hero-avatars-wrap{display:none!important;}
+          .hero-desc{display:none!important;}
           .hero-mobile-bottom{
             display:flex!important;
             position:absolute!important;
@@ -421,12 +423,10 @@ export default function VitaoIBLP() {
             z-index:10!important;
             flex-direction:column!important;
             align-items:center!important;
-            padding:0 20px 28px!important;
-            background:linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0) 100%)!important;
+            padding:80px 24px 32px!important;
           }
-          .hero-h1{font-size:32px!important;line-height:1.1!important;margin-bottom:12px!important;}
+          .hero-h1{font-size:36px!important;line-height:1.08!important;margin-bottom:0!important;}
           .hero-badge{font-size:11px!important;margin-bottom:12px!important;}
-          .hero-desc{max-width:100%!important;font-size:13px!important;text-align:left!important;margin-bottom:18px!important;}
           .ticker-container{left:0!important;right:0!important;width:100%!important;}
           .hero-right{
             display:flex!important;
