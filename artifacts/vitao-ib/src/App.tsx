@@ -1,9 +1,7 @@
-import { useState, useEffect, useRef, type ReactNode } from "react";
+import { useState, useEffect, type ReactNode } from "react";
 import "./about-mobile.css";
-import rodrigoPhoto from "@assets/rodrigo-final.png";
-
-const RODRIGO_PHOTO = "https://rodrigoferraco.ocoliseu.com/assets/Rodrigo_Ferra%C3%A7o_(2)_1773249785897-BjdD8Li-.jpg";
-const aboutPhoto = RODRIGO_PHOTO;
+import bigbossHero from "@assets/bigboss-01.png";
+import bigbossAbout from "@assets/bigboss-05.jpeg";
 
 function useIsMobile(bp = 640) {
   const [m, setM] = useState(() => typeof window !== "undefined" && window.innerWidth <= bp);
@@ -26,13 +24,8 @@ function SharkIcon() {
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       const scrolled = window.scrollY;
       const percent = docHeight > 0 ? (scrolled / docHeight) : 0;
-      
-      // Shark moves based on scroll percentage (0 to 100vw)
       const newX = percent * (window.innerWidth + 150) - 75;
-      
-      // Wave motion - vertical oscillation
       const waveY = Math.sin(scrolled * 0.01) * 15;
-      
       setSharkX(newX);
       setSharkY(waveY);
     };
@@ -81,9 +74,7 @@ const SAND_D = "#0099CC";
 const ACCENT = "#00D9FF";
 const TEXT_M = "#A0B8D4";
 
-/* ─── COMPONENTS ─── */
-
-function WaButton({ label = "Entre no meu grupo", style = {}, size = "md" }: {
+function WaButton({ label = "Únete a mi grupo", style = {}, size = "md" }: {
   label?: string; style?: React.CSSProperties; size?: "md" | "lg";
 }) {
   const [h, setH] = useState(false);
@@ -110,7 +101,6 @@ function WaButton({ label = "Entre no meu grupo", style = {}, size = "md" }: {
   );
 }
 
-/* Floating crypto card */
 const COINS = [
   { symbol: "LTC", name: "Litecoin",  price: "$152.48",    change: "+2.15%", pos: true,  color: "#A0A0A0" },
   { symbol: "BTC", name: "Bitcoin",   price: "$96,543.22", change: "+3.45%", pos: true,  color: "#F7931A" },
@@ -119,38 +109,6 @@ const COINS = [
   { symbol: "XRP", name: "XRP",       price: "$2.58",      change: "+2.34%", pos: true,  color: "#3A6DA8" },
   { symbol: "ETH", name: "Ethereum",  price: "$3,542.89",  change: "+2.87%", pos: true,  color: "#627EEA" },
 ];
-
-function FloatingCoinCard({ coin, style = {} }: { coin: typeof COINS[0]; style?: React.CSSProperties }) {
-  return (
-    <div style={{
-      position: "absolute",
-      display: "flex", alignItems: "center", gap: 8,
-      background: "rgba(20,20,35,0.88)", backdropFilter: "blur(16px)",
-      border: "1px solid rgba(255,255,255,0.08)", borderRadius: 12,
-      padding: "8px 14px", userSelect: "none",
-      zIndex: 5,
-      ...style
-    }}>
-      <div style={{
-        width: 28, height: 28, borderRadius: "50%",
-        background: coin.color + "2a",
-        border: `1.2px solid ${coin.color}77`,
-        display: "flex", alignItems: "center", justifyContent: "center",
-        fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 8,
-        color: coin.color, flexShrink: 0
-      }}>{coin.symbol.slice(0, 3)}</div>
-      <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-          <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 11, color: "#fff" }}>{coin.name}</div>
-          <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 600, fontSize: 10, color: TEXT_M }}>{coin.price}</span>
-        </div>
-        <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
-          <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 10, color: coin.pos ? SAND : "#FF5050", fontWeight: 700 }}>{coin.change}</span>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 function ProfitBadge({ value, style = {} }: { value: string; style?: React.CSSProperties }) {
   return (
@@ -184,7 +142,7 @@ function AvatarGroup({ count }: { count: string }) {
             marginLeft: i === 0 ? 0 : -12, zIndex: 5 - i,
             overflow: "hidden", flexShrink: 0
           }}>
-            <img src={src} alt={`Membro ${i + 1}`} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+            <img src={src} alt={`Miembro ${i + 1}`} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
           </div>
         ))}
       </div>
@@ -194,7 +152,7 @@ function AvatarGroup({ count }: { count: string }) {
           borderRadius: 20, padding: "4px 12px",
           fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 13, color: SAND,
         }}>{count}</span>
-        <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 13, color: TEXT_M }}>Só falta você!</span>
+        <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 13, color: TEXT_M }}>¡Solo faltas tú!</span>
       </div>
     </div>
   );
@@ -212,13 +170,11 @@ function VideoCard({ idx }: { idx: number }) {
       boxShadow: "0 24px 64px rgba(0,0,0,0.55)",
       minHeight: 500, display: "flex", alignItems: "center", justifyContent: "center"
     }}>
-      {/* Image */}
-      <img src={src} alt={`Depoimento ${idx + 1}`} style={{ width: "100%", height: "100%", objectFit: "contain", objectPosition: "center", display: "block", padding: 0 }} />
+      <img src={src} alt={`Testimonio ${idx + 1}`} style={{ width: "100%", height: "100%", objectFit: "contain", objectPosition: "center", display: "block", padding: 0 }} />
     </div>
   );
 }
 
-/* ─── ABOUT PILLARS ─── */
 const IcoChart = ({ c }: { c: string }) => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
     <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
@@ -249,26 +205,26 @@ const PILLARS: { icon: ReactNode; title: string; short: string; detail: string }
   {
     icon: <IcoChart c={SAND} />,
     title: "Price Action",
-    short: "Leitura técnica de mercado",
-    detail: "Aprenda a ler o gráfico sem precisar de indicadores. Padrões de candlestick, suporte, resistência e estrutura de mercado na prática."
+    short: "Lectura técnica del mercado",
+    detail: "Aprende a leer el gráfico sin necesidad de indicadores. Patrones de velas, soporte, resistencia y estructura de mercado en la práctica."
   },
   {
     icon: <IcoShield c={SAND} />,
-    title: "Gestão de Risco",
-    short: "Proteção de capital",
-    detail: "Regras claras de stop, gerenciamento de lote e psicologia do drawdown. Você aprende a sobreviver no mercado antes de lucrar."
+    title: "Gestión de Riesgo",
+    short: "Protección de capital",
+    detail: "Reglas claras de stop, gestión de lotes y psicología del drawdown. Aprendes a sobrevivir en el mercado antes de ganar."
   },
   {
     icon: <IcoMind c={SAND} />,
-    title: "Psicologia de Mercado",
-    short: "Mentalidade profissional",
-    detail: "Controle emocional, disciplina e consistência. A diferença entre traders lucrativos e os que quebram está na cabeça, não no setup."
+    title: "Psicología de Mercado",
+    short: "Mentalidad profesional",
+    detail: "Control emocional, disciplina y consistencia. La diferencia entre traders rentables y los que quiebran está en la cabeza, no en el setup."
   },
   {
     icon: <IcoTarget c={SAND} />,
-    title: "Estratégias Validadas",
-    short: "Ciclos reais comprovados",
-    detail: "Setups testados em bull e bear market, com histórico real de operações. Nada de backtest bonito — resultados de quem opera de verdade."
+    title: "Estrategias Validadas",
+    short: "Ciclos reales comprobados",
+    detail: "Setups probados en bull y bear market, con historial real de operaciones. Nada de backtest bonito — resultados de quien opera de verdad."
   },
 ];
 
@@ -319,7 +275,6 @@ function PillarItem({ icon, title, short, detail, open, onToggle }: {
   );
 }
 
-/* ─── ABOUT PHOTO WITH LIGHTBOX ─── */
 function AboutPhoto({ src, onOpen }: { src: string; onOpen: () => void }) {
   const [hovered, setHovered] = useState(false);
   const mob = useIsMobile();
@@ -343,7 +298,7 @@ function AboutPhoto({ src, onOpen }: { src: string; onOpen: () => void }) {
     >
       <img
         src={src}
-        alt="Rodrigo Ferraço"
+        alt="BigBoss João Mendonça"
         style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }}
       />
       <div style={{
@@ -365,14 +320,12 @@ function AboutPhoto({ src, onOpen }: { src: string; onOpen: () => void }) {
   );
 }
 
-/* ─── MAIN PAGE ─── */
 export default function VitaoIBLP() {
   const [scrolled, setScrolled] = useState(false);
   const [slide, setSlide] = useState(1);
   const [openPillar, setOpenPillar] = useState<number | null>(null);
   const [lightbox, setLightbox] = useState(false);
-  const total = 5;
-  const names = ["Trader Lucas F.", "Ana Carolina P.", "Rodrigo Mendes", "Juliana Costa", "Marcos Silva"];
+  const total = 4;
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 40);
@@ -409,11 +362,6 @@ export default function VitaoIBLP() {
         @keyframes floatC{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
         @keyframes livePulse{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,.5)}70%{box-shadow:0 0 0 14px rgba(239,68,68,0)}}
         @keyframes gentleSway{0%,100%{transform:translateX(0) translateY(0)}25%{transform:translateX(-6px) translateY(-3px)}50%{transform:translateX(0) translateY(0)}75%{transform:translateX(6px) translateY(3px)}}
-        @keyframes wave{
-          0%{background-position:0 0}
-          50%{background-position:100px 0}
-          100%{background-position:200px 0}
-        }
 
         .ticker-track{animation:marquee 18s linear infinite}
         .ticker-track:hover{animation-play-state:paused}
@@ -472,7 +420,6 @@ export default function VitaoIBLP() {
         }
       `}</style>
 
-      {/* ──── NAVBAR ──── */}
       <nav style={{
         position: "fixed", top: 0, left: 0, right: 0, zIndex: 999,
         background: scrolled ? "rgba(8,8,18,.95)" : "transparent",
@@ -483,30 +430,23 @@ export default function VitaoIBLP() {
       }}>
       </nav>
 
-      {/* ──── HERO ──── */}
       <section className="hero-section" style={{ minHeight: "100vh", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column" }}>
 
-        {/* Background image */}
         <div style={{
           position: "absolute", inset: 0, zIndex: 1,
-          backgroundImage: "url('/hero-bg.png')",
+          backgroundImage: "url('/hero-bigboss.png')",
           backgroundSize: "cover", backgroundPosition: "center center",
           backgroundRepeat: "no-repeat"
         }} />
 
-        {/* Black fade left to right */}
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, rgba(0,0,0,0.97) 0%, rgba(0,0,0,0.88) 35%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.1) 80%, rgba(0,0,0,0) 100%)", zIndex: 2 }} />
 
-        {/* Subtle top/bottom vignette */}
         <div style={{ position: "absolute", inset: 0, zIndex: 3, background: "linear-gradient(180deg, rgba(4,12,8,0.35) 0%, transparent 30%, transparent 70%, rgba(4,12,8,0.5) 100%)" }} />
 
-        {/* Sand ambient glow */}
         <div style={{ position: "absolute", top: "10%", right: "25%", width: 500, height: 500, background: "radial-gradient(circle, rgba(0,217,255,.07) 0%, transparent 70%)", pointerEvents: "none" }} />
 
-        {/* Left fog — keeps left copy area more legible */}
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, rgba(4,4,12,0.85) 0%, rgba(4,4,12,0.70) 38%, rgba(4,4,12,0.1) 70%, rgba(4,4,12,0.4) 100%)" }} />
 
-        {/* ── MAIN HERO CONTENT ── */}
         <div className="hero-main" style={{
           position: "relative", zIndex: 10, flex: 1,
           display: "flex", alignItems: "center", justifyContent: "space-between",
@@ -514,35 +454,32 @@ export default function VitaoIBLP() {
           padding: "80px 52px 56px", gap: 40
         }}>
 
-          {/* LEFT COPY */}
           <div className="hero-left" style={{ flex: "0 0 auto", maxWidth: 480 }}>
             <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,.07)", border: "1px solid rgba(255,255,255,.13)", borderRadius: 20, padding: "7px 18px", marginBottom: 24 }}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={SAND} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-              <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 600, fontSize: 13, color: "rgba(255,255,255,.9)" }}>Maior comunidade trader no Brasil!</span>
+              <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 600, fontSize: 13, color: "rgba(255,255,255,.9)" }}>¡La mayor comunidad trader de Latinoamérica!</span>
             </div>
 
             <h1 className="hero-h1" style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: "clamp(42px,5.2vw,72px)", lineHeight: 1.05, color: "#FFF", marginBottom: 18, letterSpacing: "-0.01em" }}>
-              Lucre<br />diariamente<br />copiando minhas <span style={{ color: SAND }}>operações</span>
+              Gana<br />a diario<br />copiando mis <span style={{ color: SAND }}>operaciones</span>
             </h1>
 
             <p className="hero-desc" style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 400, fontSize: "clamp(13px,1.2vw,15px)", color: TEXT_M, lineHeight: 1.85, marginBottom: 28, maxWidth: 420 }}>
-              Live de Alavancagem garantida, mais de 100 mil reais em bancas alavancadas por semana.
+              Live de apalancamiento garantizado, más de 100 mil en cuentas apalancadas por semana.
             </p>
 
             <div style={{ marginBottom: 26 }}>
-              <WaButton label="Entre no meu grupo" size="lg" />
+              <WaButton label="Únete a mi grupo" size="lg" />
             </div>
 
             <AvatarGroup count="5.149" />
           </div>
 
-          {/* RIGHT — Trader photo with scrolling carousel & badges */}
           <div className="hero-right" style={{
             position: "relative", flex: 1,
             display: "flex", justifyContent: "center", alignItems: "flex-end",
             height: "clamp(480px,72vh,700px)", overflow: "visible", minWidth: 320
           }}>
-            {/* CRYPTO CAROUSEL — 2 rows, large cards with 2 visible per row */}
             <div className="ticker-container" style={{
               position: "absolute", top: "10%", left: "8%", right: "8%", zIndex: 1,
               width: "84%", height: 200,
@@ -550,11 +487,8 @@ export default function VitaoIBLP() {
             }}>
               {[0, 1].map((rowIdx) => (
                 <div key={rowIdx} className="ticker-row-mask" style={{ position: "relative", width: "100%", overflow: "hidden", height: 92 }}>
-                  {/* Left blur */}
                   <div className="ticker-fade" style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 80, zIndex: 2, background: "linear-gradient(90deg, rgba(8,8,18,1) 0%, rgba(8,8,18,0.7) 50%, rgba(8,8,18,0) 100%)", pointerEvents: "none" }} />
-                  {/* Right blur */}
                   <div className="ticker-fade" style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: 80, zIndex: 2, background: "linear-gradient(270deg, rgba(8,8,18,1) 0%, rgba(8,8,18,0.7) 50%, rgba(8,8,18,0) 100%)", pointerEvents: "none" }} />
-                  {/* Track */}
                   <div className={rowIdx === 1 ? "ticker-track-offset" : "ticker-track"} style={{ display: "flex", gap: 12, width: "max-content", height: "100%", alignItems: "center" }}>
                     {[...COINS.slice(rowIdx * 3, rowIdx * 3 + 3), ...COINS.slice(rowIdx * 3, rowIdx * 3 + 3), ...COINS.slice(rowIdx * 3, rowIdx * 3 + 3)].map((coin, i) => (
                       <div key={i} style={{
@@ -586,11 +520,10 @@ export default function VitaoIBLP() {
               ))}
             </div>
 
-            {/* Trader photo */}
             <img
-              key="rodrigo-photo"
-              src={rodrigoPhoto}
-              alt="Rodrigo Ferraço - Especialista em Trading Institucional"
+              key="bigboss-photo"
+              src={bigbossHero}
+              alt="BigBoss João Mendonça - Especialista en Trading"
               style={{
                 height: "100%",
                 maxHeight: 680,
@@ -604,7 +537,6 @@ export default function VitaoIBLP() {
               }}
             />
 
-            {/* AUTHORITY TICKET — floating with animation */}
             <div className="flt" style={{
               position: "absolute", left: "8%", top: "46%", zIndex: 10,
               background: "rgba(20,16,10,0.72)", backdropFilter: "blur(16px)",
@@ -613,32 +545,28 @@ export default function VitaoIBLP() {
               display: "flex", flexDirection: "column", gap: 4,
               whiteSpace: "nowrap"
             }}>
-              <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 13, color: SAND, letterSpacing: "0.01em" }}>Rodrigo Ferraço</div>
-              <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 11, color: "rgba(255,255,255,0.65)", fontWeight: 600 }}>10+ Anos | 20M+ Operados</div>
+              <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 13, color: SAND, letterSpacing: "0.01em" }}>BigBoss João Mendonça</div>
+              <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 11, color: "rgba(255,255,255,0.65)", fontWeight: 600 }}>10+ Años | 20M+ Operados</div>
             </div>
             <div className="flt2" style={{ position: "absolute", right: "6%", top: "28%", zIndex: 10 }}>
-              <ProfitBadge value="R$ 5.200" />
+              <ProfitBadge value="$ 5.200" />
             </div>
             <div className="flt3" style={{ position: "absolute", left: "20%", bottom: "18%", zIndex: 10 }}>
-              <ProfitBadge value="R$ 2.300" />
+              <ProfitBadge value="$ 2.300" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* ──── ABOUT ──── */}
       <section className="about-section">
         <div className="about-inner">
-          {/* Mamute Trader photo */}
-          <AboutPhoto src={aboutPhoto} onOpen={() => setLightbox(true)} />
+          <AboutPhoto src={bigbossAbout} onOpen={() => setLightbox(true)} />
 
-          {/* Copy */}
           <div className="about-copy">
             <h2 style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: "clamp(36px,4.5vw,62px)", lineHeight: 1.1, color: "#FFF", marginBottom: 20, letterSpacing: "-0.01em" }}>
-              Quem é<br />Rodrigo<br /><span style={{ color: SAND }}>Ferraço?</span>
+              ¿Quién es<br />el <span style={{ color: SAND }}>BigBoss?</span>
             </h2>
 
-            {/* Interactive pillars */}
             <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 24 }}>
               {PILLARS.map((p, i) => (
                 <PillarItem
@@ -651,22 +579,20 @@ export default function VitaoIBLP() {
             </div>
 
             <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 13.5, color: "rgba(255,255,255,0.55)", marginBottom: 8, lineHeight: 1.75 }}>
-              Com anos de atuação nos bastidores do mercado financeiro, Rodrigo Ferraço desenvolveu uma leitura profunda sobre fluxo institucional, macroeconomia global e a dinâmica que realmente move os grandes ativos do mercado.
+              Con años de actuación en los bastidores del mercado financiero, João Mendonça desarrolló una lectura profunda sobre flujo institucional, macroeconomía global y la dinámica que realmente mueve los grandes activos del mercado.
             </p>
             <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 13.5, color: "rgba(255,255,255,0.55)", marginBottom: 24, lineHeight: 1.75 }}>
-              Economista, especialista no mercado de metais internacionais e BeFinance, construiu sua experiência operando e analisando os movimentos do capital institucional, entendendo como bancos, fundos e grandes participantes posicionam dinheiro nos mercados globais.
+              Conocido como BigBoss, es especialista en el mercado de metales internacionales y criptomonedas, construyó su experiencia operando y analizando los movimientos del capital institucional, entendiendo cómo bancos, fondos y grandes participantes posicionan dinero en los mercados globales.
             </p>
 
-            <WaButton label="Entre no meu grupo" />
+            <WaButton label="Únete a mi grupo" />
           </div>
         </div>
       </section>
 
-      {/* ──── SOCIAL PROOF ──── */}
       <section className="social-proof-section" style={{ background: BG_MAIN, padding: "100px 52px" }}>
         <div style={{ maxWidth: 520, margin: "0 auto", textAlign: "center" }}>
 
-          {/* Stars */}
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 5, marginBottom: 18 }}>
             <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 15, color: "#E8A820", marginRight: 4 }}>5.0</span>
             {[...Array(5)].map((_, i) => (
@@ -676,19 +602,16 @@ export default function VitaoIBLP() {
             ))}
           </div>
 
-          {/* Heading — mixed weight like reference */}
           <h2 style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: "clamp(26px,4vw,38px)", color: "#FFF", lineHeight: 1.25, marginBottom: 18 }}>
-            São milhares de vidas<br />transformadas
+            Miles de vidas<br />transformadas
           </h2>
 
           <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", color: TEXT_M, fontSize: 15, lineHeight: 1.85, marginBottom: 44 }}>
-            Operações comentadas, histórico público e metodologia clara ideal para quem quer acelerar o aprendizado e melhorar a execução.
+            Operaciones comentadas, historial público y metodología clara ideal para quien quiere acelerar el aprendizaje y mejorar la ejecución.
           </p>
 
-          {/* Single-card carousel */}
           <div style={{ position: "relative", display: "flex", alignItems: "center", justifyContent: "center", gap: 16 }}>
 
-            {/* Left arrow */}
             <button onClick={() => setSlide(s => (s - 1 + total) % total)} style={{
               flexShrink: 0, width: 40, height: 40, borderRadius: "50%",
               background: "rgba(255,255,255,.08)", border: "1px solid rgba(255,255,255,.15)",
@@ -696,12 +619,10 @@ export default function VitaoIBLP() {
               cursor: "pointer", transition: "background .2s"
             }}>‹</button>
 
-            {/* Video card */}
             <div style={{ flex: 1 }}>
               <VideoCard idx={slide} />
             </div>
 
-            {/* Right arrow */}
             <button onClick={() => setSlide(s => (s + 1) % total)} style={{
               flexShrink: 0, width: 40, height: 40, borderRadius: "50%",
               background: "rgba(255,255,255,.08)", border: "1px solid rgba(255,255,255,.15)",
@@ -710,7 +631,6 @@ export default function VitaoIBLP() {
             }}>›</button>
           </div>
 
-          {/* Dots */}
           <div style={{ display: "flex", justifyContent: "center", gap: 7, marginTop: 28 }}>
             {[...Array(total)].map((_, i) => (
               <button key={i} onClick={() => setSlide(i)} style={{
@@ -724,11 +644,8 @@ export default function VitaoIBLP() {
         </div>
       </section>
 
-      {/* ──── LIVE CTA ──── */}
       <section className="cta-section" style={{ position: "relative", padding: "70px 24px 110px", overflow: "hidden" }}>
-        {/* Same hero-bg image */}
-        <div style={{ position: "absolute", inset: 0, backgroundImage: "url('/hero-bg.png')", backgroundSize: "cover", backgroundPosition: "center", zIndex: 0 }} />
-        {/* Gold-to-dark overlay matching hero */}
+        <div style={{ position: "absolute", inset: 0, backgroundImage: "url('/hero-bigboss.png')", backgroundSize: "cover", backgroundPosition: "center", zIndex: 0 }} />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(160deg, rgba(0,217,255,0.25) 0%, rgba(10,14,26,0.92) 100%)", zIndex: 1 }} />
 
         <div style={{ maxWidth: 400, margin: "0 auto", position: "relative", zIndex: 2 }}>
@@ -739,19 +656,15 @@ export default function VitaoIBLP() {
             boxShadow: "0 0 60px rgba(0,217,255,.12), inset 0 1px 0 rgba(255,255,255,.06)",
             backdropFilter: "blur(12px)"
           }}>
-            {/* Cyan glow top */}
             <div style={{ position: "absolute", top: -80, left: "50%", transform: "translateX(-50%)", width: 320, height: 200, background: "radial-gradient(ellipse, rgba(0,217,255,.22), transparent 70%)", pointerEvents: "none" }} />
 
-            {/* LIVE badge — red circle with LIVE text + play icon */}
             <div style={{ display: "flex", justifyContent: "center", marginBottom: 24, position: "relative", zIndex: 1 }}>
               <div className="livepulse" style={{ position: "relative", width: 72, height: 72, borderRadius: "50%", background: "#EF4444", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 0 0 8px rgba(239,68,68,.15)" }}>
-                {/* LIVE text above center */}
                 <span style={{
                   position: "absolute", top: 12, left: "50%", transform: "translateX(-50%)",
                   fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 900, fontSize: 9,
                   color: "#fff", letterSpacing: ".16em", lineHeight: 1
                 }}>LIVE</span>
-                {/* Play icon below */}
                 <svg style={{ marginTop: 10 }} width="20" height="20" viewBox="0 0 24 24" fill="#fff">
                   <path d="M8 5v14l11-7z" />
                 </svg>
@@ -762,24 +675,23 @@ export default function VitaoIBLP() {
               fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700,
               fontSize: "clamp(26px,5vw,32px)", color: "#FFF",
               marginBottom: 14, position: "relative", zIndex: 1, lineHeight: 1.2
-            }}>Hoje tem live!</h2>
+            }}>¡Hoy hay live!</h2>
 
             <p style={{
               fontFamily: "'Plus Jakarta Sans',sans-serif", color: "rgba(255,255,255,.60)",
               fontSize: 15, lineHeight: 1.78, maxWidth: 280, margin: "0 auto 32px",
               position: "relative", zIndex: 1
             }}>
-              Clique no botão abaixo e participe, venha ganhar dinheiro comigo ao vivo!
+              Haz clic en el botón y participa, ¡ven a ganar dinero conmigo en vivo!
             </p>
 
             <div style={{ position: "relative", zIndex: 1 }}>
-              <WaButton label="Entre no meu grupo" size="lg" />
+              <WaButton label="Únete a mi grupo" size="lg" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* ──── FOOTER ──── */}
       <footer className="footer-main" style={{ background: BG_DARK, borderTop: "1px solid rgba(255,255,255,.04)", padding: "28px 52px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 3 }}>
           <div style={{ width: 34, height: 34, borderRadius: 9, background: "rgba(0,217,255,.15)", border: "1.5px solid rgba(0,217,255,.5)", display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -789,15 +701,13 @@ export default function VitaoIBLP() {
           </div>
         </div>
         <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 12, color: "rgba(255,255,255,.26)", textAlign: "center", flex: 1 }}>
-          2026 Copyright © Rodrigo Ferraço Todos os direitos reservados.
+          2026 Copyright © BigBoss João Mendonça. Todos los derechos reservados.
         </p>
         <div style={{ width: 44 }} />
       </footer>
 
-      {/* ──── SHARK ICON ──── */}
       <SharkIcon />
 
-      {/* ──── LIGHTBOX ──── */}
       {lightbox && (
         <div
           onClick={() => setLightbox(false)}
@@ -809,8 +719,8 @@ export default function VitaoIBLP() {
           }}
         >
           <img
-            src={aboutPhoto}
-            alt="Rodrigo Ferraço"
+            src={bigbossAbout}
+            alt="BigBoss João Mendonça"
             style={{
               maxHeight: "90vh", maxWidth: "90vw",
               borderRadius: 20,
