@@ -1,6 +1,5 @@
 import { useState, useEffect, type ReactNode } from "react";
 import "./about-mobile.css";
-import bigbossHero from "@assets/bigboss-01.png";
 import bigbossAbout from "@assets/bigboss-05.jpeg";
 
 function useIsMobile(bp = 640) {
@@ -432,20 +431,22 @@ export default function VitaoIBLP() {
 
       <section className="hero-section" style={{ minHeight: "100vh", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column" }}>
 
-        <div style={{
-          position: "absolute", inset: 0, zIndex: 1,
-          backgroundImage: "url('/hero-bigboss.png')",
-          backgroundSize: "cover", backgroundPosition: "center center",
-          backgroundRepeat: "no-repeat"
-        }} />
-
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, rgba(0,0,0,0.97) 0%, rgba(0,0,0,0.88) 35%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.1) 80%, rgba(0,0,0,0) 100%)", zIndex: 2 }} />
-
-        <div style={{ position: "absolute", inset: 0, zIndex: 3, background: "linear-gradient(180deg, rgba(4,12,8,0.35) 0%, transparent 30%, transparent 70%, rgba(4,12,8,0.5) 100%)" }} />
-
-        <div style={{ position: "absolute", top: "10%", right: "25%", width: 500, height: 500, background: "radial-gradient(circle, rgba(0,217,255,.07) 0%, transparent 70%)", pointerEvents: "none" }} />
-
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, rgba(4,4,12,0.85) 0%, rgba(4,4,12,0.70) 38%, rgba(4,4,12,0.1) 70%, rgba(4,4,12,0.4) 100%)" }} />
+        <iframe
+          src="https://player.vimeo.com/video/1175565741?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1"
+          frameBorder="0"
+          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          title="BigBoss Video Background"
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            zIndex: 1,
+            objectFit: "cover"
+          }}
+        />
 
         <div className="hero-main" style={{
           position: "relative", zIndex: 10, flex: 1,
@@ -475,97 +476,6 @@ export default function VitaoIBLP() {
             <AvatarGroup count="5.149" />
           </div>
 
-          <div className="hero-right" style={{
-            position: "relative", flex: 1,
-            display: "flex", justifyContent: "center", alignItems: "flex-end",
-            height: "clamp(480px,72vh,700px)", overflow: "visible", minWidth: 320
-          }}>
-            <div className="ticker-container" style={{
-              position: "absolute", top: "10%", left: "8%", right: "8%", zIndex: 1,
-              width: "84%", height: 200,
-              display: "flex", flexDirection: "column", gap: 8, alignItems: "stretch"
-            }}>
-              {[0, 1].map((rowIdx) => (
-                <div key={rowIdx} className="ticker-row-mask" style={{ position: "relative", width: "100%", overflow: "hidden", height: 92 }}>
-                  <div className="ticker-fade" style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 80, zIndex: 2, background: "linear-gradient(90deg, rgba(8,8,18,1) 0%, rgba(8,8,18,0.7) 50%, rgba(8,8,18,0) 100%)", pointerEvents: "none" }} />
-                  <div className="ticker-fade" style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: 80, zIndex: 2, background: "linear-gradient(270deg, rgba(8,8,18,1) 0%, rgba(8,8,18,0.7) 50%, rgba(8,8,18,0) 100%)", pointerEvents: "none" }} />
-                  <div className={rowIdx === 1 ? "ticker-track-offset" : "ticker-track"} style={{ display: "flex", gap: 12, width: "max-content", height: "100%", alignItems: "center" }}>
-                    {[...COINS.slice(rowIdx * 3, rowIdx * 3 + 3), ...COINS.slice(rowIdx * 3, rowIdx * 3 + 3), ...COINS.slice(rowIdx * 3, rowIdx * 3 + 3)].map((coin, i) => (
-                      <div key={i} style={{
-                        display: "flex", alignItems: "center", gap: 12,
-                        background: "transparent", backdropFilter: "none",
-                        border: "1.5px solid rgba(255,255,255,0.10)", borderRadius: 12,
-                        padding: "12px 18px", flexShrink: 0, userSelect: "none",
-                        minWidth: 220, height: 68
-                      }}>
-                        <div style={{
-                          width: 38, height: 38, borderRadius: "50%",
-                          background: coin.color + "22",
-                          border: `1px solid ${coin.color}77`,
-                          display: "flex", alignItems: "center", justifyContent: "center",
-                          fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 11,
-                          color: coin.color, flexShrink: 0
-                        }}>{coin.symbol.slice(0, 3)}</div>
-                        <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
-                          <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 14, color: "#fff", whiteSpace: "nowrap" }}>{coin.name}</span>
-                          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                            <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 600, fontSize: 12, color: TEXT_M, whiteSpace: "nowrap" }}>{coin.price}</span>
-                            <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 11, color: coin.pos ? SAND : "#FF5050", fontWeight: 700, whiteSpace: "nowrap" }}>{coin.change}</span>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div
-              key="bigboss-container"
-              style={{
-                height: "100%",
-                maxHeight: 680,
-                position: "relative", zIndex: 2,
-                borderRadius: 36,
-                overflow: "hidden",
-                border: "3px solid rgba(0,217,255,0.6)",
-                boxShadow: "0 0 80px rgba(0,217,255,0.35), inset 0 0 40px rgba(0,217,255,0.12)",
-                animation: "gentleSway 6s ease-in-out infinite",
-                pointerEvents: "none",
-                userSelect: "none"
-              }}
-            >
-              <img
-                src={bigbossHero}
-                alt="BigBoss João Mendonça - Especialista en Trading"
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "contain",
-                  objectPosition: "bottom center",
-                  display: "block"
-                }}
-              />
-            </div>
-
-            <div className="flt" style={{
-              position: "absolute", left: "8%", top: "46%", zIndex: 10,
-              background: "rgba(20,16,10,0.72)", backdropFilter: "blur(16px)",
-              border: "1px solid rgba(0,217,255,0.35)",
-              borderRadius: 14, padding: "12px 18px",
-              display: "flex", flexDirection: "column", gap: 4,
-              whiteSpace: "nowrap"
-            }}>
-              <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 13, color: SAND, letterSpacing: "0.01em" }}>BigBoss João Mendonça</div>
-              <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 11, color: "rgba(255,255,255,0.65)", fontWeight: 600 }}>10+ Años | 20M+ Operados</div>
-            </div>
-            <div className="flt2" style={{ position: "absolute", right: "6%", top: "28%", zIndex: 10 }}>
-              <ProfitBadge value="$ 5.200" />
-            </div>
-            <div className="flt3" style={{ position: "absolute", left: "20%", bottom: "18%", zIndex: 10 }}>
-              <ProfitBadge value="$ 2.300" />
-            </div>
-          </div>
         </div>
       </section>
 
