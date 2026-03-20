@@ -540,6 +540,9 @@ export default function VitaoIBLP() {
         </div>
 
         <div className="hero-mobile-bottom" style={{ display: "none" }}>
+          <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 400, fontSize: 13, color: TEXT_M, lineHeight: 1.85, textAlign: "center", marginBottom: 16, maxWidth: 320 }}>
+            Live de apalancamiento garantizado, más de 100 mil en cuentas apalancadas por semana.
+          </p>
           <WaButton label="Únete a mi grupo" size="lg" />
           <div style={{ marginTop: 16 }}>
             <AvatarGroup count="5.149" />
