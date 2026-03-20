@@ -415,7 +415,7 @@ export default function VitaoIBLP() {
             transform:translate(-65%, -50%)!important;
           }
           .hero-section > .hero-overlay{
-            background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0.3) 50%, rgba(10,14,26,0.85) 70%, rgba(10,14,26,0.98) 100%)!important;
+            background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.1) 20%, rgba(0,0,0,0.5) 40%, rgba(10,14,26,0.9) 60%, rgba(10,14,26,0.98) 100%)!important;
           }
           .hero-main{
             display:none!important;
@@ -429,7 +429,7 @@ export default function VitaoIBLP() {
             z-index:10!important;
             flex-direction:column!important;
             align-items:center!important;
-            padding:140px 24px 40px!important;
+            padding:220px 24px 40px!important;
           }
           .hero-badge{font-size:11px!important;margin-bottom:12px!important;}
           .ticker-container{left:0!important;right:0!important;width:100%!important;}
