@@ -430,7 +430,7 @@ export default function VitaoIBLP() {
             flex-direction:column!important;
             align-items:center!important;
             padding:0 24px 40px!important;
-            top:38%!important;
+            top:45%!important;
             bottom:auto!important;
             height:auto!important;
           }
