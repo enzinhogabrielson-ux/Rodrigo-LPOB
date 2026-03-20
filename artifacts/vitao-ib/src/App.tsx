@@ -158,8 +158,11 @@ function AvatarGroup({ count }: { count: string }) {
 }
 
 function VideoCard({ idx }: { idx: number }) {
-  const depoImages = ["/depo1.png", "/depo2.png", "/depo3.png", "/depo4.png"];
-  const src = depoImages[idx % depoImages.length];
+  const depoItems: { type: "image" | "video"; src: string }[] = [
+    { type: "video", src: "/depo-video.mp4" },
+    { type: "image", src: "/depo5.jpeg" },
+  ];
+  const item = depoItems[idx % depoItems.length];
   return (
     <div style={{
       borderRadius: 20, overflow: "hidden", background: "#111",
@@ -169,7 +172,11 @@ function VideoCard({ idx }: { idx: number }) {
       boxShadow: "0 24px 64px rgba(0,0,0,0.55)",
       minHeight: 500, display: "flex", alignItems: "center", justifyContent: "center"
     }}>
-      <img src={src} alt={`Testimonio ${idx + 1}`} style={{ width: "100%", height: "100%", objectFit: "contain", objectPosition: "center", display: "block", padding: 0 }} />
+      {item.type === "image" ? (
+        <img src={item.src} alt={`Testimonio ${idx + 1}`} style={{ width: "100%", height: "100%", objectFit: "contain", objectPosition: "center", display: "block", padding: 0 }} />
+      ) : (
+        <video src={item.src} autoPlay muted loop playsInline style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+      )}
     </div>
   );
 }
@@ -321,10 +328,10 @@ function AboutPhoto({ src, onOpen }: { src: string; onOpen: () => void }) {
 
 export default function VitaoIBLP() {
   const [scrolled, setScrolled] = useState(false);
-  const [slide, setSlide] = useState(1);
+  const [slide, setSlide] = useState(0);
   const [openPillar, setOpenPillar] = useState<number | null>(null);
   const [lightbox, setLightbox] = useState(false);
-  const total = 4;
+  const total = 2;
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 40);
