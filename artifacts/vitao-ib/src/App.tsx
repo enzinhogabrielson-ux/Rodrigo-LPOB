@@ -429,7 +429,7 @@ export default function VitaoIBLP() {
             z-index:10!important;
             flex-direction:column!important;
             align-items:center!important;
-            padding:100px 24px 32px!important;
+            padding:140px 24px 40px!important;
           }
           .hero-badge{font-size:11px!important;margin-bottom:12px!important;}
           .ticker-container{left:0!important;right:0!important;width:100%!important;}
