@@ -411,6 +411,9 @@ export default function VitaoIBLP() {
             min-height:100dvh!important;
             position:relative!important;
           }
+          .hero-section > iframe{
+            transform:translate(-35%, -50%)!important;
+          }
           .hero-section > .hero-overlay{
             background:linear-gradient(180deg, rgba(10,14,26,0.95) 0%, rgba(10,14,26,0.6) 35%, rgba(0,0,0,0.1) 55%, rgba(0,0,0,0.0) 65%, rgba(0,0,0,0.3) 80%, rgba(10,14,26,0.95) 100%)!important;
           }
