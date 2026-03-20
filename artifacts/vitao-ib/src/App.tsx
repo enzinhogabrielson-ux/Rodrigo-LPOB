@@ -524,7 +524,7 @@ export default function VitaoIBLP() {
 
         <div className="hero-mobile-bottom" style={{ display: "none" }}>
           <h1 style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: 32, lineHeight: 1.1, color: "#FFF", marginBottom: 10, letterSpacing: "-0.01em", textAlign: "center" }}>
-            Gana<br />a diario<br />copiando mis <span style={{ color: SAND }}>operaciones</span>
+            Gana a diario<br />copiando mis <span style={{ color: SAND }}>operaciones</span>
           </h1>
           <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 400, fontSize: 13, color: TEXT_M, lineHeight: 1.85, textAlign: "center", marginBottom: 16, maxWidth: 320 }}>
             Live de apalancamiento garantizado, más de 100 mil en cuentas apalancadas por semana.
