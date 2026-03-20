@@ -383,19 +383,41 @@ export default function VitaoIBLP() {
         }
 
         @media(max-width:640px){
+          .hero-section{
+            display:flex!important;
+            flex-direction:column!important;
+            min-height:auto!important;
+          }
+          .hero-section > iframe{
+            position:relative!important;
+            top:auto!important;
+            left:auto!important;
+            width:100%!important;
+            height:auto!important;
+            min-width:unset!important;
+            min-height:unset!important;
+            transform:none!important;
+            aspect-ratio:16/9;
+            order:2;
+          }
+          .hero-section > .hero-overlay{
+            display:none!important;
+          }
           .hero-main{
-            padding:40px 20px 0!important;
+            padding:40px 20px 24px!important;
             flex-direction:column!important;
             justify-content:flex-start!important;
             text-align:center!important;
             gap:0!important;
+            order:1;
+            background:#0A0E1A!important;
           }
           .hero-left{
             max-width:100%!important;
             display:flex!important;
             flex-direction:column!important;
             align-items:center!important;
-            padding-bottom:20px!important;
+            padding-bottom:0!important;
           }
           .hero-h1{font-size:32px!important;line-height:1.1!important;margin-bottom:12px!important;}
           .hero-badge{font-size:11px!important;margin-bottom:12px!important;}
@@ -451,7 +473,7 @@ export default function VitaoIBLP() {
           }}
         />
 
-        <div style={{
+        <div className="hero-overlay" style={{
           position: "absolute",
           inset: 0,
           background: "linear-gradient(90deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.75) 25%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%)",
