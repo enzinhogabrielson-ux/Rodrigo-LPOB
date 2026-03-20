@@ -175,7 +175,7 @@ function VideoCard({ idx }: { idx: number }) {
       {item.type === "image" ? (
         <img src={item.src} alt={`Testimonio ${idx + 1}`} style={{ width: "100%", height: "100%", objectFit: "contain", objectPosition: "center", display: "block", padding: 0 }} />
       ) : (
-        <video src={item.src} autoPlay muted loop playsInline style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+        <video src={item.src} autoPlay loop playsInline controls style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
       )}
     </div>
   );
@@ -339,10 +339,7 @@ export default function VitaoIBLP() {
     return () => window.removeEventListener("scroll", fn);
   }, []);
 
-  useEffect(() => {
-    const t = setInterval(() => setSlide(s => (s + 1) % total), 4000);
-    return () => clearInterval(t);
-  }, []);
+  
 
   return (
     <div style={{ background: BG_MAIN, minHeight: "100vh", color: "#fff", overflowX: "hidden" }}>
