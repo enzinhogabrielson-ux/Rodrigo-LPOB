@@ -388,7 +388,7 @@ export default function VitaoIBLP() {
 
         @media(max-width:640px){
           .hero-section{
-            min-height:100vh!important;
+            min-height:85vh!important;
             position:relative!important;
           }
           .hero-section > .hero-overlay{
