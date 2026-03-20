@@ -520,22 +520,33 @@ export default function VitaoIBLP() {
               ))}
             </div>
 
-            <img
-              key="bigboss-photo"
-              src={bigbossHero}
-              alt="BigBoss João Mendonça - Especialista en Trading"
+            <div
+              key="bigboss-container"
               style={{
                 height: "100%",
                 maxHeight: 680,
-                objectFit: "contain",
-                objectPosition: "bottom center",
-                filter: "drop-shadow(0 0 60px rgba(0,217,255,.18))",
-                pointerEvents: "none",
-                userSelect: "none",
                 position: "relative", zIndex: 2,
-                animation: "gentleSway 6s ease-in-out infinite"
+                borderRadius: 36,
+                overflow: "hidden",
+                border: "3px solid rgba(0,217,255,0.6)",
+                boxShadow: "0 0 80px rgba(0,217,255,0.35), inset 0 0 40px rgba(0,217,255,0.12)",
+                animation: "gentleSway 6s ease-in-out infinite",
+                pointerEvents: "none",
+                userSelect: "none"
               }}
-            />
+            >
+              <img
+                src={bigbossHero}
+                alt="BigBoss João Mendonça - Especialista en Trading"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "contain",
+                  objectPosition: "bottom center",
+                  display: "block"
+                }}
+              />
+            </div>
 
             <div className="flt" style={{
               position: "absolute", left: "8%", top: "46%", zIndex: 10,
