@@ -415,27 +415,11 @@ export default function VitaoIBLP() {
             transform:translate(-65%, -50%)!important;
           }
           .hero-section > .hero-overlay{
-            background:linear-gradient(180deg, rgba(10,14,26,0.95) 0%, rgba(10,14,26,0.6) 35%, rgba(0,0,0,0.1) 55%, rgba(0,0,0,0.0) 65%, rgba(0,0,0,0.3) 80%, rgba(10,14,26,0.95) 100%)!important;
+            background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0.3) 50%, rgba(10,14,26,0.85) 70%, rgba(10,14,26,0.98) 100%)!important;
           }
           .hero-main{
-            padding:48px 24px 0!important;
-            flex-direction:column!important;
-            justify-content:flex-start!important;
-            text-align:center!important;
-            gap:0!important;
-            align-items:center!important;
+            display:none!important;
           }
-          .hero-left{
-            max-width:100%!important;
-            display:flex!important;
-            flex-direction:column!important;
-            align-items:center!important;
-            padding-bottom:0!important;
-          }
-          .hero-badge-wrap{display:none!important;}
-          .hero-cta-wrap{display:none!important;}
-          .hero-avatars-wrap{display:none!important;}
-          .hero-desc{display:none!important;}
           .hero-mobile-bottom{
             display:flex!important;
             position:absolute!important;
@@ -445,9 +429,8 @@ export default function VitaoIBLP() {
             z-index:10!important;
             flex-direction:column!important;
             align-items:center!important;
-            padding:80px 24px 32px!important;
+            padding:100px 24px 32px!important;
           }
-          .hero-h1{font-size:36px!important;line-height:1.08!important;margin-bottom:0!important;}
           .hero-badge{font-size:11px!important;margin-bottom:12px!important;}
           .ticker-container{left:0!important;right:0!important;width:100%!important;}
           .hero-right{
@@ -540,6 +523,9 @@ export default function VitaoIBLP() {
         </div>
 
         <div className="hero-mobile-bottom" style={{ display: "none" }}>
+          <h1 style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: 32, lineHeight: 1.1, color: "#FFF", marginBottom: 10, letterSpacing: "-0.01em", textAlign: "center" }}>
+            Gana<br />a diario<br />copiando mis <span style={{ color: SAND }}>operaciones</span>
+          </h1>
           <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 400, fontSize: 13, color: TEXT_M, lineHeight: 1.85, textAlign: "center", marginBottom: 16, maxWidth: 320 }}>
             Live de apalancamiento garantizado, más de 100 mil en cuentas apalancadas por semana.
           </p>
