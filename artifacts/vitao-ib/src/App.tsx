@@ -439,14 +439,23 @@ export default function VitaoIBLP() {
           title="BigBoss Video Background"
           style={{
             position: "absolute",
-            top: 0,
-            left: 0,
+            top: "50%",
+            left: "50%",
             width: "100%",
             height: "100%",
+            transform: "translate(-50%, -50%)",
             zIndex: 1,
             objectFit: "cover"
           }}
         />
+
+        <div style={{
+          position: "absolute",
+          inset: 0,
+          background: "linear-gradient(90deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.75) 25%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%)",
+          zIndex: 5,
+          pointerEvents: "none"
+        }} />
 
         <div className="hero-main" style={{
           position: "relative", zIndex: 10, flex: 1,
