@@ -64,7 +64,7 @@ function SharkIcon() {
 }
 
 
-const CTA_LINK = "https://chat.whatsapp.com/GKz6umKPR46F5gJDafa7LG";
+const CTA_LINK = "https://chat.whatsapp.com/JO45PuBD4n49srsE4E2hCE";
 
 const BG_MAIN = "#0A0E1A";
 const BG_DARK = "#0D1628";
